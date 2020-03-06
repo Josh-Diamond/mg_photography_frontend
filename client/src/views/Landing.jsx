@@ -160,20 +160,22 @@ export default function Landing() {
                             marginBlockStart: '.5rem',
                             marginBlockEnd: '1.5rem',
                             marginInlineStart: '0px',
+                            fontSize: '1rem',
                             marginInlineEnd: '0px',
                             fontWeight: 'lighter',
                             color: '#7d6247',
                             '@media (max-width: 550px)': {
                                 fontSize: '.8rem'
                             },
-                            '@media (max-width: 470px)': {
-                                fontSize: '.8rem'
-                            },
                             '@media (max-width: 385px)': {
                                 fontSize: '.6rem'
                             }
                         })}>
-                            Model | Photographer | Artist
+                            Model <span className={css({
+                                color: 'rgb(200,204,207)'
+                            })}>|</span> Photographer <span className={css({
+                                color: 'rgb(200,204,207)'
+                            })}>|</span> Artist
                         </p>
                     </header>
                     <ul className={css({ 
@@ -222,10 +224,10 @@ export default function Landing() {
                                 borderImage: 'initial',
                                 textDecoration: 'none',
                                 "&:hover": {
-                                    // color: '#ff7496 !important',
-                                    // border: '1px solid #ff7496 !important'
-                                    color: '#41cc66 !important',
-                                    border: '1px solid #41cc66 !important'
+                                    // color: '#41cc66 !important',
+                                    // border: '1px solid #41cc66 !important'
+                                    color: '#648f63 !important',
+                                    border: '1px solid #648f63 !important'
                                 },
                                 '@media (max-width: 470px)': {
                                     width: '75%',
@@ -279,10 +281,10 @@ export default function Landing() {
                                     color: '#ab5a1b',
                                     transition: 'background-color 0.2s ease-in-out 0s, border-color 0.2s ease-in-out 0s, color 0.2s ease-in-out 0s',
                                     '&:hover': {
-                                        // color: '#ff7496 !important',
-                                        // border: '1px solid #ff7496 !important'
-                                        color: '#41cc66 !important',
-                                        border: '1px solid #41cc66 !important'
+                                        // color: '#41cc66 !important',
+                                        // border: '1px solid #41cc66 !important'
+                                        color: '#648f63 !important',
+                                        border: '1px solid #648f63 !important'
                                     },
                                     '@media (max-width: 385px)': {
                                         width: '3rem',
