@@ -16,20 +16,21 @@ export default function Landing() {
     fontWeight: 300,
     lineHeight: 2,
     letterSpacing: '0.2rem',
-    textTransform: 'uppercase'
+    textTransform: 'uppercase',
+    boxSizing: 'border-box'
         })}>
             <div className={css({
                 display: 'flex',
                 justifyContent: 'center',
                 flexDirection: 'column',
                 alignItems: 'center',
-                perspective: '1000px',
-                position: 'relative',
-                minHeight: '100%',
+                // perspective: '1000px',
+                // position: 'relative',
+                // minHeight: '100%',
                 zIndex: 2,
-                padding: '1.5rem',
-                height: '94.72vh',
-                // height: '100%',
+                // padding: '1.5rem',
+                // height: '94.72vh',
+                height: '100vh',
                 background: 'rgb(162,255,145)',
 			    background: 'radial-gradient(circle, rgba(162,255,145,1) 20%, rgba(123,175,62,1) 34%, rgba(210,138,81,1) 74%, rgba(17,88,4,1) 82%)'
             })}>
@@ -37,34 +38,36 @@ export default function Landing() {
                     transformOrigin: '50% 50%',
                     transform: 'rotateX(0deg)',
                     cursor: 'default',
-                    maxWidth: '100%',
+                    maxWidth: '480px',
+                    width: '100%',
                     opacity: 0.95,
-                    position: 'relative',
-                    textAlign: 'center',
-                    width: '27rem',
+                    // position: 'relative',
+                    // textAlign: 'center',
                     transition: 'opacity 1s ease 0s, transform 1s ease 0s',
                     padding: '3rem 3rem 3rem',
+                    // padding: '5%',
                     background: 'rgb(255, 255, 255)',
                     borderRadius: '4px',
                     height: '575px',
                     backgroundColor: '#f0fce3',
+                    '@media (max-width: 600px)': {
+                        padding: '3rem 1.5rem',
+                    },
                     '@media (max-width: 550px)': {
-                        width: '75%',
-                        height: '550px',
-                        marginTop: '12%'
+                        padding: '3rem .5rem',
+                        width: '90%',
+                        height: '575px'
+                    },
+                    '@media (max-width: 500px)': {
+                        padding: '3rem 0rem',
+                        width: '85%'
                     },
                     '@media (max-width: 470px)': {
-                        width: '75%',
-                        height: '600px'
-                    },
-                    '@media (max-width: 380px)': {
-                        width: '75%',
-                        height: '550px'
-                    },
-                    '@media (max-width: 344px)': {
-                        width: '75%',
                         height: '525px'
-                    }
+                    },
+                    '@media (max-width: 400px)': {
+                        height: '480px'
+                    },
                 })}>
                     <header className={css({
                         display: 'block',
@@ -81,10 +84,10 @@ export default function Landing() {
                             position: 'relative',
                             display: 'block',
                             marginBottom: '1.5rem',
-                            '@media (max-width: 400px)': {
-                                width: '100%',
-                                maxWidth: '250px'
-                            },
+                            // '@media (max-width: 400px)': {
+                            //     width: '100%',
+                            //     maxWidth: '250px'
+                            // },
                         })}>
                             <span className={css({
                                 boxSizing: 'border-box',
@@ -97,17 +100,29 @@ export default function Landing() {
                                 zIndex: -1,
                                 background: 'rgb(200, 204, 207)',
                                 border: '1px solid #543313',
+                                '@media (max-width: 600px)': {
+                                    width: 'calc(100% + 3rem)',
+                                    left: '-1.5rem'
+                                },
+                                '@media (max-width: 550px)': {
+                                    width: 'calc(100% + 1rem)',
+                                    left: '-.5rem'
+                                },
+                                '@media (max-width: 500px)': {
+                                    width: 'calc(100%)',
+                                    left: '0rem'
+                                },
                             })} />
                             <img src='https://imgur.com/M6HKdFI.jpg' alt='profile picture' className={css({
-                                width: '250px',
+                                maxWidth: '250px',
                                 display: 'block',
                                 // boxShadow: 'rgb(255, 255, 255) 0px 0px 0px 1.5rem',
                                 boxShadow: '#7d6247 0px 0px 0px 1.5rem',
                                 margin: '0px auto',
                                 borderRadius: '100%',
                                 '@media (max-width: 400px)': {
-                                    width: '100%',
-                                    maxWidth: '250px'
+                                    width: '200px',
+                                    height: '200px'
                                 },
                             })} />
                         </span>
@@ -153,23 +168,12 @@ export default function Landing() {
                             },
                             '@media (max-width: 470px)': {
                                 fontSize: '.8rem'
+                            },
+                            '@media (max-width: 385px)': {
+                                fontSize: '.6rem'
                             }
                         })}>
-                            Model <br className={css({
-                                display: 'none',
-                                '@media (max-width: 470px)': {
-                                    display: 'initial'
-                                }
-                            })} /> <span className={css({ color: 'rgb(200,204,207)', '@media (max-width: 470px)': {
-                                display: 'none'
-                            }})}>|</span> Photographer <br className={css({
-                                display: 'none',
-                                '@media (max-width: 470px)': {
-                                    display: 'initial'
-                                }
-                            })} /> <span className={css({ color: 'rgb(200,204,207)', '@media (max-width: 470px)': {
-                                display: 'none'
-                            }})}>|</span> Artist
+                            Model | Photographer | Artist
                         </p>
                     </header>
                     <ul className={css({ 
