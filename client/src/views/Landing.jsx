@@ -68,6 +68,9 @@ export default function Landing() {
                     '@media (max-width: 400px)': {
                         height: '480px'
                     },
+                    '@media (max-width: 385px)': {
+                        height: '450px'
+                    },
                 })}>
                     <header className={css({
                         display: 'block',
