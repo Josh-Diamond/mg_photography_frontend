@@ -2,18 +2,32 @@ import React, { useState, useEffect } from 'react'
 import { css } from 'emotion'
 import { FaInstagram, FaFacebook } from 'react-icons/fa'
 import { AiOutlineMail } from 'react-icons/ai'
+import axios from 'axios'
 
 export default function Landing() {
+    const [styles, setStyles] = useState({})
+
+    useEffect(() => {
+        getStyles();
+    },[])
+
+    const getStyles = () => {
+        axios
+            .get('https://mg-photography-backend.herokuapp.com/api/profile/1')
+            .then(res => setStyles(res.data))
+            .catch(err => console.log(err))
+    }
+
     return (
         <body className={css({
             color: 'rgb(65, 79, 87)',
-    fontFamily: '"Source Sans Pro", Helvetica, sans-serif',
-    fontSize: '14pt',
-    fontWeight: 300,
-    lineHeight: 2,
-    letterSpacing: '0.2rem',
-    textTransform: 'uppercase',
-    boxSizing: 'border-box'
+            fontFamily: '"Source Sans Pro", Helvetica, sans-serif',
+            fontSize: '14pt',
+            fontWeight: 300,
+            lineHeight: 2,
+            letterSpacing: '0.2rem',
+            textTransform: 'uppercase',
+            boxSizing: 'border-box'
         })}>
             <div className={css({
                 display: 'flex',
@@ -27,8 +41,7 @@ export default function Landing() {
                 // padding: '1.5rem',
                 // height: '94.72vh',
                 height: '100vh',
-                background: 'rgb(162,255,145)',
-			    background: 'radial-gradient(circle, rgba(162,255,145,1) 20%, rgba(123,175,62,1) 34%, rgba(210,138,81,1) 74%, rgba(17,88,4,1) 82%)'
+			    background: `${styles.main_background_color}`
             })}>
                 <section className={css({
                     transformOrigin: '50% 50%',
@@ -41,11 +54,9 @@ export default function Landing() {
                     // textAlign: 'center',
                     transition: 'opacity 1s ease 0s, transform 1s ease 0s',
                     padding: '3rem 3rem 3rem',
-                    // padding: '5%',
-                    background: 'rgb(255, 255, 255)',
                     borderRadius: '4px',
                     height: '575px',
-                    backgroundColor: '#f0fce3',
+                    backgroundColor: `${styles.card_background_color}`,
                     '@media (max-width: 600px)': {
                         padding: '3rem 1.5rem',
                     },
@@ -98,7 +109,7 @@ export default function Landing() {
                                 height: '1px',
                                 zIndex: -1,
                                 background: 'rgb(200, 204, 207)',
-                                border: '1px solid #543313',
+                                border: `1px solid ${styles.profile_picture_line_color}`,
                                 '@media (max-width: 600px)': {
                                     width: 'calc(100% + 3rem)',
                                     left: '-1.5rem'
@@ -112,11 +123,11 @@ export default function Landing() {
                                     left: '0rem'
                                 },
                             })} />
-                            <img src='https://imgur.com/M6HKdFI.jpg' alt='profile picture' className={css({
+                            <img src={`${styles.profile_picture_url}.jpg`} alt='profile picture' className={css({
                                 maxWidth: '250px',
                                 display: 'block',
                                 // boxShadow: 'rgb(255, 255, 255) 0px 0px 0px 1.5rem',
-                                boxShadow: '#7d6247 0px 0px 0px 1.5rem',
+                                boxShadow: `${styles.profile_picture_border_color} 0px 0px 0px 1.5rem`,
                                 margin: '0px auto',
                                 borderRadius: '100%',
                                 '@media (max-width: 400px)': {
@@ -130,7 +141,7 @@ export default function Landing() {
                             letterSpacing: '0.22rem',
                             margin: '0px 0px .525rem',
                             fontWeight: 100,
-                            color: '#543313',
+                            color: `${styles.display_name_color}`,
                             // color: 'rgb(65, 79, 87)',
                             // fontFamily: "'Parisienne', cursive",
                             fontFamily: "'Great Vibes', cursive",
@@ -151,7 +162,7 @@ export default function Landing() {
                             },
                         })}>
                             {/* Marysa <span className={css({ color: '#41cc66'})}>Garcia</span> */}
-                            Marysa Garcia
+                            {`${styles.display_name}`}
                         </h1>
                         <p className={css({
                             margin: '0px 0px 1.5rem',
@@ -162,7 +173,7 @@ export default function Landing() {
                             fontSize: '1rem',
                             marginInlineEnd: '0px',
                             fontWeight: 'lighter',
-                            color: '#7d6247',
+                            color: `${styles.sub_heading_color}`,
                             '@media (max-width: 550px)': {
                                 fontSize: '.8rem'
                             },
@@ -171,9 +182,9 @@ export default function Landing() {
                             }
                         })}>
                             Model <span className={css({
-                                color: 'rgb(200,204,207)'
+                                color: `${styles.sub_heading_lines_color}`
                             })}>|</span> Photographer <span className={css({
-                                color: 'rgb(200,204,207)'
+                                color: `${styles.sub_heading_lines_color}`
                             })}>|</span> Artist
                         </p>
                     </header>
@@ -213,18 +224,18 @@ export default function Landing() {
                                 cursor: 'pointer',
                                 textAlign: 'center',
                                 whiteSpace: 'nowrap',
-                                color: '#7d6247 !important',
+                                color: `${styles.view_gallery_text_color} !important`,
                                 transition: 'background-color 0.2s ease-in-out 0s, border-color 0.2s ease-in-out 0s, color 0.2s ease-in-out 0s',
                                 padding: '0px 1.5rem',
                                 borderRadius: '4px',
                                 borderWidth: '1px',
                                 borderStyle: 'solid',
-                                borderColor: '#40310d',
+                                borderColor: `${styles.view_gallery_border_color}`,
                                 borderImage: 'initial',
                                 textDecoration: 'none',
                                 "&:hover": {
-                                    color: '#41cc66 !important',
-                                    border: '1px solid #41cc66 !important'
+                                    color: `${styles.view_gallery_text_color_hover} !important`,
+                                    border: `1px solid ${styles.view_gallery_border_color_hover} !important`
                                     // color: '#648f63 !important',
                                     // border: '1px solid #648f63 !important'
                                 },
@@ -271,17 +282,17 @@ export default function Landing() {
                                     borderRadius: '100%',
                                     borderWidth: '1px',
                                     borderStyle: 'solid',
-                                    borderColor: '#40310d',
+                                    borderColor: `${styles.icon_border_color}`,
                                     borderImage: 'initial',
                                     display: 'flex',
                                     justifyContent: 'center',
                                     alignItems: 'center',
                                     cursor: 'pointer',
-                                    color: '#ab5a1b',
+                                    color: `${styles.icon_color}`,
                                     transition: 'background-color 0.2s ease-in-out 0s, border-color 0.2s ease-in-out 0s, color 0.2s ease-in-out 0s',
                                     '&:hover': {
-                                        color: '#41cc66 !important',
-                                        border: '1px solid #41cc66 !important'
+                                        color: `${styles.icon_color_hover} !important`,
+                                        border: `1px solid ${styles.icon_border_color_hover} !important`
                                         // color: '#648f63 !important',
                                         // border: '1px solid #648f63 !important'
                                     },
@@ -313,24 +324,24 @@ export default function Landing() {
                                     borderRadius: '100%',
                                     borderWidth: '1px',
                                     borderStyle: 'solid',
-                                    borderColor: '#40310d',
+                                    borderColor: `${styles.icon_border_color}`,
                                     borderImage: 'initial',
                                     display: 'flex',
                                     justifyContent: 'center',
                                     alignItems: 'center',
                                     cursor: 'pointer',
-                                    color: '#ab5a1b',
+                                    color: `${styles.icon_color}`,
                                     transition: 'background-color 0.2s ease-in-out 0s, border-color 0.2s ease-in-out 0s, color 0.2s ease-in-out 0s',
                                     '&:hover': {
-                                        // color: '#ff7496 !important',
-                                        // border: '1px solid #ff7496 !important',
-                                        color: '#41cc66 !important',
-                                        border: '1px solid #41cc66 !important'
+                                        color: `${styles.icon_color_hover} !important`,
+                                        border: `1px solid ${styles.icon_border_color_hover} !important`
+                                        // color: '#648f63 !important',
+                                        // border: '1px solid #648f63 !important'
                                     },
                                     '@media (max-width: 385px)': {
                                         width: '3rem',
                                         height: '3rem' 
-                                    }                              
+                                    }                         
                                 })}>
                                     <FaFacebook className={css({
                                         fontSize: '2rem',
@@ -355,23 +366,24 @@ export default function Landing() {
                                     borderRadius: '100%',
                                     borderWidth: '1px',
                                     borderStyle: 'solid',
-                                    borderColor: '#40310d',
+                                    borderColor: `${styles.icon_border_color}`,
                                     borderImage: 'initial',
                                     display: 'flex',
                                     justifyContent: 'center',
                                     alignItems: 'center',
                                     cursor: 'pointer',
-                                    color: '#ab5a1b',
+                                    color: `${styles.icon_color}`,
                                     transition: 'background-color 0.2s ease-in-out 0s, border-color 0.2s ease-in-out 0s, color 0.2s ease-in-out 0s',
                                     '&:hover': {
-                                        // color: '#ff7496 !important',
-                                        // border: '1px solid #ff7496 !important'
-                                        color: '#41cc66 !important',
-                                        border: '1px solid #41cc66 !important'
-                                    }, '@media (max-width: 385px)': {
+                                        color: `${styles.icon_color_hover} !important`,
+                                        border: `1px solid ${styles.icon_border_color_hover} !important`
+                                        // color: '#648f63 !important',
+                                        // border: '1px solid #648f63 !important'
+                                    },
+                                    '@media (max-width: 385px)': {
                                         width: '3rem',
                                         height: '3rem' 
-                                    }                                  
+                                    }                         
                                 })}>
                                     <AiOutlineMail className={css({
                                         fontSize: '2rem',
@@ -386,7 +398,7 @@ export default function Landing() {
                     zIndex: 1,
                     alignSelf: 'flex-end',
                     width: '100%',
-                    color: 'rgba(255, 255, 255, 0.75)',
+                    color: `${styles.footer_color}`,
                     cursor: 'default',
                     textAlign: 'center',
                     padding: '1.5rem 0px 0px',
@@ -411,18 +423,17 @@ export default function Landing() {
                             lineHeight: 1,
                             margin: '0px 0px 0px 0.45rem',
                             padding: '0px 0px 0px 0.85rem',
-                            color: 'rgba(255,255,255,0.75)'
                         })}>
-                            © Marysa Garcia
+                            {`${styles.footer}`}
                         </li>
                         <li className={css({
                             display: 'inline-block',
                             lineHeight: 1,
                             margin: '0px 0px 0px 0.45em',
                             padding: '0px 0px 0px 0.85rem',
-                            borderLeft: '1px solid rgba(255, 255, 255, 0.5)'
+                            borderLeft: `1px solid ${styles.footer_line_color}`
                         })}>
-                            2020
+                            {`${styles.footer_year}`}
                         </li>
                     </ul>
                 </footer>
