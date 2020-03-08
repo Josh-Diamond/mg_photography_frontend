@@ -3,6 +3,7 @@ import { css } from 'emotion'
 import { FaInstagram, FaFacebook } from 'react-icons/fa'
 import { AiOutlineMail } from 'react-icons/ai'
 import axios from 'axios'
+import { Link } from 'react-router-dom'
 
 export default function Landing() {
     const [styles, setStyles] = useState({})
@@ -130,6 +131,12 @@ export default function Landing() {
                                 boxShadow: `${styles.profile_picture_border_color} 0px 0px 0px 1.5rem`,
                                 margin: '0px auto',
                                 borderRadius: '100%',
+                                '-webkit-touch-callout': 'none',
+                                '-webkit-user-select': 'none',
+                                '-khtml-user-select': 'none',
+                                '-moz-user-select': 'none',
+                                '-ms-user-select': 'none',
+                                'user-select': 'none',
                                 '@media (max-width: 400px)': {
                                     width: '200px',
                                     height: '200px'
@@ -151,6 +158,12 @@ export default function Landing() {
                             // fontFamily: "'Rock Salt', cursive", /* favorite */
                             // fontFamily: "'Amatic SC', cursive",
                             textTransform: 'none',
+                            '-webkit-touch-callout': 'none',
+                                '-webkit-user-select': 'none',
+                                '-khtml-user-select': 'none',
+                                '-moz-user-select': 'none',
+                                '-ms-user-select': 'none',
+                                'user-select': 'none',
                             '@media (max-width: 505px)': {
                                 fontSize: '3.1rem'
                             },
@@ -174,6 +187,12 @@ export default function Landing() {
                             marginInlineEnd: '0px',
                             fontWeight: 'lighter',
                             color: `${styles.sub_heading_color}`,
+                            '-webkit-touch-callout': 'none',
+                            '-webkit-user-select': 'none',
+                            '-khtml-user-select': 'none',
+                            '-moz-user-select': 'none',
+                            '-ms-user-select': 'none',
+                            'user-select': 'none',
                             '@media (max-width: 550px)': {
                                 fontSize: '.8rem'
                             },
@@ -202,6 +221,12 @@ export default function Landing() {
                         // marginInlineEnd: '0px',
                         // paddingInlineStart: '40px',
                         textSlign: 'center',
+                        '-webkit-touch-callout': 'none',
+                        '-webkit-user-select': 'none',
+                        '-khtml-user-select': 'none',
+                        '-moz-user-select': 'none',
+                        '-ms-user-select': 'none',
+                        'user-select': 'none',
                         
                     })}> 
                         <li className={css({
@@ -215,7 +240,7 @@ export default function Landing() {
                                 padding: '0px 0px 0px 0px'  
                             },
                         })}>
-                            <a className={css({
+                            <Link to='/gallery_selection' className={css({
                                 '-webkit-appearance': 'none',
                                 display: 'inline-block',
                                 height: '2.75rem',
@@ -244,7 +269,7 @@ export default function Landing() {
                                     margin: '0 auto',
                                     fontSize: '.9rem',
                                 }
-                            })}>View Gallery</a>
+                            })}>View Gallery</Link>
                         </li>
                     </ul>
                     <footer className={css({
@@ -415,7 +440,13 @@ export default function Landing() {
                         fontSize: '0.9rem',
                         margin: '0px',
                         padding: '0px',
-                        listStyle: 'none'
+                        listStyle: 'none',
+                        '-webkit-touch-callout': 'none',
+                        '-webkit-user-select': 'none',
+                        '-khtml-user-select': 'none',
+                        '-moz-user-select': 'none',
+                        '-ms-user-select': 'none',
+                        'user-select': 'none',
                     })}>
                         <li className={css({
                             borderLeft: '0px',
