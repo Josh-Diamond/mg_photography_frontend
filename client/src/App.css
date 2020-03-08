@@ -1,3 +1,4 @@
+@import 'loaders.css/src/animations/pacman.scss'
 /* @import url(fontawesome-all.min.css);
 @import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:300"); */
 /* http://meyerweb.com/eric/tools/css/reset/ 
@@ -53,4 +54,3 @@ table {
   text-align: center;
   height: 100%;
 }
-
