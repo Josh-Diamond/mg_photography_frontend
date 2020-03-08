@@ -31,7 +31,8 @@ export default function Landing() {
                 display: 'flex',
                 justifyContent: 'center',
                 alignItems: 'center',
-                backgroundColor: '#40310d'
+                // backgroundColor: '#40310d',
+                background: "radial-gradient(circle, rgba(162,255,145,1) 20%, rgba(123,175,62,1) 34%, rgba(210,138,81,1) 74%, rgba(17,88,4,1) 82%)"
             })}>
                 <h1 className={css({
                     color: '#41cc66',

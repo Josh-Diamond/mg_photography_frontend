@@ -27,11 +27,14 @@ export default function ModelingCard() {
                     opacity: '1',
                     // transitionTimingFunction: 'ease-in-out',
                     // transitionDuration: '.5s',
+                },
+                'img': {
+                    opacity: 1
                 }
             }
             
         })}>
-            <img src={image} alt='Modeling Gallery' className={css({ height: '100%', width: '100%', borderRadius: '4px'})} />
+            <img src={image} alt='Modeling Gallery' className={css({ height: '100%', width: '100%', borderRadius: '4px', opacity: .8, transitionTimingFunction: 'ease-in-out', transitionDuration: '.5s',})} />
             <h2 className={css({
                 marginTop: '-60%',
                 fontFamily: "'Great Vibes', cursive",
