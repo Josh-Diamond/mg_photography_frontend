@@ -3,7 +3,7 @@ import './App.css';
 import { css } from 'emotion'
 import { Route, Switch } from 'react-router-dom';
 import Landing from './views/Landing'
-import PrivateRoute from './components/PrivateRoute';
+import PrivateRoute from './components/PrivateRoute'
 import Admin from './views/Admin'
 import Gallery from './views/Gallery'
 import Login from './views/Login'
@@ -16,8 +16,8 @@ function App() {
         <Route exact path='/' render={props => <Landing {...props} />} />
         <Route path='/gallery_selection' render={props => <Gallery {...props} />} />
         <Route exact path='/gallery' render={props => <Pictures {...props} />} />
-        <Route path='/admin' render={props => <Login {...props} />} />
-        <PrivateRoute path='admin_access' view={Admin} />
+        <Route exact path='/admin' render={props => <Login {...props} />} />
+        <PrivateRoute exact path='/admin_access' view={Admin} />
       </Switch>
     </div>
   );

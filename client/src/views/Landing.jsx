@@ -1,13 +1,9 @@
-import React, { useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import { css } from 'emotion'
 import { FaInstagram, FaFacebook } from 'react-icons/fa'
 import { AiOutlineMail } from 'react-icons/ai'
-import axios from 'axios'
 
 export default function Landing() {
-    useEffect(() => {
-        axios.get('')
-    }, [])
     return (
         <body className={css({
             color: 'rgb(65, 79, 87)',
@@ -227,10 +223,10 @@ export default function Landing() {
                                 borderImage: 'initial',
                                 textDecoration: 'none',
                                 "&:hover": {
-                                    // color: '#41cc66 !important',
-                                    // border: '1px solid #41cc66 !important'
-                                    color: '#648f63 !important',
-                                    border: '1px solid #648f63 !important'
+                                    color: '#41cc66 !important',
+                                    border: '1px solid #41cc66 !important'
+                                    // color: '#648f63 !important',
+                                    // border: '1px solid #648f63 !important'
                                 },
                                 '@media (max-width: 470px)': {
                                     width: '75%',
@@ -284,10 +280,10 @@ export default function Landing() {
                                     color: '#ab5a1b',
                                     transition: 'background-color 0.2s ease-in-out 0s, border-color 0.2s ease-in-out 0s, color 0.2s ease-in-out 0s',
                                     '&:hover': {
-                                        // color: '#41cc66 !important',
-                                        // border: '1px solid #41cc66 !important'
-                                        color: '#648f63 !important',
-                                        border: '1px solid #648f63 !important'
+                                        color: '#41cc66 !important',
+                                        border: '1px solid #41cc66 !important'
+                                        // color: '#648f63 !important',
+                                        // border: '1px solid #648f63 !important'
                                     },
                                     '@media (max-width: 385px)': {
                                         width: '3rem',
@@ -414,7 +410,8 @@ export default function Landing() {
                             display: 'inline-block',
                             lineHeight: 1,
                             margin: '0px 0px 0px 0.45rem',
-                            padding: '0px 0px 0px 0.85rem'
+                            padding: '0px 0px 0px 0.85rem',
+                            color: 'rgba(255,255,255,0.75)'
                         })}>
                             © Marysa Garcia
                         </li>
