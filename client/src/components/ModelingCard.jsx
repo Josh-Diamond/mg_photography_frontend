@@ -6,7 +6,7 @@ export default function ModelingCard() {
     return (
         <div className={css({
             height: 350,
-            width: 345,
+            width: 350,
             // display: 'flex',
             // justifyContent: 'center',
             // alignItems: 'center',
@@ -18,6 +18,22 @@ export default function ModelingCard() {
             boxShadow: '13px 13px 21px 10px rgba(0,0,0,0.8)',
             transitionTimingFunction: 'ease-in-out',
             transitionDuration: '.5s',
+            '@media (max-width: 1200px)': {
+                height: 275,
+                width: 275
+            },
+            '@media (max-width: 1000px)': {
+                height: 250,
+                width: 250,
+            },
+            '@media (max-width: 950px)': {
+                height: 275,
+                width: 275,
+            },
+            '@media (max-width: 375px)': {
+                height: 250,
+                width: 250,
+            },
             '&:hover': {
                 '-webkit-box-shadow': '13px 13px 21px 10px rgba(255,255,255,0.8)',
                 '-moz-box-shadow': '13px 13px 21px 10px rgba(255,255,255,0.8)',
@@ -45,6 +61,12 @@ export default function ModelingCard() {
                 opacity: '.5',
                 transitionTimingFunction: 'ease-in-out',
                 transitionDuration: '.5s',
+                '@media (max-width: 1000px)': {
+                    fontSize: '3rem'
+                },
+                '@media (max-width: 375px)': {
+                    fontSize: '3rem'
+                },
             })}>Modeling</h2>
         </div>
     )

@@ -27,11 +27,16 @@ export default function Gallery() {
                     display: 'flex',
                     justifyContent: 'space-evenly',
                     alignItems: 'center',
-                    height: '100%'
+                    height: '100%',
+                    '@media (max-width: 950px)': {
+                        flexDirection: 'column'
+                    },
                 })}>
                     <ModelingCard />
-                    <PhotographyCard />
-                    <ArtCard />
+                    <ModelingCard />
+                    <ModelingCard />
+                    {/* <PhotographyCard /> */}
+                    {/* <ArtCard /> */}
                 </div>
             </div>
         </div>

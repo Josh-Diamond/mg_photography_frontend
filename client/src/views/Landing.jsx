@@ -31,6 +31,12 @@ export default function Landing() {
                 display: 'flex',
                 justifyContent: 'center',
                 alignItems: 'center',
+                '-webkit-touch-callout': 'none',
+                '-webkit-user-select': 'none',
+                '-khtml-user-select': 'none',
+                '-moz-user-select': 'none',
+                '-ms-user-select': 'none',
+                'user-select': 'none',
                 // backgroundColor: '#40310d',
                 background: "radial-gradient(circle, rgba(162,255,145,1) 20%, rgba(123,175,62,1) 34%, rgba(210,138,81,1) 74%, rgba(17,88,4,1) 82%)"
             })}>
