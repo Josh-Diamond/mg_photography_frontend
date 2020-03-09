@@ -27,12 +27,8 @@ export default function ArtCard() {
                 width: 250,
             },
             '@media (max-width: 950px)': {
-                height: 275,
-                width: 275,
-            },
-            '@media (max-width: 375px)': {
-                height: 250,
-                width: 250,
+                height: 200,
+                width: 200,
             },
             '&:hover': {
                 '-webkit-box-shadow': '13px 13px 21px 10px rgba(255,255,255,0.8)',
@@ -61,6 +57,12 @@ export default function ArtCard() {
                 opacity: '.5',
                 transitionTimingFunction: 'ease-in-out',
                 transitionDuration: '.5s',
+                '-webkit-touch-callout': 'none',
+                '-webkit-user-select': 'none',
+                '-khtml-user-select': 'none',
+                '-moz-user-select': 'none',
+                '-ms-user-select': 'none',
+                'user-select': 'none',
                 '@media (max-width: 1000px)': {
                     fontSize: '3rem'
                 },
