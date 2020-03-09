@@ -1,6 +1,8 @@
 import React from 'react'
 import { css } from 'emotion'
 import ModelingCard from '../components/ModelingCard'
+import PhotographyCard from '../components/PhotographyCard'
+import ArtCard from '../components/ArtCard'
 
 export default function Gallery() {
     return (
@@ -28,8 +30,8 @@ export default function Gallery() {
                     height: '100%'
                 })}>
                     <ModelingCard />
-                    <ModelingCard />
-                    <ModelingCard />
+                    <PhotographyCard />
+                    <ArtCard />
                 </div>
             </div>
         </div>
