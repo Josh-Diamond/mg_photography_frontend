@@ -37,13 +37,14 @@ export default function Gallery({ history }) {
                     <Link to='/gallery' className={css({
                         textDecoration: 'none'
                     })}><ModelingCard /></Link>
-                    <Link to='/gallery' className={css({
+                    <ModelingCard />
+                    <ModelingCard />
+                    {/* <Link to='/gallery' className={css({
                         textDecoration: 'none'
                     })}><PhotographyCard /></Link>
                     <Link to='/gallery' className={css({
                         textDecoration: 'none'
-                    })}><ArtCard /></Link>
-                    {/* <button onClick={goBack}>GO BACK</button> */}
+                    })}><ArtCard /></Link> */}
                 </div>
             </div>
         </div>

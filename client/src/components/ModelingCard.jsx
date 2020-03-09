@@ -27,12 +27,8 @@ export default function ModelingCard() {
                 width: 250,
             },
             '@media (max-width: 950px)': {
-                height: 275,
-                width: 275,
-            },
-            '@media (max-width: 375px)': {
-                height: 250,
-                width: 250,
+                height: 210,
+                width: 210,
             },
             '&:hover': {
                 '-webkit-box-shadow': '13px 13px 21px 10px rgba(255,255,255,0.8)',
