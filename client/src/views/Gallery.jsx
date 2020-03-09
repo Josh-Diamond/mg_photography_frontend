@@ -3,8 +3,10 @@ import { css } from 'emotion'
 import ModelingCard from '../components/ModelingCard'
 import PhotographyCard from '../components/PhotographyCard'
 import ArtCard from '../components/ArtCard'
+import { Link } from 'react-router-dom'
 
-export default function Gallery() {
+export default function Gallery({ history }) {
+    
     return (
         <div className={css({
             height: '100vh',
@@ -32,11 +34,16 @@ export default function Gallery() {
                         flexDirection: 'column'
                     },
                 })}>
-                    <ModelingCard />
-                    <ModelingCard />
-                    <ModelingCard />
-                    {/* <PhotographyCard /> */}
-                    {/* <ArtCard /> */}
+                    <Link to='/gallery' className={css({
+                        textDecoration: 'none'
+                    })}><ModelingCard /></Link>
+                    <Link to='/gallery' className={css({
+                        textDecoration: 'none'
+                    })}><PhotographyCard /></Link>
+                    <Link to='/gallery' className={css({
+                        textDecoration: 'none'
+                    })}><ArtCard /></Link>
+                    {/* <button onClick={goBack}>GO BACK</button> */}
                 </div>
             </div>
         </div>
