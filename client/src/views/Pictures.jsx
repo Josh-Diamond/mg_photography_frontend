@@ -6,7 +6,6 @@ import model from '../static/modeling.jpg'
 import photography from '../static/photography.jpg'
 import art from '../static/art.jpg'
 
-
 export default function Pictures({ history }) {
     const [openMenu, setOpenMenu] = useState(false)
     const [selected, setSelected] = useState('')

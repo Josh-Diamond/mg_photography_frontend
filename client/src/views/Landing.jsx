@@ -329,7 +329,8 @@ export default function Landing() {
                                     display: 'inline-block',
                                     padding: '0.675rem 0.5rem'
                                 })}>
-                                    <a href='https://instagram.com/marysa_alexis?igshid=1abwouwwzi9xt' className={css({
+                                    {/* <a href='https://instagram.com/marysa_alexis?igshid=1abwouwwzi9xt' className={css({ */}
+                                    <a href='https://instagram.com/' className={css({
                                         position: 'relative',
                                         // display: 'block',
                                         width: '3.75rem',
@@ -371,7 +372,8 @@ export default function Landing() {
                                     display: 'inline-block',
                                     padding: '0.675rem 0.5rem',
                                 })}>
-                                    <a href='https://www.facebook.com/profile.php?id=100006888631286' className={css({
+                                    {/* <a href='https://www.facebook.com/profile.php?id=100006888631286' className={css({ */}
+                                        <a href='https://www.facebook.com/' className={css({
                                         position: 'relative',
                                         // display: 'block',
                                         width: '3.75rem',
