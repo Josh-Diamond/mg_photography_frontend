@@ -2,9 +2,13 @@ import React, { useState } from 'react'
 import { css } from 'emotion'
 import { AiOutlineMenu, AiOutlineClose } from 'react-icons/ai'
 import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io'
+import { MdInfoOutline } from 'react-icons/md'
+import { TiInfoOutline, TiInfoLarge} from 'react-icons/ti'
+import { GoInfo } from 'react-icons/go'
 import model from '../static/modeling.jpg'
 import photography from '../static/photography.jpg'
 import art from '../static/art.jpg'
+import { FaCalculator } from 'react-icons/fa'
 
 export default function Pictures({ history }) {
     const [openMenu, setOpenMenu] = useState(false)
@@ -16,6 +20,77 @@ export default function Pictures({ history }) {
 
     return (
         <div className={css({
+            display: 'flex',
+            width: '100%',
+            justifyContent: 'space-between',
+            boxSizing: 'border-box',
+        })}>
+            <section className={css({
+                border: '1px solid red',
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center'
+            })}>
+                {/* <MdInfoOutline className={css({
+                    fontSize: '2rem',
+                    marginTop: '5px'
+                })} />
+                <GoInfo className={css({
+                    fontSize: '2rem',
+                    marginTop: '5px'
+                })} />
+                <TiInfoOutline className={css({
+                    fontSize: '2rem',
+                    marginTop: '5px'
+                })} /> */}
+                <TiInfoLarge className={css({
+                    fontSize: '2rem',
+                    marginTop: '5px'
+                })} />
+                <IoIosArrowBack className={css({
+                    fontSize: '6rem',
+                    cursor: 'pointer',
+                    marginTop: 'calc(50vh)'
+                })} />
+            </section>
+            <section className={css({
+                boxSizing: "border-box",
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                height: '100vh'
+            })}>
+                <img src={art} className={css({
+                    maxHeight: '100vh',
+                    maxWidth: '100vw',
+                })} />
+            </section>
+            <section className={css({
+                border: '1px solid red',
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+            })}>
+                {openMenu ? <AiOutlineClose className={css({
+                        fontSize: '2.5rem',
+                        cursor: 'pointer'
+                    })} onClick={() => setOpenMenu(false)} /> :
+                    <AiOutlineMenu className={css({
+                        fontSize: '2.5rem',
+                        cursor: 'pointer'
+                    })} onClick={() => setOpenMenu(true)} />}
+                    <IoIosArrowForward className={css({
+                        fontSize: '6rem',
+                        cursor: 'pointer',
+                        marginTop: 'calc(50vh - 40px)'
+                    })} />
+            </section>
+        </div>
+    )
+}
+
+///////////////
+{/* <div className={css({
             width: '100%',
             height: '100vh',
             display: 'flex',
@@ -36,11 +111,8 @@ export default function Pictures({ history }) {
                 paddingTop: '50px',
                 textShadow: '0px 0px 10px rgba(255, 255, 255, 1)'
             })}>🚧 🚧 🚧 🚧</h4>
-        </div>        
-    )
-}
-
-
+        </div>     */}
+        ////////////////////
 
     // <div className={css({
     //          height: '100vh',
