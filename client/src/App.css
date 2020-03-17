@@ -65,3 +65,47 @@ table {
 				background-repeat: no-repeat;
                 background-size: cover;
 }
+
+.menu {
+	display: flex;
+	width: calc(100vw - 300px);
+	justify-content: space-between;
+	box-sizing: border-box;
+	background-color: #110C11;
+}
+
+.menu-hidden {
+	display: flex;
+	width: 100%;
+	justify-content: space-between;
+	box-sizing: border-box;
+	background-color: #110C11;
+}
+
+.menu-animated {
+	width: 300px;
+	display: flex;
+	flex-direction: column;
+}
+
+.test-animation {
+	/* width: '300px',
+             border: '1px solid orange',
+             display: 'flex',
+			 flexDirection: 'column', */
+			 width: 300px;
+             border: 1px solid orange;
+             display: flex;
+			 flex-direction: column;
+			 animation-name: menuSlideOpen;
+			 animation-duration: 2s;
+}
+
+@keyframes menuSlideOpen {
+	from {
+		width: 0px;
+	}
+	to {
+		width: 300px;
+	}
+}
