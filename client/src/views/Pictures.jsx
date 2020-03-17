@@ -23,7 +23,7 @@ export default function Pictures({ history }) {
 
       
         <div className={css({
-            border: '1px solid blue',
+            // border: '1px solid blue',
             display: 'flex'
         })}>
 
@@ -119,7 +119,7 @@ export default function Pictures({ history }) {
                     }
                 })} />
                 <div className={css({
-                    maxHeight: '95vh',
+                    maxHeight: '91vh',
                     overflowY: 'scroll',
                     boxSizing: 'border-box',
                     display: 'flex',
@@ -127,6 +127,30 @@ export default function Pictures({ history }) {
                     justifyContent: 'space-evenly',
                     alignItems: 'center'
                 })}>
+                    <Thumbnail image={model} setSelected={setSelected} />
+                    <Thumbnail image={photography} setSelected={setSelected} />
+                    <Thumbnail image={art} setSelected={setSelected} />
+                    <Thumbnail image={model} setSelected={setSelected} />
+                    <Thumbnail image={photography} setSelected={setSelected} />
+                    <Thumbnail image={art} setSelected={setSelected} />
+                    <Thumbnail image={model} setSelected={setSelected} />
+                    <Thumbnail image={photography} setSelected={setSelected} />
+                    <Thumbnail image={art} setSelected={setSelected} />
+                    <Thumbnail image={model} setSelected={setSelected} />
+                    <Thumbnail image={photography} setSelected={setSelected} />
+                    <Thumbnail image={art} setSelected={setSelected} />
+                    <Thumbnail image={model} setSelected={setSelected} />
+                    <Thumbnail image={photography} setSelected={setSelected} />
+                    <Thumbnail image={art} setSelected={setSelected} />
+                    <Thumbnail image={model} setSelected={setSelected} />
+                    <Thumbnail image={photography} setSelected={setSelected} />
+                    <Thumbnail image={art} setSelected={setSelected} />
+                    <Thumbnail image={model} setSelected={setSelected} />
+                    <Thumbnail image={photography} setSelected={setSelected} />
+                    <Thumbnail image={art} setSelected={setSelected} />
+                    <Thumbnail image={model} setSelected={setSelected} />
+                    <Thumbnail image={photography} setSelected={setSelected} />
+                    <Thumbnail image={art} setSelected={setSelected} />
                     <Thumbnail image={model} setSelected={setSelected} />
                     <Thumbnail image={photography} setSelected={setSelected} />
                     <Thumbnail image={art} setSelected={setSelected} />
