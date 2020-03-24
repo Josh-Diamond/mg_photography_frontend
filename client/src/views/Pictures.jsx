@@ -126,6 +126,37 @@ export default function Pictures({ history }) {
                     flexDirection: 'column'
                 },
             })}>
+                {/* top mobile row */}
+                <section className={css({
+                    // border: '1px solid red',
+                    width: '100vw',
+                    display: 'flex',
+                    justifyContent: 'space-between',
+                    alignItems: 'center'
+                })}>
+                <TiInfoLarge className={css({
+                        '@media (max-width: 900px)': {
+                            fontSize: '2.5rem',
+                            cursor: 'pointer',
+                            color: '#e6e6e6',
+                            transition: '.4s',
+                            alignSelf: 'flex-end',
+                            position: 'relative',
+                            // top: '-10px',
+                            // left: '10%'
+                            paddingBottom: '5px',
+                            // paddingLeft: '5px'
+                        },
+                        '@media (max-width: 1200px)': {
+                            fontSize: '1.8rem'
+                        },
+                        // '@media (max-width: 600px)': {
+                        //     top: '-7%'
+                        // },
+                    "&:hover": {
+                        color: '#41cc66',
+                    }
+                    })} />
                 <AiOutlineMenu className={css({
                         '@media (max-width: 900px)': {
                             fontSize: '2.5rem',
@@ -136,7 +167,8 @@ export default function Pictures({ history }) {
                             position: 'relative',
                             // top: '-10px',
                             // left: '10%'
-                            paddingBottom: '5px'
+                            paddingBottom: '5px',
+                            paddingRight: '5px'
                         },
                         '@media (max-width: 1200px)': {
                             fontSize: '1.8rem'
@@ -148,6 +180,8 @@ export default function Pictures({ history }) {
                         color: '#41cc66',
                     }
                     })} onClick={() => setOpenMenu(true)} />
+                </section>
+                
                 <img src={selected} className={css({
                     maxHeight: '100vh',
                     maxWidth: '100vw',
@@ -162,6 +196,64 @@ export default function Pictures({ history }) {
                             maxHeight: '94vh'
                             },
                 })} />
+
+                {/* bottom mobile row */}
+                <section className={css({
+                    // border: '1px solid red',
+                    width: '100vw',
+                    display: 'flex',
+                    justifyContent: 'space-between',
+                    alignItems: 'center'
+                })}>
+                <IoIosArrowBack className={css({
+                        '@media (max-width: 900px)': {
+                            fontSize: '2.5rem',
+                            cursor: 'pointer',
+                            color: '#e6e6e6',
+                            transition: '.4s',
+                            alignSelf: 'flex-end',
+                            position: 'relative',
+                            // top: '-10px',
+                            // left: '10%'
+                            paddingTop: '5px',
+                            // paddingLeft: '5px'
+                        },
+                        '@media (max-width: 1200px)': {
+                            fontSize: '1.8rem'
+                        },
+                        // '@media (max-width: 600px)': {
+                        //     top: '-7%'
+                        // },
+                    "&:hover": {
+                        color: '#41cc66',
+                    }
+                    })} />
+                <IoIosArrowForward className={css({
+                        '@media (max-width: 900px)': {
+                            fontSize: '2.5rem',
+                            cursor: 'pointer',
+                            color: '#e6e6e6',
+                            transition: '.4s',
+                            alignSelf: 'flex-end',
+                            position: 'relative',
+                            // top: '-10px',
+                            // left: '10%'
+                            paddingTop: '5px',
+                            paddingRight: '5px'
+                        },
+                        '@media (max-width: 1200px)': {
+                            fontSize: '1.8rem'
+                        },
+                        // '@media (max-width: 600px)': {
+                        //     top: '-7%'
+                        // },
+                    "&:hover": {
+                        color: '#41cc66',
+                    }
+                    })} />
+                </section>
+                {/* end bottom mobile row */}
+
             </section>
             <section className={ openMenu ? css({
                 display: 'flex',
