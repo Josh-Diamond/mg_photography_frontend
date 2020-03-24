@@ -53,6 +53,10 @@ export default function Pictures({ history }) {
             backgroundColor: '#110C11',
             width: 'calc(100vw)',
             transition: '1s',
+            // border: '1px solid red',
+            '@media (max-width: 900px)': {
+                justifyContent: 'center',
+              },
             
         })}>
             <section className={openMenu ? css({
@@ -123,19 +127,23 @@ export default function Pictures({ history }) {
                 },
             })}>
                 <AiOutlineMenu className={css({
-                        '@media (max-width: 1150px)': {
+                        '@media (max-width: 900px)': {
                             fontSize: '2.5rem',
                             cursor: 'pointer',
                             color: '#e6e6e6',
                             transition: '.4s',
                             alignSelf: 'flex-end',
                             position: 'relative',
-                            top: '-50px',
-                            left: '-15px'
+                            // top: '-10px',
+                            // left: '10%'
+                            paddingBottom: '5px'
                         },
                         '@media (max-width: 1200px)': {
                             fontSize: '1.8rem'
                         },
+                        // '@media (max-width: 600px)': {
+                        //     top: '-7%'
+                        // },
                     "&:hover": {
                         color: '#41cc66',
                     }
@@ -149,6 +157,10 @@ export default function Pictures({ history }) {
                     '@media (max-width: 1150px)': {
                         maxWidth: 'calc(100vw - 128px)'
                         },
+                        '@media (max-width: 900px)': {
+                            maxWidth: 'calc(100vw)',
+                            maxHeight: '94vh'
+                            },
                 })} />
             </section>
             <section className={ openMenu ? css({
@@ -321,17 +333,22 @@ export default function Pictures({ history }) {
             },
             '@media (min-width: 1150px)': {
                width: '0%',
-            //    display: 'none'
+               display: 'none',
+            opacity: 0
             },
          }) : css({
              width: '0px',
              display: 'flex',
              flexDirection: 'column',
              overflowX: 'hidden',
-            //  transition: '1s',
+             transition: '1s',
              '@media (min-width: 1150px)': {
                 width: '0%'
              },
+             '@media (max-width: 1150px)': {
+                opacity: 0,
+                display: 'none'
+            },
          })}>
                 <TiArrowBack onClick={() => setOpenMenu(false)} className={css({
                     fontSize: '2rem',
