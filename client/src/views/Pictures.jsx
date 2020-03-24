@@ -3,7 +3,7 @@ import { css } from 'emotion'
 import { AiOutlineMenu, AiOutlineClose } from 'react-icons/ai'
 import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io'
 import { MdInfoOutline } from 'react-icons/md'
-import { TiInfoOutline, TiInfoLarge} from 'react-icons/ti'
+import { TiInfoOutline, TiInfoLarge, TiArrowBack} from 'react-icons/ti'
 import { GoInfo } from 'react-icons/go'
 import model from '../static/modeling.jpg'
 import photography from '../static/photography.jpg'
@@ -26,8 +26,8 @@ export default function Pictures({ history }) {
             display: 'flex',
             overflowY: 'hidden',
             boxSizing: 'border-box',
-            '@media (max-width: 1025px)': {
-                display: 'block',
+            '@media (max-width: 1150px)': {
+                // display: 'block',
                 overflowY: 'hidden',
                 maxHeight: '100vh'
             },
@@ -60,7 +60,7 @@ export default function Pictures({ history }) {
                 flexDirection: 'column',
                 alignItems: 'center',
                 marginTop: '10px',
-                '@media (max-width: 1125px)': {
+                '@media (max-width: 1150px)': {
                     display: 'none'
                 },
             }) : css({
@@ -68,9 +68,9 @@ export default function Pictures({ history }) {
                 flexDirection: 'column',
                 alignItems: 'center',
                 marginTop: '10px',
-                // '@media (max-width: 900px)': {
-                //     display: 'none'
-                // },
+                '@media (max-width: 1150px)': {
+                    display: 'none'
+                },
             })}>
                 {/* <MdInfoOutline className={css({
                     fontSize: '2rem',
@@ -117,14 +117,38 @@ export default function Pictures({ history }) {
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                height: '100vh'
+                height: '100vh',
+                '@media (max-width: 1150px)': {
+                    flexDirection: 'column'
+                },
             })}>
+                <AiOutlineMenu className={css({
+                        '@media (max-width: 1150px)': {
+                            fontSize: '2.5rem',
+                            cursor: 'pointer',
+                            color: '#e6e6e6',
+                            transition: '.4s',
+                            alignSelf: 'flex-end',
+                            position: 'relative',
+                            top: '-50px',
+                            left: '-15px'
+                        },
+                        '@media (max-width: 1200px)': {
+                            fontSize: '1.8rem'
+                        },
+                    "&:hover": {
+                        color: '#41cc66',
+                    }
+                    })} onClick={() => setOpenMenu(true)} />
                 <img src={selected} className={css({
                     maxHeight: '100vh',
                     maxWidth: '100vw',
-                    '@media (max-width: 900px)': {
-                        maxWidth: 'calc(100vw - 128px)'
-                        },
+                    '@media (max-width: 1150px)': {
+                        alignSelf: 'center'
+                    },
+                    // '@media (max-width: 900px)': {
+                    //     maxWidth: 'calc(100vw - 128px)'
+                    //     },
                 })} />
             </section>
             <section className={ openMenu ? css({
@@ -133,7 +157,7 @@ export default function Pictures({ history }) {
                 alignItems: 'center',
                 marginTop: '10px',
                 // border: '1px solid red',
-                '@media (max-width: 1125px)': {
+                '@media (max-width: 1150px)': {
                     display: 'none',
                 },
             }) : css({
@@ -142,9 +166,9 @@ export default function Pictures({ history }) {
                 alignItems: 'center',
                 marginTop: '10px',
                 // border: '1px solid red',
-                // '@media (max-width: 900px)': {
-                //     display: 'none'
-                // },
+                '@media (max-width: 1150px)': {
+                    display: 'none'
+                },
             })}>
                 {openMenu ? 
                 <AiOutlineClose className={css({
@@ -196,22 +220,22 @@ export default function Pictures({ history }) {
               display: 'flex',
               flexDirection: 'column',
               transition: '1s',
-              '@media (max-width: 600px)': {
+              '@media (max-width: 1150px)': {
                 width: '0%',
                 display: 'none',
                 overflowY: 'hidden'
             },
-            '@media (min-width: 600px)': {
-                width: '0%',
-                display: 'none'
-            },
+            // '@media (min-width: 1150px)': {
+            //     width: '0%',
+            //     display: 'none'
+            // },
          }) : css({
              width: '0px',
              display: 'flex',
              flexDirection: 'column',
              overflowX: 'hidden',
              transition: '1s',
-             '@media (max-width: 600px)': {
+             '@media (max-width: 1150px)': {
                 width: '0%',
                 display: 'none'
             },
@@ -274,6 +298,7 @@ export default function Pictures({ history }) {
               flexDirection: 'column',
               transition: '1s',
               overflowY: 'hidden',
+              maxHeight: '100vh',
             //   '@media (max-width: 1125px)': {
             //     width: '100vw',
             //     height: '100vh',
@@ -282,27 +307,34 @@ export default function Pictures({ history }) {
             //     // top: '-100vh',
             //     // overflowY: 'hidden',
             // },
-              '@media (max-width: 600px)': {
+              '@media (max-width: 1150px)': {
                 width: '100vw',
                 height: '100vh',
-                position: 'relative',
+                position: 'absolute',
                 backgroundColor: 'white',
-                top: '-100vh',
+                // top: '-100vh',
                 overflowY: 'hidden',
                 // border: '1px solid red',
+            },
+            '@media (min-width: 1150px)': {
+               width: '0%'
             },
          }) : css({
              width: '0px',
              display: 'flex',
              flexDirection: 'column',
              overflowX: 'hidden',
-             transition: '1s'
+             transition: '1s',
          })}>
-                Menu Area
+                <TiArrowBack onClick={() => setOpenMenu(false)} className={css({
+                    fontSize: '2rem',
+                    margin: '0 1%'
+                })} />
+                Menu Area Mobile
                 <input placeholder='Search' className={css({
                     width: '80%',
                     margin: '0 auto',
-                    marginBottom: '10%',
+                    marginBottom: '2%',
                     "::placeholder": {
                         textAlign: 'center'
                     }
@@ -317,36 +349,43 @@ export default function Pictures({ history }) {
                     alignItems: 'center',
                     padding: '0 5%'
                 })}>
-                    <Thumbnail mobile image={model} setSelected={setSelected} />
-                    <Thumbnail mobile image={photography} setSelected={setSelected} />
-                    <Thumbnail mobile image={art} setSelected={setSelected} />
-                    <Thumbnail mobile image={model} setSelected={setSelected} />
-                    <Thumbnail mobile image={photography} setSelected={setSelected} />
-                    <Thumbnail mobile image={art} setSelected={setSelected} />
-                    <Thumbnail mobile image={model} setSelected={setSelected} />
-                    <Thumbnail mobile image={photography} setSelected={setSelected} />
-                    <Thumbnail mobile image={art} setSelected={setSelected} />
-                    <Thumbnail mobile image={model} setSelected={setSelected} />
-                    <Thumbnail mobile image={photography} setSelected={setSelected} />
-                    <Thumbnail mobile image={art} setSelected={setSelected} />
-                    <Thumbnail mobile image={model} setSelected={setSelected} />
-                    <Thumbnail mobile image={photography} setSelected={setSelected} />
-                    <Thumbnail mobile image={art} setSelected={setSelected} />
-                    <Thumbnail mobile image={model} setSelected={setSelected} />
-                    <Thumbnail mobile image={photography} setSelected={setSelected} />
-                    <Thumbnail mobile image={art} setSelected={setSelected} />
-                    <Thumbnail image={model} setSelected={setSelected} />
-                    <Thumbnail image={photography} setSelected={setSelected} />
-                    <Thumbnail image={art} setSelected={setSelected} />
-                    <Thumbnail image={model} setSelected={setSelected} />
-                    <Thumbnail image={photography} setSelected={setSelected} />
-                    <Thumbnail image={art} setSelected={setSelected} />
-                    <Thumbnail image={model} setSelected={setSelected} />
-                    <Thumbnail image={photography} setSelected={setSelected} />
-                    <Thumbnail image={art} setSelected={setSelected} />
-                    <Thumbnail image={model} setSelected={setSelected} />
-                    <Thumbnail image={photography} setSelected={setSelected} />
-                    <Thumbnail image={art} setSelected={setSelected} />
+                    <Thumbnail mobile image={model} setSelected={setSelected} setOpenMenu={setOpenMenu} />
+                    <Thumbnail mobile image={photography} setSelected={setSelected} setOpenMenu={setOpenMenu} />
+                    <Thumbnail mobile image={art} setSelected={setSelected} setOpenMenu={setOpenMenu} />
+                    <Thumbnail mobile image={model} setSelected={setSelected} setOpenMenu={setOpenMenu} />
+                    <Thumbnail mobile image={photography} setSelected={setSelected} setOpenMenu={setOpenMenu} />
+                    <Thumbnail mobile image={art} setSelected={setSelected} setOpenMenu={setOpenMenu} />
+                    <Thumbnail mobile image={model} setSelected={setSelected} setOpenMenu={setOpenMenu} />
+                    <Thumbnail mobile image={photography} setSelected={setSelected} setOpenMenu={setOpenMenu} />
+                    <Thumbnail mobile image={art} setSelected={setSelected} setOpenMenu={setOpenMenu} />
+                    <Thumbnail mobile image={model} setSelected={setSelected} setOpenMenu={setOpenMenu} />
+                    <Thumbnail mobile image={photography} setSelected={setSelected} setOpenMenu={setOpenMenu} />
+                    <Thumbnail mobile image={art} setSelected={setSelected} setOpenMenu={setOpenMenu} />
+                    <Thumbnail mobile image={model} setSelected={setSelected} setOpenMenu={setOpenMenu} />
+                    <Thumbnail mobile image={photography} setSelected={setSelected} setOpenMenu={setOpenMenu} />
+                    <Thumbnail mobile image={art} setSelected={setSelected} setOpenMenu={setOpenMenu} />
+                    <Thumbnail mobile image={model} setSelected={setSelected} setOpenMenu={setOpenMenu} />
+                    <Thumbnail mobile image={photography} setSelected={setSelected} setOpenMenu={setOpenMenu} />
+                    <Thumbnail mobile image={art} setSelected={setSelected} setOpenMenu={setOpenMenu} />
+                    <Thumbnail mobile image={model} setSelected={setSelected} setOpenMenu={setOpenMenu} />
+                    <Thumbnail mobile image={photography} setSelected={setSelected} setOpenMenu={setOpenMenu} />
+                    <Thumbnail mobile image={art} setSelected={setSelected} setOpenMenu={setOpenMenu} />
+                    <Thumbnail mobile image={model} setSelected={setSelected} setOpenMenu={setOpenMenu} />
+                    <Thumbnail mobile image={photography} setSelected={setSelected} setOpenMenu={setOpenMenu} />
+                    <Thumbnail mobile image={art} setSelected={setSelected} setOpenMenu={setOpenMenu} />
+                    <Thumbnail mobile image={model} setSelected={setSelected} setOpenMenu={setOpenMenu} />
+                    <Thumbnail mobile image={photography} setSelected={setSelected} setOpenMenu={setOpenMenu} />
+                    <Thumbnail mobile image={art} setSelected={setSelected} setOpenMenu={setOpenMenu} />
+                    <Thumbnail mobile image={model} setSelected={setSelected} setOpenMenu={setOpenMenu} />
+                    <Thumbnail mobile image={photography} setSelected={setSelected} setOpenMenu={setOpenMenu} />
+                    <Thumbnail mobile image={art} setSelected={setSelected} setOpenMenu={setOpenMenu} />
+                    <Thumbnail mobile image={model} setSelected={setSelected} setOpenMenu={setOpenMenu} />
+                    <Thumbnail mobile image={photography} setSelected={setSelected} setOpenMenu={setOpenMenu} />
+                    <Thumbnail mobile image={art} setSelected={setSelected} setOpenMenu={setOpenMenu} />
+                    <Thumbnail mobile image={model} setSelected={setSelected} setOpenMenu={setOpenMenu} />
+                    <Thumbnail mobile image={photography} setSelected={setSelected} setOpenMenu={setOpenMenu} />
+                    <Thumbnail mobile image={art} setSelected={setSelected} setOpenMenu={setOpenMenu} />
+                    
                 </div>
             </section>
 
