@@ -41,7 +41,7 @@ export default function Pictures({ history }) {
             boxSizing: 'border-box',
             backgroundColor: '#110C11',
             '@media (max-width: 1125px)': {
-              justifyContent: 'center'
+              justifyContent: 'center',
             },
             '@media (max-width: 1025px)': {
                 width: '100vw',
@@ -60,7 +60,7 @@ export default function Pictures({ history }) {
                 flexDirection: 'column',
                 alignItems: 'center',
                 marginTop: '10px',
-                '@media (max-width: 1150px)': {
+                '@media (max-width: 900px)': {
                     display: 'none'
                 },
             }) : css({
@@ -68,7 +68,7 @@ export default function Pictures({ history }) {
                 flexDirection: 'column',
                 alignItems: 'center',
                 marginTop: '10px',
-                '@media (max-width: 1150px)': {
+                '@media (max-width: 900px)': {
                     display: 'none'
                 },
             })}>
@@ -146,9 +146,9 @@ export default function Pictures({ history }) {
                     '@media (max-width: 1150px)': {
                         alignSelf: 'center'
                     },
-                    // '@media (max-width: 900px)': {
-                    //     maxWidth: 'calc(100vw - 128px)'
-                    //     },
+                    '@media (max-width: 1150px)': {
+                        maxWidth: 'calc(100vw - 128px)'
+                        },
                 })} />
             </section>
             <section className={ openMenu ? css({
@@ -156,8 +156,9 @@ export default function Pictures({ history }) {
                 flexDirection: 'column',
                 alignItems: 'center',
                 marginTop: '10px',
-                // border: '1px solid red',
-                '@media (max-width: 1150px)': {
+                // borderRight: '3px solid #e6e6e6',
+                '@media (max-width: 900px)': {
+                    width: '0px',
                     display: 'none',
                 },
             }) : css({
@@ -166,7 +167,7 @@ export default function Pictures({ history }) {
                 alignItems: 'center',
                 marginTop: '10px',
                 // border: '1px solid red',
-                '@media (max-width: 1150px)': {
+                '@media (max-width: 900px)': {
                     display: 'none'
                 },
             })}>
@@ -220,6 +221,8 @@ export default function Pictures({ history }) {
               display: 'flex',
               flexDirection: 'column',
               transition: '1s',
+              backgroundColor: '#e6e6e6',
+            //   borderLeft: '6px solid #110c11',
               '@media (max-width: 1150px)': {
                 width: '0%',
                 display: 'none',
@@ -296,7 +299,7 @@ export default function Pictures({ history }) {
              width: '300px',
               display: 'flex',
               flexDirection: 'column',
-              transition: '1s',
+            //   transition: '1s',
               overflowY: 'hidden',
               maxHeight: '100vh',
             //   '@media (max-width: 1125px)': {
@@ -317,14 +320,18 @@ export default function Pictures({ history }) {
                 // border: '1px solid red',
             },
             '@media (min-width: 1150px)': {
-               width: '0%'
+               width: '0%',
+            //    display: 'none'
             },
          }) : css({
              width: '0px',
              display: 'flex',
              flexDirection: 'column',
              overflowX: 'hidden',
-             transition: '1s',
+            //  transition: '1s',
+             '@media (min-width: 1150px)': {
+                width: '0%'
+             },
          })}>
                 <TiArrowBack onClick={() => setOpenMenu(false)} className={css({
                     fontSize: '2rem',
