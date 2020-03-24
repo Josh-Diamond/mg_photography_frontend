@@ -12,7 +12,7 @@ import { FaCalculator } from 'react-icons/fa'
 import Thumbnail from '../components/Thumbnail'
 
 export default function Pictures({ history }) {
-    const [openMenu, setOpenMenu] = useState(false)
+    const [openMenu, setOpenMenu] = useState(true)
     const [selected, setSelected] = useState(model)
 
     const goBack = () => {
@@ -24,7 +24,13 @@ export default function Pictures({ history }) {
       
         <div className={ css({
             display: 'flex',
-            overflowY: 'hidden'
+            overflowY: 'hidden',
+            boxSizing: 'border-box',
+            '@media (max-width: 1025px)': {
+                display: 'block',
+                overflowY: 'hidden',
+                maxHeight: '100vh'
+            },
         })}>
 
 
@@ -34,19 +40,29 @@ export default function Pictures({ history }) {
             justifyContent: 'space-between',
             boxSizing: 'border-box',
             backgroundColor: '#110C11',
+            '@media (max-width: 1125px)': {
+              justifyContent: 'center'
+            },
+            '@media (max-width: 1025px)': {
+                width: '100vw',
+            },
         }) : css({
             display: 'flex',
             justifyContent: 'space-between',
             boxSizing: 'border-box',
             backgroundColor: '#110C11',
             width: 'calc(100vw)',
-            transition: '1s'
+            transition: '1s',
+            
         })}>
             <section className={css({
                 display: 'flex',
                 flexDirection: 'column',
                 alignItems: 'center',
-                marginTop: '10px'
+                marginTop: '10px',
+                '@media (max-width: 1125px)': {
+                    display: 'none'
+                },
             })}>
                 {/* <MdInfoOutline className={css({
                     fontSize: '2rem',
@@ -67,6 +83,9 @@ export default function Pictures({ history }) {
                     // paddingTop: '5px'
                     transition: '.4s',
                     cursor: 'pointer',
+                    '@media (max-width: 1200px)': {
+                        fontSize: '1.8rem'
+                    },
                     "&:hover": {
                         color: '#41cc66',
                     }
@@ -77,6 +96,9 @@ export default function Pictures({ history }) {
                     marginTop: 'calc(50vh - 42px)',
                     color: '#e6e6e6',
                     transition: '.4s',
+                    '@media (max-width: 1200px)': {
+                        fontSize: '4rem'
+                    },
                     "&:hover": {
                         color: '#41cc66',
                     }
@@ -98,13 +120,21 @@ export default function Pictures({ history }) {
                 display: 'flex',
                 flexDirection: 'column',
                 alignItems: 'center',
-                marginTop: '10px'
+                marginTop: '10px',
+                // border: '1px solid red',
+                '@media (max-width: 1125px)': {
+                    display: 'none'
+                },
             })}>
-                {openMenu ? <AiOutlineClose className={css({
+                {openMenu ? 
+                <AiOutlineClose className={css({
                         fontSize: '2.5rem',
                         cursor: 'pointer',
                         color: '#e6e6e6',
                         transition: '.4s',
+                        '@media (max-width: 1200px)': {
+                            fontSize: '1.8rem'
+                        },
                     "&:hover": {
                         color: '#41cc66',
                     }
@@ -114,6 +144,9 @@ export default function Pictures({ history }) {
                         cursor: 'pointer',
                         color: '#e6e6e6',
                         transition: '.4s',
+                        '@media (max-width: 1200px)': {
+                            fontSize: '1.8rem'
+                        },
                     "&:hover": {
                         color: '#41cc66',
                     }
@@ -124,6 +157,9 @@ export default function Pictures({ history }) {
                         marginTop: 'calc(50vh - 50px)',
                         color: '#e6e6e6',
                         transition: '.4s',
+                        '@media (max-width: 1200px)': {
+                            fontSize: '4rem'
+                        },
                     "&:hover": {
                         color: '#41cc66',
                     }
@@ -139,13 +175,26 @@ export default function Pictures({ history }) {
              width: '300px',
               display: 'flex',
               flexDirection: 'column',
-              transition: '1s'
+              transition: '1s',
+              '@media (max-width: 600px)': {
+                width: '0%',
+                display: 'none',
+                overflowY: 'hidden'
+            },
+            '@media (min-width: 600px)': {
+                width: '0%',
+                display: 'none'
+            },
          }) : css({
              width: '0px',
              display: 'flex',
              flexDirection: 'column',
              overflowX: 'hidden',
-             transition: '1s'
+             transition: '1s',
+             '@media (max-width: 600px)': {
+                width: '0%',
+                display: 'none'
+            },
          })}>
                 Menu Area
                 <input placeholder='Search' className={css({
@@ -183,6 +232,81 @@ export default function Pictures({ history }) {
                     <Thumbnail image={model} setSelected={setSelected} />
                     <Thumbnail image={photography} setSelected={setSelected} />
                     <Thumbnail image={art} setSelected={setSelected} />
+                    <Thumbnail image={model} setSelected={setSelected} />
+                    <Thumbnail image={photography} setSelected={setSelected} />
+                    <Thumbnail image={art} setSelected={setSelected} />
+                    <Thumbnail image={model} setSelected={setSelected} />
+                    <Thumbnail image={photography} setSelected={setSelected} />
+                    <Thumbnail image={art} setSelected={setSelected} />
+                    <Thumbnail image={model} setSelected={setSelected} />
+                    <Thumbnail image={photography} setSelected={setSelected} />
+                    <Thumbnail image={art} setSelected={setSelected} />
+                    <Thumbnail image={model} setSelected={setSelected} />
+                    <Thumbnail image={photography} setSelected={setSelected} />
+                    <Thumbnail image={art} setSelected={setSelected} />
+                </div>
+            </section>
+
+            {/* Mobile Menu */}
+            <section className={ openMenu ? css({
+             width: '300px',
+              display: 'flex',
+              flexDirection: 'column',
+              transition: '1s',
+              overflowY: 'hidden',
+              '@media (max-width: 600px)': {
+                width: '100vw',
+                height: '100vh',
+                position: 'relative',
+                backgroundColor: 'white',
+                top: '-100vh',
+                overflowY: 'hidden',
+                // border: '1px solid red',
+            },
+         }) : css({
+             width: '0px',
+             display: 'flex',
+             flexDirection: 'column',
+             overflowX: 'hidden',
+             transition: '1s'
+         })}>
+                Menu Area
+                <input placeholder='Search' className={css({
+                    width: '80%',
+                    margin: '0 auto',
+                    marginBottom: '10%',
+                    "::placeholder": {
+                        textAlign: 'center'
+                    }
+                })} />
+                <div className={css({
+                    maxHeight: '91vh',
+                    overflowY: 'scroll',
+                    boxSizing: 'border-box',
+                    display: 'flex',
+                    flexWrap: 'wrap',
+                    justifyContent: 'space-evenly',
+                    alignItems: 'center',
+                    padding: '0 5%'
+                })}>
+                    <Thumbnail mobile image={model} setSelected={setSelected} />
+                    <Thumbnail mobile image={photography} setSelected={setSelected} />
+                    <Thumbnail mobile image={art} setSelected={setSelected} />
+                    <Thumbnail mobile image={model} setSelected={setSelected} />
+                    <Thumbnail mobile image={photography} setSelected={setSelected} />
+                    <Thumbnail mobile image={art} setSelected={setSelected} />
+                    <Thumbnail mobile image={model} setSelected={setSelected} />
+                    <Thumbnail mobile image={photography} setSelected={setSelected} />
+                    <Thumbnail mobile image={art} setSelected={setSelected} />
+                    <Thumbnail mobile image={model} setSelected={setSelected} />
+                    <Thumbnail mobile image={photography} setSelected={setSelected} />
+                    <Thumbnail mobile image={art} setSelected={setSelected} />
+                    <Thumbnail mobile image={model} setSelected={setSelected} />
+                    <Thumbnail mobile image={photography} setSelected={setSelected} />
+                    <Thumbnail mobile image={art} setSelected={setSelected} />
+                    <Thumbnail mobile image={model} setSelected={setSelected} />
+                    <Thumbnail mobile image={photography} setSelected={setSelected} />
+                    <Thumbnail mobile image={art} setSelected={setSelected} />
                     <Thumbnail image={model} setSelected={setSelected} />
                     <Thumbnail image={photography} setSelected={setSelected} />
                     <Thumbnail image={art} setSelected={setSelected} />
