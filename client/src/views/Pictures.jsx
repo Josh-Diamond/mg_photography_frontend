@@ -12,7 +12,7 @@ import { FaCalculator } from 'react-icons/fa'
 import Thumbnail from '../components/Thumbnail'
 
 export default function Pictures({ history }) {
-    const [openMenu, setOpenMenu] = useState(true)
+    const [openMenu, setOpenMenu] = useState(false)
     const [selected, setSelected] = useState(model)
 
     const goBack = () => {
@@ -55,7 +55,7 @@ export default function Pictures({ history }) {
             transition: '1s',
             
         })}>
-            <section className={css({
+            <section className={openMenu ? css({
                 display: 'flex',
                 flexDirection: 'column',
                 alignItems: 'center',
@@ -63,6 +63,14 @@ export default function Pictures({ history }) {
                 '@media (max-width: 1125px)': {
                     display: 'none'
                 },
+            }) : css({
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                marginTop: '10px',
+                // '@media (max-width: 900px)': {
+                //     display: 'none'
+                // },
             })}>
                 {/* <MdInfoOutline className={css({
                     fontSize: '2rem',
@@ -113,18 +121,30 @@ export default function Pictures({ history }) {
             })}>
                 <img src={selected} className={css({
                     maxHeight: '100vh',
-                    maxWidth: '100vw'
+                    maxWidth: '100vw',
+                    '@media (max-width: 900px)': {
+                        maxWidth: 'calc(100vw - 128px)'
+                        },
                 })} />
             </section>
-            <section className={css({
+            <section className={ openMenu ? css({
                 display: 'flex',
                 flexDirection: 'column',
                 alignItems: 'center',
                 marginTop: '10px',
                 // border: '1px solid red',
                 '@media (max-width: 1125px)': {
-                    display: 'none'
+                    display: 'none',
                 },
+            }) : css({
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                marginTop: '10px',
+                // border: '1px solid red',
+                // '@media (max-width: 900px)': {
+                //     display: 'none'
+                // },
             })}>
                 {openMenu ? 
                 <AiOutlineClose className={css({
