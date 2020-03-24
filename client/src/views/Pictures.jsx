@@ -254,6 +254,14 @@ export default function Pictures({ history }) {
               flexDirection: 'column',
               transition: '1s',
               overflowY: 'hidden',
+            //   '@media (max-width: 1125px)': {
+            //     width: '100vw',
+            //     height: '100vh',
+            //     position: 'relative',
+            //     backgroundColor: 'white',
+            //     // top: '-100vh',
+            //     // overflowY: 'hidden',
+            // },
               '@media (max-width: 600px)': {
                 width: '100vw',
                 height: '100vh',
