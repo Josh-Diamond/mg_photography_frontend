@@ -7,11 +7,21 @@ export default function Thumbnail({ image, setSelected, mobile, setOpenMenu }) {
         setOpenMenu(false)
     }
 
-    
+
 
     if(mobile) {
     return (
-        <div onClick={mobileSelector} className={css({
+        <div onClick={mobileSelector} className={ mobile ? css({
+            cursor: 'pointer',
+            boxSizing: 'border-box',
+            opacity: 1,
+            "&:hover": {
+                opacity: 1
+            },
+            '@media (max-width: 1025px)': {
+                padding: '1%',
+            },
+        }) : css({
             cursor: 'pointer',
             boxSizing: 'border-box',
             opacity: .8,
@@ -24,6 +34,7 @@ export default function Thumbnail({ image, setSelected, mobile, setOpenMenu }) {
         })}>
             <img src={`${image} + '.jpg'`} className={ css({
                 maxWidth: '200px',
+                borderRadius: '5px',
                 '@media (max-width: 1150px)': {
                     maxWidth: ' 280px'
                 },
