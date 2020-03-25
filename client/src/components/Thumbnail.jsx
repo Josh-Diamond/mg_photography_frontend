@@ -7,6 +7,8 @@ export default function Thumbnail({ image, setSelected, mobile, setOpenMenu }) {
         setOpenMenu(false)
     }
 
+    
+
     if(mobile) {
     return (
         <div onClick={mobileSelector} className={css({
@@ -20,7 +22,7 @@ export default function Thumbnail({ image, setSelected, mobile, setOpenMenu }) {
                 padding: '1%',
             },
         })}>
-            <img src={image} className={ css({
+            <img src={`${image} + '.jpg'`} className={ css({
                 maxWidth: '200px',
                 '@media (max-width: 1150px)': {
                     maxWidth: ' 280px'

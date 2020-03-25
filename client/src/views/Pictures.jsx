@@ -11,12 +11,16 @@ import art from '../static/art.jpg'
 import { FaCalculator } from 'react-icons/fa'
 import Thumbnail from '../components/Thumbnail'
 
-export default function Pictures({ history }) {
+export default function Pictures({ history, photos }) {
     const [openMenu, setOpenMenu] = useState(false)
     const [selected, setSelected] = useState(model)
-
+    console.log("photos_console", photos)
     const goBack = () => {
         history.goBack()
+    }
+
+    const rightPicture = id => {
+        setSelected(photos[id - 1])
     }
 
     return (
@@ -26,11 +30,11 @@ export default function Pictures({ history }) {
             display: 'flex',
             overflowY: 'hidden',
             boxSizing: 'border-box',
-            '@media (max-width: 1150px)': {
+            // '@media (max-width: 1150px)': {
                 // display: 'block',
                 overflowY: 'hidden',
                 maxHeight: '100vh'
-            },
+            // },
         })}>
 
 
@@ -128,11 +132,14 @@ export default function Pictures({ history }) {
             })}>
                 {/* top mobile row */}
                 <section className={css({
+                    '@media (max-width: 900px)': {
                     // border: '1px solid red',
                     width: '100vw',
                     display: 'flex',
                     justifyContent: 'space-between',
-                    alignItems: 'center'
+                    alignItems: 'center',
+                    
+                    }
                 })}>
                 <TiInfoLarge className={css({
                         '@media (max-width: 900px)': {
@@ -193,17 +200,26 @@ export default function Pictures({ history }) {
                         },
                         '@media (max-width: 900px)': {
                             maxWidth: 'calc(100vw)',
-                            maxHeight: '94vh'
+                            maxHeight: '90vh'
                             },
+                            // '@media (max-width: 600px)': {
+                            //     maxWidth: 'calc(100vw)',
+                            //     maxHeight: '100vh'
+                            //     },
                 })} />
 
                 {/* bottom mobile row */}
                 <section className={css({
                     // border: '1px solid red',
+                    '@media (min-width: 900px)': {
+                        display: 'none'
+                    },
+                    '@media (max-width: 900px)': {
                     width: '100vw',
                     display: 'flex',
                     justifyContent: 'space-between',
                     alignItems: 'center'
+                    }
                 })}>
                 <IoIosArrowBack className={css({
                         '@media (max-width: 900px)': {
@@ -365,36 +381,7 @@ export default function Pictures({ history }) {
                     justifyContent: 'space-evenly',
                     alignItems: 'center'
                 })}>
-                    <Thumbnail image={model} setSelected={setSelected} />
-                    <Thumbnail image={photography} setSelected={setSelected} />
-                    <Thumbnail image={art} setSelected={setSelected} />
-                    <Thumbnail image={model} setSelected={setSelected} />
-                    <Thumbnail image={photography} setSelected={setSelected} />
-                    <Thumbnail image={art} setSelected={setSelected} />
-                    <Thumbnail image={model} setSelected={setSelected} />
-                    <Thumbnail image={photography} setSelected={setSelected} />
-                    <Thumbnail image={art} setSelected={setSelected} />
-                    <Thumbnail image={model} setSelected={setSelected} />
-                    <Thumbnail image={photography} setSelected={setSelected} />
-                    <Thumbnail image={art} setSelected={setSelected} />
-                    <Thumbnail image={model} setSelected={setSelected} />
-                    <Thumbnail image={photography} setSelected={setSelected} />
-                    <Thumbnail image={art} setSelected={setSelected} />
-                    <Thumbnail image={model} setSelected={setSelected} />
-                    <Thumbnail image={photography} setSelected={setSelected} />
-                    <Thumbnail image={art} setSelected={setSelected} />
-                    <Thumbnail image={model} setSelected={setSelected} />
-                    <Thumbnail image={photography} setSelected={setSelected} />
-                    <Thumbnail image={art} setSelected={setSelected} />
-                    <Thumbnail image={model} setSelected={setSelected} />
-                    <Thumbnail image={photography} setSelected={setSelected} />
-                    <Thumbnail image={art} setSelected={setSelected} />
-                    <Thumbnail image={model} setSelected={setSelected} />
-                    <Thumbnail image={photography} setSelected={setSelected} />
-                    <Thumbnail image={art} setSelected={setSelected} />
-                    <Thumbnail image={model} setSelected={setSelected} />
-                    <Thumbnail image={photography} setSelected={setSelected} />
-                    <Thumbnail image={art} setSelected={setSelected} />
+                    {photos.map(photo => <Thumbnail image={`${photo.image_url}.jpg`} setSelected={setSelected} />)}
                 </div>
             </section>
 
@@ -465,42 +452,7 @@ export default function Pictures({ history }) {
                     alignItems: 'center',
                     padding: '0 5%'
                 })}>
-                    <Thumbnail mobile image={model} setSelected={setSelected} setOpenMenu={setOpenMenu} />
-                    <Thumbnail mobile image={photography} setSelected={setSelected} setOpenMenu={setOpenMenu} />
-                    <Thumbnail mobile image={art} setSelected={setSelected} setOpenMenu={setOpenMenu} />
-                    <Thumbnail mobile image={model} setSelected={setSelected} setOpenMenu={setOpenMenu} />
-                    <Thumbnail mobile image={photography} setSelected={setSelected} setOpenMenu={setOpenMenu} />
-                    <Thumbnail mobile image={art} setSelected={setSelected} setOpenMenu={setOpenMenu} />
-                    <Thumbnail mobile image={model} setSelected={setSelected} setOpenMenu={setOpenMenu} />
-                    <Thumbnail mobile image={photography} setSelected={setSelected} setOpenMenu={setOpenMenu} />
-                    <Thumbnail mobile image={art} setSelected={setSelected} setOpenMenu={setOpenMenu} />
-                    <Thumbnail mobile image={model} setSelected={setSelected} setOpenMenu={setOpenMenu} />
-                    <Thumbnail mobile image={photography} setSelected={setSelected} setOpenMenu={setOpenMenu} />
-                    <Thumbnail mobile image={art} setSelected={setSelected} setOpenMenu={setOpenMenu} />
-                    <Thumbnail mobile image={model} setSelected={setSelected} setOpenMenu={setOpenMenu} />
-                    <Thumbnail mobile image={photography} setSelected={setSelected} setOpenMenu={setOpenMenu} />
-                    <Thumbnail mobile image={art} setSelected={setSelected} setOpenMenu={setOpenMenu} />
-                    <Thumbnail mobile image={model} setSelected={setSelected} setOpenMenu={setOpenMenu} />
-                    <Thumbnail mobile image={photography} setSelected={setSelected} setOpenMenu={setOpenMenu} />
-                    <Thumbnail mobile image={art} setSelected={setSelected} setOpenMenu={setOpenMenu} />
-                    <Thumbnail mobile image={model} setSelected={setSelected} setOpenMenu={setOpenMenu} />
-                    <Thumbnail mobile image={photography} setSelected={setSelected} setOpenMenu={setOpenMenu} />
-                    <Thumbnail mobile image={art} setSelected={setSelected} setOpenMenu={setOpenMenu} />
-                    <Thumbnail mobile image={model} setSelected={setSelected} setOpenMenu={setOpenMenu} />
-                    <Thumbnail mobile image={photography} setSelected={setSelected} setOpenMenu={setOpenMenu} />
-                    <Thumbnail mobile image={art} setSelected={setSelected} setOpenMenu={setOpenMenu} />
-                    <Thumbnail mobile image={model} setSelected={setSelected} setOpenMenu={setOpenMenu} />
-                    <Thumbnail mobile image={photography} setSelected={setSelected} setOpenMenu={setOpenMenu} />
-                    <Thumbnail mobile image={art} setSelected={setSelected} setOpenMenu={setOpenMenu} />
-                    <Thumbnail mobile image={model} setSelected={setSelected} setOpenMenu={setOpenMenu} />
-                    <Thumbnail mobile image={photography} setSelected={setSelected} setOpenMenu={setOpenMenu} />
-                    <Thumbnail mobile image={art} setSelected={setSelected} setOpenMenu={setOpenMenu} />
-                    <Thumbnail mobile image={model} setSelected={setSelected} setOpenMenu={setOpenMenu} />
-                    <Thumbnail mobile image={photography} setSelected={setSelected} setOpenMenu={setOpenMenu} />
-                    <Thumbnail mobile image={art} setSelected={setSelected} setOpenMenu={setOpenMenu} />
-                    <Thumbnail mobile image={model} setSelected={setSelected} setOpenMenu={setOpenMenu} />
-                    <Thumbnail mobile image={photography} setSelected={setSelected} setOpenMenu={setOpenMenu} />
-                    <Thumbnail mobile image={art} setSelected={setSelected} setOpenMenu={setOpenMenu} />
+                    {photos.map(photo => <Thumbnail mobile image={`${photo.image_url}.jpg`} setOpenMenu={setOpenMenu} setSelected={setSelected} />)}
                     
                 </div>
             </section>
