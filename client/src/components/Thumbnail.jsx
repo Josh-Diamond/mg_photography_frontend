@@ -1,9 +1,10 @@
 import React from 'react'
 import { css } from 'emotion'
 
-export default function Thumbnail({ image, setSelected, mobile, setOpenMenu }) {
+export default function Thumbnail({ image, index, setSelectedIndex, setSelected, mobile, setOpenMenu }) {
     const mobileSelector = () => {
         setSelected(image)
+        setSelectedIndex(index)
         setOpenMenu(false)
     }
 
@@ -51,7 +52,7 @@ export default function Thumbnail({ image, setSelected, mobile, setOpenMenu }) {
  
  else {
     return (
-        <div onClick={() => setSelected(image)} className={css({
+        <div onClick={() => setSelected({image: image, index: index})} className={css({
             cursor: 'pointer',
             boxSizing: 'border-box',
             opacity: .8,

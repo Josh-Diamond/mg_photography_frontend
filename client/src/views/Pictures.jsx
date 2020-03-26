@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { css } from 'emotion'
 import { AiOutlineMenu, AiOutlineClose } from 'react-icons/ai'
 import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io'
@@ -13,14 +13,28 @@ import Thumbnail from '../components/Thumbnail'
 
 export default function Pictures({ history, photos }) {
     const [openMenu, setOpenMenu] = useState(false)
-    const [selected, setSelected] = useState(model)
-    console.log("photos_console", photos)
+    const [selectedIndex, setSelectedIndex] = useState(0)
+    const [selected, setSelected] = useState({})
+    const [testObj, setTestObj] = useState({})
+    const [testString, setTestString] = useState('https://imgur.com/7KKQR4g')
+
+    // let sliceString = testString.slice(18, testString.length)
+    // console.log('sliceString', sliceString)
+    // console.log('s.index', selectedIndex)
+    // console.log('selectedd', selected)
     const goBack = () => {
         history.goBack()
     }
+    useEffect(() => {
+      if(photos[0]) {
+        setSelected({ index: 0, image: photos[0].image_url}) }
+    },[photos])
 
-    const rightPicture = id => {
-        setSelected(photos[id - 1])
+
+    console.log('photoss', photos)
+    console.log('selectedObj', selected)
+    const rightPicture = i => {
+        // setSelected({ image: })
     }
 
     return (
@@ -189,7 +203,7 @@ export default function Pictures({ history, photos }) {
                     })} onClick={() => setOpenMenu(true)} />
                 </section>
                 
-                <img src={selected} className={css({
+               <img src={photos[0] ? 'https://i.imgur.com/kGs4EOl.jpg' : <p>Loading...</p>} className={css({
                     maxHeight: '100vh',
                     maxWidth: '100vw',
                     '@media (max-width: 1150px)': {
@@ -381,7 +395,7 @@ export default function Pictures({ history, photos }) {
                     justifyContent: 'space-evenly',
                     alignItems: 'center'
                 })}>
-                    {photos.map(photo => <Thumbnail image={`${photo.image_url}.jpg`} setSelected={setSelected} />)}
+                    {photos.map((photo, index) => <Thumbnail image={`${photo.image_url}.jpg`} setSelected={setSelected} setSelectedIndex={setSelectedIndex} index={index} />)}
                 </div>
             </section>
 
@@ -452,7 +466,7 @@ export default function Pictures({ history, photos }) {
                     alignItems: 'center',
                     padding: '0 5%'
                 })}>
-                    {photos.map(photo => <Thumbnail mobile image={`${photo.image_url}.jpg`} setOpenMenu={setOpenMenu} setSelected={setSelected} />)}
+                    {photos.map((photo, index) => <Thumbnail mobile image={`${photo.image_url}.jpg`} setOpenMenu={setOpenMenu} setSelected={setSelected} setSelectedIndex={setSelectedIndex} index={index} />)}
                     
                 </div>
             </section>
