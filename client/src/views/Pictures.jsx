@@ -14,7 +14,7 @@ import Thumbnail from '../components/Thumbnail'
 export default function Pictures({ history, photos }) {
     const [openMenu, setOpenMenu] = useState(false)
     const [selectedIndex, setSelectedIndex] = useState(0)
-    const [selected, setSelected] = useState({})
+    const [selected, setSelected] = useState('')
     const [testObj, setTestObj] = useState({})
     const [testString, setTestString] = useState('https://imgur.com/7KKQR4g')
 
@@ -27,16 +27,14 @@ export default function Pictures({ history, photos }) {
     }
     useEffect(() => {
       if(photos[0]) {
-        setSelected({ index: 0, image: photos[0].image_url}) }
+          let img_url_tail = photos[0].image_url.slice(18, testString.length)
+        setSelected(img_url_tail) }
     },[photos])
-
-
-    console.log('photoss', photos)
-    console.log('selectedObj', selected)
+    console.log('selectedddd', selected)
     const rightPicture = i => {
         // setSelected({ image: })
     }
-
+    
     return (
 
       
@@ -202,8 +200,8 @@ export default function Pictures({ history, photos }) {
                     }
                     })} onClick={() => setOpenMenu(true)} />
                 </section>
-                
-               <img src={photos[0] ? 'https://i.imgur.com/kGs4EOl.jpg' : <p>Loading...</p>} className={css({
+               {photos[0] ? 
+               <img src={`https://i.imgur.com/${selected}.jpg`} className={css({
                     maxHeight: '100vh',
                     maxWidth: '100vw',
                     '@media (max-width: 1150px)': {
@@ -220,7 +218,8 @@ export default function Pictures({ history, photos }) {
                             //     maxWidth: 'calc(100vw)',
                             //     maxHeight: '100vh'
                             //     },
-                })} />
+                })} /> :
+            <p>Loading...</p> }
 
                 {/* bottom mobile row */}
                 <section className={css({
@@ -403,6 +402,7 @@ export default function Pictures({ history, photos }) {
             <section className={ openMenu ? css({
              width: '300px',
               display: 'flex',
+              background: "radial-gradient(circle, rgba(162,255,145,1) 20%, rgba(123,175,62,1) 34%, rgba(210,138,81,1) 74%, rgba(17,88,4,1) 82%)",
               flexDirection: 'column',
             //   transition: '1s',
               overflowY: 'hidden',
