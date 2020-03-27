@@ -144,6 +144,9 @@ export default function Pictures({ history, photos }) {
             })}>
                 {/* top mobile row */}
                 <section className={css({
+                    '@media (min-width: 900px)': {
+                        display: 'none'
+                    },
                     '@media (max-width: 900px)': {
                     // border: '1px solid red',
                     width: '100vw',
@@ -219,8 +222,16 @@ export default function Pictures({ history, photos }) {
                             //     maxHeight: '100vh'
                             //     },
                 })} /> :
-            <p>Loading...</p> }
-
+                <h1 className={css({
+                    color: '#41cc66',
+                    fontFamily: "'Great Vibes', cursive",
+                    fontSize: '7rem',
+                    textShadow: '0px 0px 10px rgba(255, 255, 255, 1)',
+                    '@media (max-width: 450px)': {
+                        fontSize: '5rem'
+                    },
+                })}>Loading...</h1> }
+                
                 {/* bottom mobile row */}
                 <section className={css({
                     // border: '1px solid red',
@@ -394,7 +405,10 @@ export default function Pictures({ history, photos }) {
                     justifyContent: 'space-evenly',
                     alignItems: 'center'
                 })}>
-                    {photos.map((photo, index) => <Thumbnail image={`${photo.image_url}.jpg`} setSelected={setSelected} setSelectedIndex={setSelectedIndex} index={index} />)}
+                    {photos.map((photo, index) => {
+                        let sliced_url = photo.image_url.slice(18, testString.length)
+                     return <Thumbnail image={sliced_url} setSelected={setSelected} setSelectedIndex={setSelectedIndex} index={index} />
+                    })}
                 </div>
             </section>
 
@@ -466,8 +480,10 @@ export default function Pictures({ history, photos }) {
                     alignItems: 'center',
                     padding: '0 5%'
                 })}>
-                    {photos.map((photo, index) => <Thumbnail mobile image={`${photo.image_url}.jpg`} setOpenMenu={setOpenMenu} setSelected={setSelected} setSelectedIndex={setSelectedIndex} index={index} />)}
-                    
+                    {photos.map((photo, index) => {
+                        let sliced_url = photo.image_url.slice(18, testString.length)
+                     return <Thumbnail mobile image={sliced_url} setOpenMenu={setOpenMenu} setSelected={setSelected} setSelectedIndex={setSelectedIndex} index={index} />
+                    })}
                 </div>
             </section>
 

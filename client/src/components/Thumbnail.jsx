@@ -3,11 +3,15 @@ import { css } from 'emotion'
 
 export default function Thumbnail({ image, index, setSelectedIndex, setSelected, mobile, setOpenMenu }) {
     const mobileSelector = () => {
-        setSelected(image)
         setSelectedIndex(index)
+        setSelected(image)
         setOpenMenu(false)
     }
 
+    const selector = () => {
+        setSelectedIndex(index)
+        setSelected(image)
+    }
 
 
     if(mobile) {
@@ -33,7 +37,7 @@ export default function Thumbnail({ image, index, setSelectedIndex, setSelected,
                 padding: '1%',
             },
         })}>
-            <img src={`${image} + '.jpg'`} className={ css({
+            <img src={`https://i.imgur.com/${image}.jpg`} className={ css({
                 maxWidth: '200px',
                 borderRadius: '5px',
                 '@media (max-width: 1150px)': {
@@ -52,7 +56,7 @@ export default function Thumbnail({ image, index, setSelectedIndex, setSelected,
  
  else {
     return (
-        <div onClick={() => setSelected({image: image, index: index})} className={css({
+        <div onClick={selector} className={css({
             cursor: 'pointer',
             boxSizing: 'border-box',
             opacity: .8,
@@ -63,7 +67,7 @@ export default function Thumbnail({ image, index, setSelectedIndex, setSelected,
                 padding: '1%',
             },
         })}>
-            <img src={image} className={ css({
+            <img src={`https://i.imgur.com/${image}.jpg`} className={ css({
                 maxWidth: '200px',
                 '@media (max-width: 1150px)': {
                     maxWidth: ' 280px'
