@@ -28,11 +28,26 @@ export default function Pictures({ history, photos }) {
     useEffect(() => {
       if(photos[0]) {
           let img_url_tail = photos[0].image_url.slice(18, testString.length)
-        setSelected(img_url_tail) }
+          setSelected(img_url_tail) }
     },[photos])
-    console.log('selectedddd', selected)
-    const rightPicture = i => {
-        // setSelected({ image: })
+    
+    useEffect(() => {
+    if(selected.length !== 0) {
+        let img_url_tail = photos[selectedIndex].image_url.slice(18, testString.length)
+        setSelected(img_url_tail)
+    }
+    },[selected])
+    console.log('selectedDdD', selected)
+    console.log('selectedInDeX', selectedIndex)
+    
+    const rightPicture = index => {
+      if(index === photos.length-1) {
+        setSelectedIndex(0)
+        setSelected(photos[0].image_url.slice(18, testString.length))
+      } else { 
+        setSelectedIndex(index + 1)
+        setSelected(photos[index + 1].image_url.slice(18, testString.length))
+      }
     }
     
     return (
@@ -352,7 +367,7 @@ export default function Pictures({ history, photos }) {
                     "&:hover": {
                         color: '#41cc66',
                     }
-                    })} />
+                    })} onClick={() => rightPicture(selectedIndex)} />
             </section>
            
         </div>
