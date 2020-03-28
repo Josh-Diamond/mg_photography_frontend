@@ -11,14 +11,36 @@ import art from '../static/art.jpg'
 import { FaCalculator } from 'react-icons/fa'
 import Thumbnail from '../components/Thumbnail'
 
-export default function Pictures({ history, photos }) {
+export default function Pictures({ history, photos, setModelingGallery, setPhotographyGallery, setArtGallery }) {
     const [openMenu, setOpenMenu] = useState(false)
     const [selectedIndex, setSelectedIndex] = useState(0)
     const [selected, setSelected] = useState('')
     const [testObj, setTestObj] = useState({})
     const [testString, setTestString] = useState('https://imgur.com/7KKQR4g')
 
-    const setToModeling = () =>
+    const setToModeling = () => {
+        setArtGallery(false)
+        setPhotographyGallery(false)
+        setModelingGallery(true)
+    }
+
+    const setToPhotography = () => {
+        setModelingGallery(false)
+        setArtGallery(false)
+        setPhotographyGallery(true)
+    }
+
+    const setToArt = () => {
+        setModelingGallery(false)
+        setPhotographyGallery(false)
+        setArtGallery(true)
+    }
+
+    const setToAll = () => {
+        setModelingGallery(false)
+        setPhotographyGallery(false)
+        setArtGallery(false)
+    }
 
     const goBack = () => {
         history.goBack()
@@ -492,9 +514,15 @@ export default function Pictures({ history, photos }) {
                     margin: '0 1%'
                 })} />
                 Menu Area Mobile
-                {/* <p onClick={}>model</p>
-                <p>art</p>
-                <p>photography</p> */}
+                {/* <div>
+                    <p onClick={setToAll}>All</p>
+                    <p>|</p>
+                    <p onClick={setToModeling}>Modeling</p>
+                    <p>|</p>
+                    <p onClick={setToPhotography}>photography</p>
+                    <p>|</p>
+                    <p onClick={setToArt}>art</p>
+                </div> */}
                 <input placeholder='Search' className={css({
                     width: '80%',
                     margin: '0 auto',

@@ -38,6 +38,17 @@ export default function Gallery({ history, setModelingGallery, setPhotographyGal
                         flexDirection: 'column'
                     },
                 })}>
+                    <Link to='/gallery' className={css({
+                        textDecoration: 'none'
+                    })}><h1 className={css({
+                        color: '#41cc66',
+                        fontFamily: "'Great Vibes', cursive",
+                        fontSize: '2rem',
+                        textShadow: '0px 0px 10px rgba(255, 255, 255, 1)',
+                        '@media (max-width: 450px)': {
+                            fontSize: '5rem'
+                        },
+                    })}>View All</h1></Link>
                     <Link to='/gallery' onClick={() => setModelingGallery(true)} className={css({
                         textDecoration: 'none'
                     })}><ModelingCard /></Link>

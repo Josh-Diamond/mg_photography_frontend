@@ -28,6 +28,11 @@ function App() {
         setArtPhotos(res.data.filter(photo => photo.category.toLowerCase() === 'art'))
       })
       .catch(err => console.log(err))
+
+      // reset gallery selection
+      setModelingGallery(false)
+      setPhotographyGallery(false)
+      setArtGallery(false)
   },[])
   console.log('modelingGallery?', modelingGallery)
   // console.log('modeling_photosss', modelingPhotos)
@@ -38,7 +43,7 @@ function App() {
       <Switch>
         <Route exact path='/' render={props => <Landing {...props} />} />
         <Route path='/gallery_selection' render={props => <Gallery {...props} setModelingGallery={setModelingGallery} setPhotographyGallery={setPhotographyGallery} setArtGallery={setArtGallery} />} />
-        <Route exact path='/gallery' render={props => <Pictures {...props} photos={modelingGallery ? modelingPhotos : photographyGallery ? photographyPhotos : artGallery ? artPhotos : photos} />} />
+        <Route exact path='/gallery' render={props => <Pictures {...props} photos={modelingGallery ? modelingPhotos : photographyGallery ? photographyPhotos : artGallery ? artPhotos : photos} />} setModelingGallery={setModelingGallery} setPhotographyGallery={setPhotographyGallery} setArtGallery={setArtGallery} />
         <Route exact path='/admin' render={props => <Login {...props} />} />
         <PrivateRoute exact path='/admin_access' view={Admin} />
       </Switch>
