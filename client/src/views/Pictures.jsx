@@ -68,6 +68,12 @@ export default function Pictures({ history, photos }) {
             display: 'flex',
             overflowY: 'hidden',
             boxSizing: 'border-box',
+            '-webkit-touch-callout': 'none',
+                '-webkit-user-select': 'none',
+                '-khtml-user-select': 'none',
+                '-moz-user-select': 'none',
+                '-ms-user-select': 'none',
+                'user-select': 'none',
             // '@media (max-width: 1150px)': {
                 // display: 'block',
                 overflowY: 'hidden',
