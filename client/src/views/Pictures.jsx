@@ -15,9 +15,7 @@ export default function Pictures({ history, photos, setModelingGallery, setPhoto
     const [openMenu, setOpenMenu] = useState(false)
     const [selectedIndex, setSelectedIndex] = useState(0)
     const [selected, setSelected] = useState('')
-    const [testObj, setTestObj] = useState({})
-    const [testString, setTestString] = useState('https://imgur.com/7KKQR4g')
-
+    
     const setToModeling = () => {
         setArtGallery(false)
         setPhotographyGallery(false)
@@ -47,7 +45,7 @@ export default function Pictures({ history, photos, setModelingGallery, setPhoto
     }
     useEffect(() => {
       if(photos[0]) {
-          let img_url_tail = photos[0].image_url.slice(18, testString.length)
+          let img_url_tail = photos[0].image_url.slice(18, photos[0].image_url.length)
           setSelected(img_url_tail) }
     },[photos])
     
@@ -63,10 +61,10 @@ export default function Pictures({ history, photos, setModelingGallery, setPhoto
     const rightPicture = index => {
       if(index === photos.length-1) {
         setSelectedIndex(0)
-        setSelected(photos[0].image_url.slice(18, testString.length))
+        setSelected(photos[0].image_url.slice(18, photos[0].image_url.length))
       } else { 
         setSelectedIndex(index + 1)
-        setSelected(photos[index + 1].image_url.slice(18, testString.length))
+        setSelected(photos[index + 1].image_url.slice(18, photos[index + 1].image_url.length))
       }
     }
 
@@ -74,10 +72,10 @@ export default function Pictures({ history, photos, setModelingGallery, setPhoto
         let last_index = photos.length-1
         if(index === 0) {
             setSelectedIndex(last_index)
-            setSelected(photos[last_index].image_url.slice(18, testString.length))
+            setSelected(photos[last_index].image_url.slice(18, photos[last_index].image_url.length))
         } else {
             setSelectedIndex(index - 1)
-            setSelected(photos[index - 1].image_url.slice(18, testString.length))
+            setSelected(photos[index - 1].image_url.slice(18, photos[index - 1].image_url.length))
         }
     }
     
@@ -458,8 +456,8 @@ export default function Pictures({ history, photos, setModelingGallery, setPhoto
                     alignItems: 'center'
                 })}>
                     {photos.map((photo, index) => {
-                        let sliced_url = photo.image_url.slice(18, testString.length)
-                     return <Thumbnail image={sliced_url} setSelected={setSelected} setSelectedIndex={setSelectedIndex} index={index} />
+                        let sliced_url = photo.image_url.slice(18, photo.image_url.length)
+                     return <Thumbnail key={sliced_url} image={sliced_url} setSelected={setSelected} setSelectedIndex={setSelectedIndex} index={index} />
                     })}
                 </div>
             </section>
@@ -542,8 +540,8 @@ export default function Pictures({ history, photos, setModelingGallery, setPhoto
                     padding: '0 5%'
                 })}>
                     {photos.map((photo, index) => {
-                        let sliced_url = photo.image_url.slice(18, testString.length)
-                     return <Thumbnail mobile image={sliced_url} setOpenMenu={setOpenMenu} setSelected={setSelected} setSelectedIndex={setSelectedIndex} index={index} />
+                        let sliced_url = photo.image_url.slice(18, photo.image_url.length)
+                     return <Thumbnail key={sliced_url} mobile image={sliced_url} setOpenMenu={setOpenMenu} setSelected={setSelected} setSelectedIndex={setSelectedIndex} index={index} />
                     })}
                 </div>
             </section>
