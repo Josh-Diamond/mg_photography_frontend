@@ -1,12 +1,16 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { css } from 'emotion'
 import ModelingCard from '../components/ModelingCard'
 import PhotographyCard from '../components/PhotographyCard'
 import ArtCard from '../components/ArtCard'
 import { Link } from 'react-router-dom'
 
-export default function Gallery({ history }) {
-    
+export default function Gallery({ history, setModelingGallery, setPhotographyGallery, setArtGallery }) {
+    useEffect(() => {
+        setModelingGallery(false)
+        setPhotographyGallery(false)
+        setArtGallery(false)
+    },[])
     return (
         <div className={css({
             height: '100vh',
@@ -34,13 +38,13 @@ export default function Gallery({ history }) {
                         flexDirection: 'column'
                     },
                 })}>
-                    <Link to='/gallery' className={css({
+                    <Link to='/gallery' onClick={() => setModelingGallery(true)} className={css({
                         textDecoration: 'none'
                     })}><ModelingCard /></Link>
-                    <Link to='/gallery' className={css({
+                    <Link to='/gallery' onClick={() => setPhotographyGallery(true)} className={css({
                         textDecoration: 'none'
                     })}><PhotographyCard /></Link>
-                    <Link to='/gallery' className={css({
+                    <Link to='/gallery' onClick={() => setArtGallery(true)} className={css({
                         textDecoration: 'none'
                     })}><ArtCard /></Link>
                 </div>

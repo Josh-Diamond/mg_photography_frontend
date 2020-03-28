@@ -12,19 +12,33 @@ import axios from 'axios'
 
 function App() {
   const [photos, setPhotos] = useState([])
-  const [orderedPhotos, setOrderedPhotos] = useState([])
+  const [modelingPhotos, setModelingPhotos] = useState([])
+  const [photographyPhotos, setPhotographyPhotos] = useState([])
+  const [artPhotos, setArtPhotos] = useState([])
+  const [modelingGallery, setModelingGallery] = useState(false)
+  const [photographyGallery, setPhotographyGallery] = useState(false)
+  const [artGallery, setArtGallery] = useState(false)
   useEffect(() => {
     axios
       .get('https://mg-photography-backend.herokuapp.com/api/pictures')
-      .then(res => setPhotos(res.data))
+      .then(res => {
+        setPhotos(res.data)
+        setModelingPhotos(res.data.filter(photo => photo.category.toLowerCase() === 'modeling'))
+        setPhotographyPhotos(res.data.filter(photo => photo.category.toLowerCase() === 'photography'))
+        setArtPhotos(res.data.filter(photo => photo.category.toLowerCase() === 'art'))
+      })
       .catch(err => console.log(err))
   },[])
+  console.log('modelingGallery?', modelingGallery)
+  // console.log('modeling_photosss', modelingPhotos)
+  // console.log('photography_photosss', photographyPhotos)
+  // console.log('art_photosss', artPhotos)
   return (
     <div className="App">
       <Switch>
         <Route exact path='/' render={props => <Landing {...props} />} />
-        <Route path='/gallery_selection' render={props => <Gallery {...props} />} />
-        <Route exact path='/gallery' render={props => <Pictures {...props} photos={photos} />} />
+        <Route path='/gallery_selection' render={props => <Gallery {...props} setModelingGallery={setModelingGallery} setPhotographyGallery={setPhotographyGallery} setArtGallery={setArtGallery} />} />
+        <Route exact path='/gallery' render={props => <Pictures {...props} photos={modelingGallery ? modelingPhotos : photographyGallery ? photographyPhotos : artGallery ? artPhotos : photos} />} />
         <Route exact path='/admin' render={props => <Login {...props} />} />
         <PrivateRoute exact path='/admin_access' view={Admin} />
       </Switch>

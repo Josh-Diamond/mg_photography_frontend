@@ -18,10 +18,8 @@ export default function Pictures({ history, photos }) {
     const [testObj, setTestObj] = useState({})
     const [testString, setTestString] = useState('https://imgur.com/7KKQR4g')
 
-    // let sliceString = testString.slice(18, testString.length)
-    // console.log('sliceString', sliceString)
-    // console.log('s.index', selectedIndex)
-    // console.log('selectedd', selected)
+    const setToModeling = () =>
+
     const goBack = () => {
         history.goBack()
     }
@@ -49,7 +47,7 @@ export default function Pictures({ history, photos }) {
         setSelected(photos[index + 1].image_url.slice(18, testString.length))
       }
     }
-    console.log('last_index', photos.length-1)
+
     const leftPicture = index => {
         let last_index = photos.length-1
         if(index === 0) {
@@ -494,6 +492,9 @@ export default function Pictures({ history, photos }) {
                     margin: '0 1%'
                 })} />
                 Menu Area Mobile
+                {/* <p onClick={}>model</p>
+                <p>art</p>
+                <p>photography</p> */}
                 <input placeholder='Search' className={css({
                     width: '80%',
                     margin: '0 auto',
