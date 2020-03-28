@@ -31,12 +31,12 @@ export default function Pictures({ history, photos }) {
           setSelected(img_url_tail) }
     },[photos])
     
-    useEffect(() => {
-    if(selected.length !== 0) {
-        let img_url_tail = photos[selectedIndex].image_url.slice(18, testString.length)
-        setSelected(img_url_tail)
-    }
-    },[selected])
+    // useEffect(() => {
+    // if(selected.length !== 0) {
+    //     let img_url_tail = photos[selectedIndex].image_url.slice(18, testString.length)
+    //     setSelected(img_url_tail)
+    // }
+    // },[selected])
     console.log('selectedDdD', selected)
     console.log('selectedInDeX', selectedIndex)
     
@@ -48,6 +48,17 @@ export default function Pictures({ history, photos }) {
         setSelectedIndex(index + 1)
         setSelected(photos[index + 1].image_url.slice(18, testString.length))
       }
+    }
+    console.log('last_index', photos.length-1)
+    const leftPicture = index => {
+        let last_index = photos.length-1
+        if(index === 0) {
+            setSelectedIndex(last_index)
+            setSelected(photos[last_index].image_url.slice(18, testString.length))
+        } else {
+            setSelectedIndex(index - 1)
+            setSelected(photos[index - 1].image_url.slice(18, testString.length))
+        }
     }
     
     return (
@@ -145,7 +156,7 @@ export default function Pictures({ history, photos }) {
                     "&:hover": {
                         color: '#41cc66',
                     }
-                })} />
+                })} onClick={() => leftPicture(selectedIndex)} />
             </section>
             <section className={css({
                 boxSizing: "border-box",
@@ -282,7 +293,7 @@ export default function Pictures({ history, photos }) {
                     "&:hover": {
                         color: '#41cc66',
                     }
-                    })} />
+                    })} onClick={() => leftPicture(selectedIndex)} />
                 <IoIosArrowForward className={css({
                         '@media (max-width: 900px)': {
                             fontSize: '2.5rem',
@@ -305,7 +316,7 @@ export default function Pictures({ history, photos }) {
                     "&:hover": {
                         color: '#41cc66',
                     }
-                    })} />
+                    })} onClick={() => rightPicture(selectedIndex)} />
                 </section>
                 {/* end bottom mobile row */}
 
