@@ -467,7 +467,7 @@ export default function Pictures({ history, photos, setModelingGallery, setPhoto
                 })}>
                     {photos.map((photo, index) => {
                         let sliced_url = photo.image_url.slice(18, photo.image_url.length)
-                     return <Thumbnail key={sliced_url} image={sliced_url} setSelected={setSelected} setSelectedIndex={setSelectedIndex} index={index} />
+                     return <Thumbnail key={sliced_url} photo={photo} image={sliced_url} setSelected={setSelected} setSelectedIndex={setSelectedIndex} index={index} />
                     })}
                 </div>
             </section>
