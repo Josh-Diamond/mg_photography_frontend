@@ -63,7 +63,9 @@ export default function Thumbnail({ photo, image, index, setSelectedIndex, setSe
         <div onClick={selector} className={css({
             cursor: 'pointer',
             boxSizing: 'border-box',
+            // border: '1px solid red',
             opacity: .8,
+            padding: '5% 1%',
             "&:hover": {
                 opacity: 1
             },
@@ -74,10 +76,11 @@ export default function Thumbnail({ photo, image, index, setSelectedIndex, setSe
             <img src={`https://i.imgur.com/${image}.jpg`} className={ css({
                 maxWidth: '200px',
                 borderRadius: '5px',
+                // border: '1px solid red',
                 '-webkit-box-shadow': '0px 0px 20px 2px rgba(230,230,230,1)',
                 '-moz-box-shadow': '0px 0px 20px 2px rgba(230,230,230,1)',
                 boxShadow: '0px 0px 20px 2px rgba(230,230,230,1)',
-                padding: '1%',
+                // padding: '1%',
                 '@media (max-width: 1150px)': {
                     maxWidth: ' 280px'
                 },

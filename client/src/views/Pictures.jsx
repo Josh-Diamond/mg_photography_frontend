@@ -93,6 +93,7 @@ export default function Pictures({ history, photos, setModelingGallery, setPhoto
       
         <div className={ css({
             display: 'flex',
+            backgroundColor: '#110C11',
             overflowY: 'hidden',
             boxSizing: 'border-box',
             '-webkit-touch-callout': 'none',
@@ -463,7 +464,8 @@ export default function Pictures({ history, photos, setModelingGallery, setPhoto
                     display: 'flex',
                     flexWrap: 'wrap',
                     justifyContent: 'space-evenly',
-                    alignItems: 'center'
+                    alignItems: 'center',
+                    // border: '1px solid green'
                 })}>
                     {photos.map((photo, index) => {
                         let sliced_url = photo.image_url.slice(18, photo.image_url.length)
