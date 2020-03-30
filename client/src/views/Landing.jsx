@@ -4,10 +4,12 @@ import { FaInstagram, FaFacebook } from 'react-icons/fa'
 import { AiOutlineMail } from 'react-icons/ai'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
+import CreatedBy from '../components/CreatedBy'
 
 export default function Landing() {
     const [styles, setStyles] = useState({})
     const [loading, setLoading] = useState(true)
+    const [createdBy, setCreatedBy] = useState(false)
 
     useEffect(() => {
         getStyles();
@@ -68,6 +70,7 @@ export default function Landing() {
                 textTransform: 'uppercase',
                 boxSizing: 'border-box'
             })}>
+                {createdBy ? <CreatedBy setCreatedBy={setCreatedBy} /> : null}
                 <div className={css({
                     display: 'flex',
                     justifyContent: 'center',
@@ -493,7 +496,7 @@ export default function Landing() {
                                 margin: '0px 0px 0px 0.45rem',
                                 padding: '0px 0px 0px 0.85rem',
                             })}>
-                                {`${styles.footer}`}
+                                <span onClick={() => setCreatedBy(true)}>©</span>{`${styles.footer}`}
                             </li>
                             <li className={css({
                                 display: 'inline-block',
