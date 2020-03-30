@@ -36,7 +36,8 @@ export default function CreatedBy({ setCreatedBy }) {
                 letterSpacing: '0.15rem',
                 backgroundColor: '#110C11',
                 color: '#e6e6e6',
-                border: '2px solid #e6e6e6'
+                // border: '2px solid #e6e6e6'
+                border: '2px solid #515E66'
             })}>
                 <h4>Created By</h4>
                 <img src={Logo} alt='Logo' className={css({
