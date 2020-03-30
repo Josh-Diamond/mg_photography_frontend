@@ -44,7 +44,7 @@ export default function Gallery({ history, setModelingGallery, setPhotographyGal
                         color: '#41cc66',
                         fontFamily: "'Great Vibes', cursive",
                         fontSize: '2rem',
-                        marginBottom: '-21%',
+                        // marginBottom: '-21%',
                         textShadow: '0px 0px 10px rgba(255, 255, 255, 1)',
                     })}>View All</h1></Link>
                     <Link to='/gallery' onClick={() => setModelingGallery(true)} className={css({
