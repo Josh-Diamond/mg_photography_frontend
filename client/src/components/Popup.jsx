@@ -110,7 +110,8 @@ export default function Popup({ selected, setPopup }) {
                         // marginRight: '15px',
                         textShadow: '0px 0px 10px rgba(255, 255, 255, 1)',
                         color: '#41cc66',
-                        fontSize: '1.5rem'
+                        fontSize: '1.5rem',
+                        marginRight: '10px'
                     })}>Photographed by</h4>
                     <p>{selected.photographer}</p>
                 </div>
