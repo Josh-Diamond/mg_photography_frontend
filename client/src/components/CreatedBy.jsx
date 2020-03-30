@@ -46,7 +46,8 @@ export default function CreatedBy({ setCreatedBy }) {
                 <img src={Name} alt='Josh Diamond' className={css({
                     margin: '0 auto',
                     marginTop: '4%',
-                    maxWidth: '100%'
+                    maxWidth: '100%',
+                    marginBottom: '2.1%'
                 })} />
             </div>
         </div>
