@@ -2,28 +2,29 @@ import React, { useState, useEffect } from 'react'
 import { css } from 'emotion'
 import { FaInstagram, FaFacebook } from 'react-icons/fa'
 import { AiOutlineMail } from 'react-icons/ai'
-import axios from 'axios'
+// import axios from 'axios'
 import { Link } from 'react-router-dom'
 import CreatedBy from '../components/CreatedBy'
+import { styles } from '../Styles'
 
 export default function Landing() {
-    const [styles, setStyles] = useState({})
-    const [loading, setLoading] = useState(true)
+    // const [styles, setStyles] = useState({})
+    const [loading, setLoading] = useState(false)
     const [createdBy, setCreatedBy] = useState(false)
 
     useEffect(() => {
-        getStyles();
+        // getStyles();
     },[])
 
-    const getStyles = () => {
-        axios
-            .get('https://mg-photography-backend.herokuapp.com/api/profile/1')
-            .then(res => {
-                setStyles(res.data)
-                setLoading(false)
-            })
-            .catch(err => console.log(err))
-    }
+    // const getStyles = () => {
+    //     axios
+    //         .get('https://mg-photography-backend.herokuapp.com/api/profile/1')
+    //         .then(res => {
+    //             setStyles(res.data)
+    //             setLoading(false)
+    //         })
+    //         .catch(err => console.log(err))
+    // }
 
     if(loading) {
         return (
@@ -42,7 +43,6 @@ export default function Landing() {
                 '-moz-user-select': 'none',
                 '-ms-user-select': 'none',
                 'user-select': 'none',
-                // backgroundColor: '#40310d',
                 background: "radial-gradient(circle, rgba(162,255,145,1) 20%, rgba(123,175,62,1) 34%, rgba(210,138,81,1) 74%, rgba(17,88,4,1) 82%)"
             })}>
                 <h1 className={css({

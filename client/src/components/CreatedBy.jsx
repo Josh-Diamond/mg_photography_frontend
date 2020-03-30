@@ -28,7 +28,7 @@ export default function CreatedBy({ setCreatedBy }) {
                 alignItems: 'flex-start',
                 padding: '2%',
                 backgroundColor: 'white',
-                maxWidth: '800px',
+                maxWidth: '480px',
                 width: '80%',
                 flexWrap: 'wrap',
                 // minHeight: '100px',
