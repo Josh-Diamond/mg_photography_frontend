@@ -16,7 +16,7 @@ export default function CreatedBy({ setCreatedBy }) {
             // right: 0,
             // bottom: 0,
             // margin: 'auto',
-            backgroundColor: 'rgba(0,0,0, 0.75)',
+            backgroundColor: 'rgba(0,0,0, 0.85)',
             display: 'flex',
             justifyContent: 'center',
             alignItems: 'center'
@@ -29,7 +29,7 @@ export default function CreatedBy({ setCreatedBy }) {
                 padding: '2%',
                 backgroundColor: 'white',
                 maxWidth: '800px',
-                // width: '80%',
+                width: '80%',
                 flexWrap: 'wrap',
                 // minHeight: '100px',
                 borderRadius: '5px',
@@ -40,11 +40,13 @@ export default function CreatedBy({ setCreatedBy }) {
             })}>
                 <h4>Created By</h4>
                 <img src={Logo} alt='Logo' className={css({
-                    margin: '0 auto'
+                    margin: '0 auto',
+                    maxWidth: '100%'
                 })} />
                 <img src={Name} alt='Josh Diamond' className={css({
                     margin: '0 auto',
-                    marginTop: '4%'
+                    marginTop: '4%',
+                    maxWidth: '100%'
                 })} />
             </div>
         </div>
