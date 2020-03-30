@@ -17,7 +17,7 @@ export default function Pictures({ history, photos, setModelingGallery, setPhoto
     const [openMenu, setOpenMenu] = useState(false)
     const [selectedIndex, setSelectedIndex] = useState(0)
     const [selected, setSelected] = useState('')
-    const [popup, setPopup] = useState(true)
+    const [popup, setPopup] = useState(false)
     
     const setToModeling = () => {
         setArtGallery(false)
@@ -527,7 +527,7 @@ export default function Pictures({ history, photos, setModelingGallery, setPhoto
                     marginLeft: '3%',
                     marginRight: '3%'
                 })}>
-                    <Link className={css({
+                    <Link to='/gallery_selection' className={css({
                         display: 'flex',
                         alignItems: 'center',
                         width: '80%',
