@@ -24,7 +24,7 @@ export default function Thumbnail({ image, index, setSelectedIndex, setSelected,
                 opacity: 1
             },
             '@media (max-width: 1025px)': {
-                padding: '1%',
+                padding: '4% 1%',
             },
         }) : css({
             cursor: 'pointer',
@@ -34,12 +34,16 @@ export default function Thumbnail({ image, index, setSelectedIndex, setSelected,
                 opacity: 1
             },
             '@media (max-width: 1025px)': {
-                padding: '1%',
+                padding: '4% 1%',
             },
         })}>
             <img src={`https://i.imgur.com/${image}.jpg`} className={ css({
                 maxWidth: '200px',
                 borderRadius: '5px',
+                '-webkit-box-shadow': '0px 0px 20px 2px rgba(230,230,230,1)',
+                '-moz-box-shadow': '0px 0px 20px 2px rgba(230,230,230,1)',
+                boxShadow: '0px 0px 20px 2px rgba(230,230,230,1)',
+                // border: '2px solid #e6e6e6',
                 '@media (max-width: 1150px)': {
                     maxWidth: ' 280px'
                 },
@@ -69,6 +73,11 @@ export default function Thumbnail({ image, index, setSelectedIndex, setSelected,
         })}>
             <img src={`https://i.imgur.com/${image}.jpg`} className={ css({
                 maxWidth: '200px',
+                borderRadius: '5px',
+                '-webkit-box-shadow': '0px 0px 20px 2px rgba(230,230,230,1)',
+                '-moz-box-shadow': '0px 0px 20px 2px rgba(230,230,230,1)',
+                boxShadow: '0px 0px 20px 2px rgba(230,230,230,1)',
+                padding: '1%',
                 '@media (max-width: 1150px)': {
                     maxWidth: ' 280px'
                 },

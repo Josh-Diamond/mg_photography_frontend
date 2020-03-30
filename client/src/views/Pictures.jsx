@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { css } from 'emotion'
+import { Link } from 'react-router-dom'
 import { AiOutlineMenu, AiOutlineClose } from 'react-icons/ai'
 import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io'
 import { MdInfoOutline } from 'react-icons/md'
@@ -10,11 +11,13 @@ import photography from '../static/photography.jpg'
 import art from '../static/art.jpg'
 import { FaCalculator } from 'react-icons/fa'
 import Thumbnail from '../components/Thumbnail'
+import Popup from '../components/Popup'
 
 export default function Pictures({ history, photos, setModelingGallery, setPhotographyGallery, setArtGallery }) {
     const [openMenu, setOpenMenu] = useState(false)
     const [selectedIndex, setSelectedIndex] = useState(0)
     const [selected, setSelected] = useState('')
+    const [popup, setPopup] = useState(true)
     
     const setToModeling = () => {
         setArtGallery(false)
@@ -46,9 +49,11 @@ export default function Pictures({ history, photos, setModelingGallery, setPhoto
     useEffect(() => {
       if(photos[0]) {
           let img_url_tail = photos[0].image_url.slice(18, photos[0].image_url.length)
-          setSelected(img_url_tail) }
+        //   setSelected(img_url_tail)
+        setSelected({...photos[0], image_url: img_url_tail})
+         }
     },[photos])
-    
+ 
     // useEffect(() => {
     // if(selected.length !== 0) {
     //     let img_url_tail = photos[selectedIndex].image_url.slice(18, testString.length)
@@ -60,22 +65,26 @@ export default function Pictures({ history, photos, setModelingGallery, setPhoto
     
     const rightPicture = index => {
       if(index === photos.length-1) {
+        let img_url = photos[0].image_url.slice(18, photos[0].image_url.length)
         setSelectedIndex(0)
-        setSelected(photos[0].image_url.slice(18, photos[0].image_url.length))
+        setSelected({...photos[0], image_url: img_url})
       } else { 
+          let img_url = photos[index + 1].image_url.slice(18, photos[index + 1].image_url.length)
         setSelectedIndex(index + 1)
-        setSelected(photos[index + 1].image_url.slice(18, photos[index + 1].image_url.length))
+        setSelected({...photos[index + 1], image_url: img_url})
       }
     }
 
     const leftPicture = index => {
         let last_index = photos.length-1
         if(index === 0) {
+            let img_url = photos[last_index].image_url.slice(18, photos[last_index].image_url.length)
             setSelectedIndex(last_index)
-            setSelected(photos[last_index].image_url.slice(18, photos[last_index].image_url.length))
+            setSelected({...photos[last_index], image_url: img_url})
         } else {
+            let img_url = photos[index - 1].image_url.slice(18, photos[index - 1].image_url.length)
             setSelectedIndex(index - 1)
-            setSelected(photos[index - 1].image_url.slice(18, photos[index - 1].image_url.length))
+            setSelected({...photos[index - 1], image_url: img_url})
         }
     }
     
@@ -125,6 +134,7 @@ export default function Pictures({ history, photos, setModelingGallery, setPhoto
               },
             
         })}>
+            {popup && <Popup setPopup={setPopup} selected={selected} />}
             <section className={openMenu ? css({
                 display: 'flex',
                 flexDirection: 'column',
@@ -154,7 +164,7 @@ export default function Pictures({ history, photos, setModelingGallery, setPhoto
                     fontSize: '2rem',
                     marginTop: '5px'
                 })} /> */}
-                <TiInfoLarge className={css({
+                <TiInfoLarge onClick={() => setPopup(true)} className={css({
                     fontSize: '2rem',
                     // marginTop: '10px',
                     color: '#e6e6e6',
@@ -206,7 +216,7 @@ export default function Pictures({ history, photos, setModelingGallery, setPhoto
                     
                     }
                 })}>
-                <TiInfoLarge className={css({
+                <TiInfoLarge onClick={() => setPopup(true)} className={css({
                         '@media (max-width: 900px)': {
                             fontSize: '2.5rem',
                             cursor: 'pointer',
@@ -254,7 +264,7 @@ export default function Pictures({ history, photos, setModelingGallery, setPhoto
                     })} onClick={() => setOpenMenu(true)} />
                 </section>
                {photos[0] ? 
-               <img src={`https://i.imgur.com/${selected}.jpg`} className={css({
+               <img src={`https://i.imgur.com/${selected.image_url}.jpg`} className={css({
                     maxHeight: '100vh',
                     maxWidth: '100vw',
                     '@media (max-width: 1150px)': {
@@ -415,7 +425,7 @@ export default function Pictures({ history, photos, setModelingGallery, setPhoto
               display: 'flex',
               flexDirection: 'column',
               transition: '1s',
-              backgroundColor: '#e6e6e6',
+              backgroundColor: '#110C11',
             //   borderLeft: '6px solid #110c11',
               '@media (max-width: 1150px)': {
                 width: '0%',
@@ -466,11 +476,12 @@ export default function Pictures({ history, photos, setModelingGallery, setPhoto
             <section className={ openMenu ? css({
              width: '300px',
               display: 'flex',
-              background: "radial-gradient(circle, rgba(162,255,145,1) 20%, rgba(123,175,62,1) 34%, rgba(210,138,81,1) 74%, rgba(17,88,4,1) 82%)",
+              backgroundColor: '#110C11',
               flexDirection: 'column',
             //   transition: '1s',
               overflowY: 'hidden',
               maxHeight: '100vh',
+              color: '#e6e6e6',
             //   '@media (max-width: 1125px)': {
             //     width: '100vw',
             //     height: '100vh',
@@ -483,7 +494,8 @@ export default function Pictures({ history, photos, setModelingGallery, setPhoto
                 width: '100vw',
                 height: '100vh',
                 position: 'absolute',
-                backgroundColor: 'white',
+                backgroundColor: '#110C11',
+                color: '#e6e6e6',
                 // top: '-100vh',
                 overflowY: 'hidden',
                 // border: '1px solid red',
@@ -507,11 +519,55 @@ export default function Pictures({ history, photos, setModelingGallery, setPhoto
                 display: 'none'
             },
          })}>
-                <TiArrowBack onClick={() => setOpenMenu(false)} className={css({
-                    fontSize: '2rem',
-                    margin: '0 1%'
-                })} />
-                Menu Area Mobile
+                <div className={css({
+                    display: 'flex',
+                    justifyContent: 'space-between',
+                    alignItems: 'center',
+                    marginTop: '2%',
+                    marginLeft: '3%',
+                    marginRight: '3%'
+                })}>
+                    <Link className={css({
+                        display: 'flex',
+                        alignItems: 'center',
+                        width: '80%',
+                        color: '#e6e6e6',
+                        transition: '.4s',
+                        textDecoration: 'none',
+                        "&:hover": {
+                            color: '#41cc66',
+                        }
+                    })}>
+                        <TiArrowBack className={css({
+                            fontSize: '2rem',
+                            // paddingLeft: '0 1%'
+                            // marginLeft: '1%'
+                        })} />
+                        <h4 className={css({
+                            fontFamily: "'Great Vibes', cursive",
+                            fontWeight: 'bold',
+                            marginLeft: '1%',
+                            textShadow: '0px 0px 10px rgba(255, 255, 255, 1)',
+                            color: '#41cc66',
+                            fontSize: '1.5rem',
+                        })}>Back to Gallery</h4>
+                    </Link>
+                    <AiOutlineClose onClick={() => setOpenMenu(false)} className={css({
+                        fontSize: '2.5rem',
+                        cursor: 'pointer',
+                        color: '#e6e6e6',
+                        transition: '.4s',
+                        '@media (max-width: 1200px)': {
+                            fontSize: '1.8rem'
+                        },
+                    "&:hover": {
+                        color: '#41cc66',
+                    }
+                    })} onClick={() => setOpenMenu(false)} />
+                </div>
+                <p className={css({
+                    color: '#110C11'
+                })}>Menu Area Mobile</p>
                 {/* <div>
                     <p onClick={setToAll}>All</p>
                     <p>|</p>
@@ -521,7 +577,7 @@ export default function Pictures({ history, photos, setModelingGallery, setPhoto
                     <p>|</p>
                     <p onClick={setToArt}>art</p>
                 </div> */}
-                <input placeholder='Search' className={css({
+                <input placeholder='Search - Under Construction' className={css({
                     width: '80%',
                     margin: '0 auto',
                     marginBottom: '2%',
@@ -537,7 +593,7 @@ export default function Pictures({ history, photos, setModelingGallery, setPhoto
                     flexWrap: 'wrap',
                     justifyContent: 'space-evenly',
                     alignItems: 'center',
-                    padding: '0 5%'
+                    padding: '1% 5%'
                 })}>
                     {photos.map((photo, index) => {
                         let sliced_url = photo.image_url.slice(18, photo.image_url.length)
