@@ -1,16 +1,16 @@
 import React from 'react'
 import { css } from 'emotion'
 
-export default function Thumbnail({ image, index, setSelectedIndex, setSelected, mobile, setOpenMenu }) {
+export default function Thumbnail({ photo, image, index, setSelectedIndex, setSelected, mobile, setOpenMenu }) {
     const mobileSelector = () => {
         setSelectedIndex(index)
-        setSelected(image)
+        setSelected({...photo, image_url: image})
         setOpenMenu(false)
     }
 
     const selector = () => {
         setSelectedIndex(index)
-        setSelected(image)
+        setSelected({...photo, image_url: image})
     }
 
 
