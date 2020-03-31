@@ -14,7 +14,7 @@ import Thumbnail from '../components/Thumbnail'
 import Popup from '../components/Popup'
 
 export default function Pictures({ history, photos, setModelingGallery, setPhotographyGallery, setArtGallery }) {
-    const [openMenu, setOpenMenu] = useState(false)
+    const [openMenu, setOpenMenu] = useState(true)
     const [selectedIndex, setSelectedIndex] = useState(0)
     const [selected, setSelected] = useState('')
     const [popup, setPopup] = useState(false)
@@ -296,6 +296,7 @@ export default function Pictures({ history, photos, setModelingGallery, setPhoto
                 {/* bottom mobile row */}
                 <section className={css({
                     // border: '1px solid red',
+                    
                     '@media (min-width: 900px)': {
                         display: 'none'
                     },
@@ -558,7 +559,8 @@ export default function Pictures({ history, photos, setModelingGallery, setPhoto
                             textShadow: '0px 0px 10px rgba(255, 255, 255, 1)',
                             color: '#41cc66',
                             fontSize: '1.5rem',
-                        })}>Back to Gallery</h4>
+                            marginTop: '7px'
+                        })}>Back to Gallery Selection</h4>
                     </Link>
                     <AiOutlineClose onClick={() => setOpenMenu(false)} className={css({
                         fontSize: '2.5rem',

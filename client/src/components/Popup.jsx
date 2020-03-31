@@ -75,6 +75,7 @@ export default function Popup({ selected, setPopup }) {
                 })}>
                     <h4 className={css({
                         letterSpacing: '0.1rem',
+                        marginTop: '2%'
                         // fontSize: '1.rem'
                     })}>{selected.description}</h4>
                 </div>
