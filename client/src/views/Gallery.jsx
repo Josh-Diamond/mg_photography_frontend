@@ -4,6 +4,7 @@ import ModelingCard from '../components/ModelingCard'
 import PhotographyCard from '../components/PhotographyCard'
 import ArtCard from '../components/ArtCard'
 import { Link } from 'react-router-dom'
+import ViewAllCard from '../components/ViewAllCard'
 
 export default function Gallery({ history, setModelingGallery, setPhotographyGallery, setArtGallery }) {
     useEffect(() => {
@@ -44,7 +45,8 @@ export default function Gallery({ history, setModelingGallery, setPhotographyGal
                         flexDirection: 'column'
                     },
                 })}>
-                    <Link to='/gallery' className={css({
+                    <ViewAllCard />
+                    {/* <Link to='/gallery' className={css({
                         textDecoration: 'none'
                     })}><h1 className={css({
                         color: '#41cc66',
@@ -52,7 +54,7 @@ export default function Gallery({ history, setModelingGallery, setPhotographyGal
                         fontSize: '2rem',
                         // marginBottom: '-21%',
                         textShadow: '0px 0px 10px rgba(255, 255, 255, 1)',
-                    })}>View All</h1></Link>
+                    })}>View All</h1></Link> */}
                     <Link to='/gallery' onClick={() => setModelingGallery(true)} className={css({
                         textDecoration: 'none'
                     })}><ModelingCard /></Link>
