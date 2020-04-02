@@ -47,7 +47,7 @@ export default function Gallery({ history, setModelingGallery, setPhotographyGal
                         flexDirection: 'column'
                     },
                 })}>
-                    <h2 className={css({
+                    {/* <h2 className={css({
                         fontFamily: "'Great Vibes', cursive",
                         fontWeight: 'bold',
                         // marginLeft: '1%',
@@ -65,7 +65,7 @@ export default function Gallery({ history, setModelingGallery, setPhotographyGal
                         '@media (max-width: 600px)': {
                             marginTop: '5%'
                         },
-                    })}>Gallery Selection</h2>
+                    })}>Gallery Selection</h2> */}
                     <div className={css({
                         //  border: '1px solid purple',
                          overflowY: 'scroll',
