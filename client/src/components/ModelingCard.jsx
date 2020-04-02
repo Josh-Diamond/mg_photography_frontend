@@ -103,7 +103,7 @@ export default function ModelingCard() {
                 '@media (max-width: 950px)': {
                     fontSize: '5rem',
                 },
-                '@media (max-width: 375px)': {
+                '@media (max-width: 400px)': {
                     fontSize: '3rem'
                 },
             })}>Modeling</h2>

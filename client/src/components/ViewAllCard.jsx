@@ -154,7 +154,8 @@ export default function ModelingCard() {
             },
             '@media (max-width: 470px)': {
                 width: '350px',
-                height: '350px'
+                height: '350px',
+                marginTop: '20px'
             },
             '@media (max-width: 400px)': {
                 width: '300px',
@@ -189,7 +190,7 @@ export default function ModelingCard() {
                 '@media (max-width: 950px)': {
                     fontSize: '5rem',
                 },
-                '@media (max-width: 375px)': {
+                '@media (max-width: 400px)': {
                     fontSize: '3rem'
                 },
             })}>View All</h2>

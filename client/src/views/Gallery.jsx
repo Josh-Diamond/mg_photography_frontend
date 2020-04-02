@@ -47,7 +47,7 @@ export default function Gallery({ history, setModelingGallery, setPhotographyGal
                         flexDirection: 'column'
                     },
                 })}>
-                    {/* <h2 className={css({
+                    <h2 className={css({
                         fontFamily: "'Great Vibes', cursive",
                         fontWeight: 'bold',
                         // marginLeft: '1%',
@@ -65,27 +65,32 @@ export default function Gallery({ history, setModelingGallery, setPhotographyGal
                         '@media (max-width: 600px)': {
                             marginTop: '5%'
                         },
-                    })}>Gallery Selection</h2> */}
+                        '@media (max-width: 470px)': {
+                            fontSize: '2rem'
+                        },
+                    })}>Gallery Selection</h2>
                     <div className={css({
                         //  border: '1px solid purple',
                          overflowY: 'scroll',
                          width: '600px',
                          display: 'block',
                          '@media (max-width: 600px)': {
-                            width: '500px'
-                        },
+                            width: '500px'},
                         '@media (max-width: 470px)': {
                             width: '450px'
                         },
                         '@media (max-width: 470px)': {
                             width: '400px'
                         },
+                        '@media (max-width: 400px)': {
+                            width: '380px'
+                        },
                         '@media (max-width: 350px)': {
                             width: '350px'
                         },
                     })}>
                         <Link to='/gallery' className={css({
-                            textDecoration: 'none'
+                            textDecoration: 'none',
                         })}><ViewAllCard /></Link>
                         <Link to='/gallery' onClick={() => setModelingGallery(true)} className={css({
                             textDecoration: 'none'
