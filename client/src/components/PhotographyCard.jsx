@@ -27,8 +27,25 @@ export default function PhotographyCard() {
                 width: 250,
             },
             '@media (max-width: 950px)': {
-                height: 200,
-                width: 200,
+                maxHeight: '500px',
+                maxWidth: '500px',
+                height: '100%',
+                width: '100%',
+                margin: '8%',
+                marginTop: '3%',
+                // marginLeft: '160px',
+                '-webkit-box-shadow': '13px 13px 21px 10px rgba(255,255,255,0.8)',
+                '-moz-box-shadow': '13px 13px 21px 10px rgba(255,255,255,0.8)',
+                boxShadow: '13px 13px 21px 10px rgba(255,255,255,0.8)',
+                'h2': {
+                    // display: 'none'
+                    opacity: '1',
+                    // transitionTimingFunction: 'ease-in-out',
+                    // transitionDuration: '.5s',
+                },
+                'img': {
+                    opacity: 1
+                }
             },
             '&:hover': {
                 '-webkit-box-shadow': '13px 13px 21px 10px rgba(255,255,255,0.8)',
@@ -43,7 +60,24 @@ export default function PhotographyCard() {
                 'img': {
                     opacity: 1
                 }
-            }
+            },
+            '@media (max-width: 600px)': {
+                width: '400px',
+                height: '400px',
+                marginTop: '70px'
+            },
+            '@media (max-width: 470px)': {
+                width: '350px',
+                height: '350px'
+            },
+            '@media (max-width: 400px)': {
+                width: '300px',
+                height: '300px'
+            },
+            '@media (max-width: 350px)': {
+                width: '275px',
+                height: '275px'
+            },
             
         })}>
             <img src={image} alt='Modeling Gallery' className={css({ height: '100%', width: '100%', borderRadius: '4px', opacity: .8, transitionTimingFunction: 'ease-in-out', transitionDuration: '.5s',})} />
@@ -65,6 +99,9 @@ export default function PhotographyCard() {
                 'user-select': 'none',
                 '@media (max-width: 1000px)': {
                     fontSize: '3rem'
+                },
+                '@media (max-width: 950px)': {
+                    fontSize: '5rem',
                 },
                 '@media (max-width: 375px)': {
                     fontSize: '3rem'

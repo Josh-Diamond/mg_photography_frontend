@@ -16,7 +16,8 @@ export default function Gallery({ history, setModelingGallery, setPhotographyGal
         <div className={css({
             height: '100vh',
             width: '100vw',
-            background: 'radial-gradient(circle, rgba(162,255,145,1) 20%, rgba(123,175,62,1) 34%, rgba(210,138,81,1) 74%, rgba(17,88,4,1) 82%)',
+            backgroundColor: '#110C11',
+            // background: 'radial-gradient(circle, rgba(162,255,145,1) 20%, rgba(123,175,62,1) 34%, rgba(210,138,81,1) 74%, rgba(17,88,4,1) 82%)',
             '-webkit-touch-callout': 'none',
                 '-webkit-user-select': 'none',
                 '-khtml-user-select': 'none',
@@ -38,6 +39,7 @@ export default function Gallery({ history, setModelingGallery, setPhotographyGal
             })}>
                 <div className={css({
                     display: 'flex',
+                    // border: '1px solid red',
                     justifyContent: 'space-evenly',
                     alignItems: 'center',
                     height: '100%',
@@ -45,25 +47,56 @@ export default function Gallery({ history, setModelingGallery, setPhotographyGal
                         flexDirection: 'column'
                     },
                 })}>
-                    <ViewAllCard />
-                    {/* <Link to='/gallery' className={css({
-                        textDecoration: 'none'
-                    })}><h1 className={css({
-                        color: '#41cc66',
+                    <h2 className={css({
                         fontFamily: "'Great Vibes', cursive",
-                        fontSize: '2rem',
-                        // marginBottom: '-21%',
+                        fontWeight: 'bold',
+                        // marginLeft: '1%',
                         textShadow: '0px 0px 10px rgba(255, 255, 255, 1)',
-                    })}>View All</h1></Link> */}
-                    <Link to='/gallery' onClick={() => setModelingGallery(true)} className={css({
-                        textDecoration: 'none'
-                    })}><ModelingCard /></Link>
-                    <Link to='/gallery' onClick={() => setPhotographyGallery(true)} className={css({
-                        textDecoration: 'none'
-                    })}><PhotographyCard /></Link>
-                    <Link to='/gallery' onClick={() => setArtGallery(true)} className={css({
-                        textDecoration: 'none'
-                    })}><ArtCard /></Link>
+                        color: '#41cc66',
+                        fontSize: '3rem',
+                        // marginTop: '7px',
+                        paddingBottom: '10px',
+                        // borderBottom: '3px solid #e6e6e6',
+                        // boxShadowBottom: '0px 0px 200px rgba(255, 255, 255, 1)',
+                        borderRadius: '50%',
+                        '@media (max-width: 950px)': {
+                            margin: '2%'
+                        },
+                        '@media (max-width: 600px)': {
+                            marginTop: '5%'
+                        },
+                    })}>Gallery Selection</h2>
+                    <div className={css({
+                        //  border: '1px solid purple',
+                         overflowY: 'scroll',
+                         width: '600px',
+                         display: 'block',
+                         '@media (max-width: 600px)': {
+                            width: '500px'
+                        },
+                        '@media (max-width: 470px)': {
+                            width: '450px'
+                        },
+                        '@media (max-width: 470px)': {
+                            width: '400px'
+                        },
+                        '@media (max-width: 350px)': {
+                            width: '350px'
+                        },
+                    })}>
+                        <Link to='/gallery' className={css({
+                            textDecoration: 'none'
+                        })}><ViewAllCard /></Link>
+                        <Link to='/gallery' onClick={() => setModelingGallery(true)} className={css({
+                            textDecoration: 'none'
+                        })}><ModelingCard /></Link>
+                        <Link to='/gallery' onClick={() => setPhotographyGallery(true)} className={css({
+                            textDecoration: 'none'
+                        })}><PhotographyCard /></Link>
+                        <Link to='/gallery' onClick={() => setArtGallery(true)} className={css({
+                            textDecoration: 'none'
+                        })}><ArtCard /></Link>
+                    </div>
                 </div>
             </div>
         </div>
