@@ -78,6 +78,12 @@ export default function ArtCard() {
                 width: '275px',
                 height: '275px'
             },
+            // '@media (min-width: 900px)': {
+            //     width: '350px',
+            //     height: '350px',
+            //     margin: '10%',
+            //     marginLeft: '75px'
+            // },
         })}>
             <img src={image} alt='Modeling Gallery' className={css({ height: '100%', width: '100%', borderRadius: '4px', opacity: .8, transitionTimingFunction: 'ease-in-out', transitionDuration: '.5s',})} />
             <h2 className={css({

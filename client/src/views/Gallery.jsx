@@ -43,6 +43,7 @@ export default function Gallery({ history, setModelingGallery, setPhotographyGal
                     justifyContent: 'space-evenly',
                     alignItems: 'center',
                     height: '100%',
+                    flexDirection: 'column',
                     '@media (max-width: 950px)': {
                         flexDirection: 'column'
                     },
@@ -74,6 +75,12 @@ export default function Gallery({ history, setModelingGallery, setPhotographyGal
                          overflowY: 'scroll',
                          width: '600px',
                          display: 'block',
+                         '@media (min-width: 900px)': {
+                            display: 'flex',
+                            width: '100%',
+                            flexWrap: 'wrap',
+                            border: '1px solid red'
+                         },
                          '@media (max-width: 600px)': {
                             width: '500px'},
                         '@media (max-width: 470px)': {
@@ -88,6 +95,7 @@ export default function Gallery({ history, setModelingGallery, setPhotographyGal
                         '@media (max-width: 350px)': {
                             width: '350px'
                         },
+                        
                     })}>
                         <Link to='/gallery' className={css({
                             textDecoration: 'none',
