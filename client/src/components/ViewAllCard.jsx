@@ -171,7 +171,10 @@ export default function ModelingCard() {
                 marginRight: '80px',
                 // marginTop: '43px'
             },
-            
+            '@media (min-width: 950px)': {
+                margin: '8%',
+                marginRight: '80px',
+            }
             
         })}>
             <img src={image} alt='Modeling Gallery' className={css({ height: '100%', width: '100%', borderRadius: '4px', opacity: .8, transitionTimingFunction: 'ease-in-out', transitionDuration: '.5s',})} />
@@ -191,9 +194,9 @@ export default function ModelingCard() {
                 '-moz-user-select': 'none',
                 '-ms-user-select': 'none',
                 'user-select': 'none',
-                '@media (max-width: 1000px)': {
-                    fontSize: '3rem'
-                },
+                // '@media (max-width: 1000px)': {
+                //     fontSize: '3rem'
+                // },
                 '@media (max-width: 950px)': {
                     fontSize: '5rem',
                 },

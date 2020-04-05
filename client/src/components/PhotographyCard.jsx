@@ -83,7 +83,10 @@ export default function PhotographyCard() {
                 height: '350px',
                 marginRight: '80px'
             },
-            
+            '@media (min-width: 950px)': {
+                margin: '8%',
+                marginRight: '80px'
+            }
         })}>
             <img src={image} alt='Modeling Gallery' className={css({ height: '100%', width: '100%', borderRadius: '4px', opacity: .8, transitionTimingFunction: 'ease-in-out', transitionDuration: '.5s',})} />
             <h2 className={css({
@@ -102,9 +105,9 @@ export default function PhotographyCard() {
                 '-moz-user-select': 'none',
                 '-ms-user-select': 'none',
                 'user-select': 'none',
-                '@media (max-width: 1000px)': {
-                    fontSize: '3rem'
-                },
+                // '@media (max-width: 1000px)': {
+                //     fontSize: '3rem'
+                // },
                 '@media (max-width: 950px)': {
                     fontSize: '5rem',
                 },
