@@ -78,17 +78,11 @@ export default function PhotographyCard() {
                 width: '275px',
                 height: '275px'
             },
-            // '@media (min-width: 900px)': {
-            //     width: '350px',
-            //     height: '350px',
-            //     marginRight: '100px'
-            // },
-            // '@media (min-width: 950px)': {
-            //     width: '350px',
-            //     height: '350px',
-            //     margin: '10%',
-            //     marginRight: '75px'
-            // },
+            '@media (min-width: 900px)': {
+                width: '350px',
+                height: '350px',
+                marginRight: '80px'
+            },
             
         })}>
             <img src={image} alt='Modeling Gallery' className={css({ height: '100%', width: '100%', borderRadius: '4px', opacity: .8, transitionTimingFunction: 'ease-in-out', transitionDuration: '.5s',})} />
