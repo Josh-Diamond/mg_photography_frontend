@@ -450,6 +450,33 @@ export default function Pictures({ history, photos, setModelingGallery, setPhoto
             },
          })}>
                 Menu Area
+                <Link to='/gallery_selection' className={css({
+                        display: 'flex',
+                        alignItems: 'center',
+                        width: '80%',
+                        color: '#e6e6e6',
+                        transition: '.4s',
+                        textDecoration: 'none',
+                        marginBottom: '25px',
+                        "&:hover": {
+                            color: '#41cc66',
+                        }
+                    })}>
+                        <TiArrowBack className={css({
+                            fontSize: '2rem',
+                            // paddingLeft: '0 1%'
+                            // marginLeft: '1%'
+                        })} />
+                        <h4 className={css({
+                            fontFamily: "'Great Vibes', cursive",
+                            fontWeight: 'bold',
+                            marginLeft: '1%',
+                            textShadow: '0px 0px 10px rgba(255, 255, 255, 1)',
+                            color: '#41cc66',
+                            fontSize: '1.5rem',
+                            marginTop: '7px'
+                        })}>Back to Gallery</h4>
+                    </Link>
                 <input placeholder='Search' className={css({
                     width: '80%',
                     margin: '0 auto',
@@ -560,7 +587,7 @@ export default function Pictures({ history, photos, setModelingGallery, setPhoto
                             color: '#41cc66',
                             fontSize: '1.5rem',
                             marginTop: '7px'
-                        })}>Back to Gallery Selection</h4>
+                        })}>Back to Gallery</h4>
                     </Link>
                     <AiOutlineClose onClick={() => setOpenMenu(false)} className={css({
                         fontSize: '2.5rem',
