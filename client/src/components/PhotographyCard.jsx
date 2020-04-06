@@ -26,7 +26,8 @@ export default function PhotographyCard() {
                 height: 250,
                 width: 250,
             },
-            '@media (max-width: 950px)': {
+            
+            '@media (max-width: 900px)': {
                 maxHeight: '500px',
                 maxWidth: '500px',
                 height: '100%',
@@ -79,14 +80,30 @@ export default function PhotographyCard() {
                 height: '275px'
             },
             '@media (min-width: 900px)': {
-                width: '350px',
-                height: '350px',
-                marginRight: '80px'
+                width: '200px',
+                height: '200px',
+                margin: '10%'
+                // marginRight: '80px'
             },
-            '@media (min-width: 950px)': {
-                margin: '8%',
-                marginRight: '80px'
+            '@media (min-width: 1100px)': {
+                width: '225px',
+                height: '225px',
+                margin: '15%'
+            },
+            '@media (min-width: 1200px)': {
+                width: '250px',
+                height: '250px',
+                margin: '15%'
+            },
+            '@media (min-width: 1400px)': {
+                width: '300px',
+                height: '300px',
+                margin: '15%'
             }
+            // '@media (min-width: 950px)': {
+            //     margin: '8%',
+            //     marginRight: '80px'
+            // }
         })}>
             <img src={image} alt='Modeling Gallery' className={css({ height: '100%', width: '100%', borderRadius: '4px', opacity: .8, transitionTimingFunction: 'ease-in-out', transitionDuration: '.5s',})} />
             <h2 className={css({
@@ -108,8 +125,11 @@ export default function PhotographyCard() {
                 // '@media (max-width: 1000px)': {
                 //     fontSize: '3rem'
                 // },
-                '@media (max-width: 950px)': {
+                '@media (max-width: 900px)': {
                     fontSize: '5rem',
+                },
+                '@media (min-width: 900px)': {
+                    fontSize: '3rem'
                 },
                 '@media (max-width: 400px)': {
                     fontSize: '3rem'

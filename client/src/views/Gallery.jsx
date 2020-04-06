@@ -16,8 +16,8 @@ export default function Gallery({ history, setModelingGallery, setPhotographyGal
         <div className={css({
             height: '100vh',
             width: '100vw',
-            backgroundColor: '#110C11',
-            // background: 'radial-gradient(circle, rgba(162,255,145,1) 20%, rgba(123,175,62,1) 34%, rgba(210,138,81,1) 74%, rgba(17,88,4,1) 82%)',
+            // backgroundColor: '#110C11',
+            background: 'radial-gradient(circle, rgba(162,255,145,1) 20%, rgba(123,175,62,1) 34%, rgba(210,138,81,1) 74%, rgba(17,88,4,1) 82%)',
             '-webkit-touch-callout': 'none',
                 '-webkit-user-select': 'none',
                 '-khtml-user-select': 'none',
@@ -79,7 +79,10 @@ export default function Gallery({ history, setModelingGallery, setPhotographyGal
                             display: 'flex',
                             width: '100%',
                             flexWrap: 'wrap',
-                            border: '1px solid red'
+                            overflowY: 'auto',
+                            justifyContent: 'space-evenly',
+                            // border: '1px solid red',
+                            
                          },
                          '@media (max-width: 600px)': {
                             width: '500px'},

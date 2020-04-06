@@ -26,7 +26,8 @@ export default function ModelingCard() {
                 height: 250,
                 width: 250,
             },
-            '@media (max-width: 950px)': {
+            
+            '@media (max-width: 900px)': {
                 maxHeight: '500px',
                 maxWidth: '500px',
                 height: '100%',
@@ -34,30 +35,30 @@ export default function ModelingCard() {
                 margin: '8%',
                 marginTop: '3%',
                 // marginLeft: '160px',
-                // '-webkit-box-shadow': '13px 13px 21px 10px rgba(255,255,255,0.8)',
-                // '-moz-box-shadow': '13px 13px 21px 10px rgba(255,255,255,0.8)',
-                // boxShadow: '13px 13px 21px 10px rgba(255,255,255,0.8)',
-                // 'h2': {
-                //     // display: 'none'
-                //     opacity: '1',
-                //     // transitionTimingFunction: 'ease-in-out',
-                //     // transitionDuration: '.5s',
-                // },
-                // 'img': {
-                //     opacity: 1
-                // }
-            },
-            '@media (max-width: 900px)': {
                 '-webkit-box-shadow': '13px 13px 21px 10px rgba(255,255,255,0.8)',
                 '-moz-box-shadow': '13px 13px 21px 10px rgba(255,255,255,0.8)',
                 boxShadow: '13px 13px 21px 10px rgba(255,255,255,0.8)',
                 'h2': {
-                    opacity: 1
+                    // display: 'none'
+                    opacity: '1',
+                    // transitionTimingFunction: 'ease-in-out',
+                    // transitionDuration: '.5s',
                 },
                 'img': {
                     opacity: 1
                 }
             },
+            // '@media (max-width: 900px)': {
+            //     '-webkit-box-shadow': '13px 13px 21px 10px rgba(255,255,255,0.8)',
+            //     '-moz-box-shadow': '13px 13px 21px 10px rgba(255,255,255,0.8)',
+            //     boxShadow: '13px 13px 21px 10px rgba(255,255,255,0.8)',
+            //     'h2': {
+            //         opacity: 1
+            //     },
+            //     'img': {
+            //         opacity: 1
+            //     }
+            // },
             '&:hover': {
                 '-webkit-box-shadow': '13px 13px 21px 10px rgba(255,255,255,0.8)',
                 '-moz-box-shadow': '13px 13px 21px 10px rgba(255,255,255,0.8)',
@@ -90,15 +91,32 @@ export default function ModelingCard() {
                 height: '275px'
             },
             '@media (min-width: 900px)': {
-                width: '350px',
-                height: '350px',
+                width: '200px',
+                height: '200px',
+                margin: '10%'
                 // margin: '10%',
-                marginLeft: '80px'
+                // marginLeft: '80px'
+                
             },
-            '@media (min-width: 950px)': {
-                margin: '8%',
-                marginLeft: '80px'
+            '@media (min-width: 1100px)': {
+                width: '225px',
+                height: '225px',
+                margin: '15%'
+            },
+            '@media (min-width: 1200px)': {
+                width: '250px',
+                height: '250px',
+                margin: '15%'
+            },
+            '@media (min-width: 1400px)': {
+                width: '300px',
+                height: '300px',
+                margin: '15%'
             }
+            // '@media (min-width: 950px)': {
+            //     margin: '8%',
+            //     marginLeft: '80px'
+            // }
         })}>
             <img src={image} alt='Modeling Gallery' className={css({ height: '100%', width: '100%', borderRadius: '4px', opacity: .8, transitionTimingFunction: 'ease-in-out', transitionDuration: '.5s',})} />
             <h2 className={css({
@@ -120,8 +138,11 @@ export default function ModelingCard() {
                 // '@media (max-width: 1000px)': {
                 //     fontSize: '3rem'
                 // },
-                '@media (max-width: 950px)': {
+                '@media (max-width: 900px)': {
                     fontSize: '5rem',
+                },
+                '@media (min-width: 900px)': {
+                    fontSize: '3rem'
                 },
                 '@media (max-width: 400px)': {
                     fontSize: '3rem'
