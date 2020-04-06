@@ -18,6 +18,14 @@ export default function Pictures({ history, photos, setModelingGallery, setPhoto
     const [selectedIndex, setSelectedIndex] = useState(0)
     const [selected, setSelected] = useState('')
     const [popup, setPopup] = useState(false)
+    const [filtered, setFiltered] = useState([])
+    // const [searchInput, setSearchInput] = useState('')
+
+    const searchFilter = e => {
+        let filteredPics = photos.filter(photo => photo.category.toLowerCase().includes(e.target.value.toLowerCase()) || photo.date.toLowerCase().includes(e.target.value.toLowerCase()) || photo.description.toLowerCase().includes(e.target.value.toLowerCase()) || photo.location.toLowerCase().includes(e.target.value.toLowerCase()) || photo.photographer.toLowerCase().includes(e.target.value.toLowerCase()) || photo.event.toLowerCase().includes(e.target.value.toLowerCase()) || photo.tags.toLowerCase().includes(e.target.value.toLowerCase()))
+        setFiltered(filteredPics)
+      }
+
     
     const setToModeling = () => {
         setArtGallery(false)
@@ -477,7 +485,7 @@ export default function Pictures({ history, photos, setModelingGallery, setPhoto
                             marginTop: '7px'
                         })}>Back to Gallery</h4>
                     </Link>
-                <input placeholder='Search' className={css({
+                <input placeholder='Search' onChange={searchFilter} className={css({
                     width: '80%',
                     margin: '0 auto',
                     marginBottom: '10%',
@@ -495,10 +503,21 @@ export default function Pictures({ history, photos, setModelingGallery, setPhoto
                     alignItems: 'center',
                     // border: '1px solid green'
                 })}>
-                    {photos.map((photo, index) => {
+                    {/* {photos.map((photo, index) => {
                         let sliced_url = photo.image_url.slice(18, photo.image_url.length)
                      return <Thumbnail key={sliced_url} photo={photo} image={sliced_url} setSelected={setSelected} setSelectedIndex={setSelectedIndex} index={index} />
-                    })}
+                    })} */}
+
+                    {/* search bar attempt */}
+                    {filtered.length === 0 ? photos.map((photo, index) => {
+                        let sliced_url = photo.image_url.slice(18, photo.image_url.length)
+                     return <Thumbnail key={sliced_url} photo={photo} image={sliced_url} setSelected={setSelected} setSelectedIndex={setSelectedIndex} index={index} />
+                    })
+                :
+                filtered.map((photo, index) => {
+                    let sliced_url = photo.image_url.slice(18, photo.image_url.length)
+                 return <Thumbnail key={sliced_url} photo={photo} image={sliced_url} setSelected={setSelected} setSelectedIndex={setSelectedIndex} index={index} />
+                })}
                 </div>
             </section>
 
@@ -614,7 +633,7 @@ export default function Pictures({ history, photos, setModelingGallery, setPhoto
                     <p>|</p>
                     <p onClick={setToArt}>art</p>
                 </div> */}
-                <input placeholder='Search - Under Construction' className={css({
+                <input placeholder='Search - Under Construction' onChange={searchFilter} className={css({
                     width: '80%',
                     margin: '0 auto',
                     marginBottom: '2%',
@@ -632,10 +651,22 @@ export default function Pictures({ history, photos, setModelingGallery, setPhoto
                     alignItems: 'center',
                     padding: '1% 5%'
                 })}>
-                    {photos.map((photo, index) => {
+                    {/* {photos.map((photo, index) => {
                         let sliced_url = photo.image_url.slice(18, photo.image_url.length)
                      return <Thumbnail key={sliced_url} photo={photo} mobile image={sliced_url} setOpenMenu={setOpenMenu} setSelected={setSelected} setSelectedIndex={setSelectedIndex} index={index} />
-                    })}
+                    })} */}
+
+                    {/* search bar attempt */}
+                    {filtered.length === 0 ? photos.map((photo, index) => {
+                        let sliced_url = photo.image_url.slice(18, photo.image_url.length)
+                     return <Thumbnail key={sliced_url} photo={photo} mobile image={sliced_url} setOpenMenu={setOpenMenu} setSelected={setSelected} setSelectedIndex={setSelectedIndex} index={index} />
+                    })
+                :
+                filtered.map((photo, index) => {
+                    let sliced_url = photo.image_url.slice(18, photo.image_url.length)
+                 return <Thumbnail key={sliced_url} photo={photo} mobile image={sliced_url} setOpenMenu={setOpenMenu} setSelected={setSelected} setSelectedIndex={setSelectedIndex} index={index} />
+                })
+                }
                 </div>
             </section>
 
