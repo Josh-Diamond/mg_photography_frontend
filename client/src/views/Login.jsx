@@ -143,13 +143,29 @@ export default function Login({ history }) {
                             },
                         })}>
                             {/* Marysa <span className={css({ color: '#41cc66'})}>Garcia</span> */}
-                            {`Enter Password`}
+                            {`Sign In`}
                         </h1>
                         <form onSubmit={e => login(e)}>
-                            <input type='password' placeholder='password' value={pass} onChange={e => passHandler(e)} />
+                            <input type='password' placeholder='password' value={pass} onChange={e => passHandler(e)} className={css({
+                                height: '25px',
+                                width: '35%',
+                                minWidth: '150px',
+                                borderRadius: '5px',
+                                border: 'none',
+                                textAlign: 'center',
+                                outline: 'none',
+                                color: `${styles.icon_color_hover}`,
+                                fontWeight: 'bold',
+                                "::placeholder" : {
+                                    color: `${styles.profile_picture_border_color}`,
+                                    textTransform: 'uppercase',
+                                    fontWeight: '300',
+                                    letterSpacing: '1.5px'
+                                }
+                            })} />
                         </form>
                         <ul onClick={viewSite} className={css({ 
-                            margin: '25px 0px 0rem',
+                            margin: '35px 0px 0rem',
                             width: '100%',
                             marginLeft: '0px',
                             display: 'flex',
