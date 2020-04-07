@@ -11,7 +11,7 @@ export default function Admin({ history }) {
             <button onClick={logout}>Logout</button>
             <ul>
                 <li>Manage Photos - upload, edit, delete</li>
-                <li>Customize Website - change profile picture and gallery album art</li>
+                <li>Custtomize Website - change profile picture and gallery album art</li>
             </ul>
         </div>
     )
