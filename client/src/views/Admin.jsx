@@ -39,7 +39,10 @@ export default function Admin({ history }) {
                 <div>
                     <div className={css({
                         display: 'flex',
-                        flexDirection: 'row-reverse'
+                        flexDirection: 'row-reverse',
+                        '@media (max-width: 900px)': {
+                            display: 'none'
+                        }
                     })}>
                         
                         <ul onClick={logout} className={css({ 
@@ -148,6 +151,15 @@ export default function Admin({ history }) {
                             marginTop: '-20px'                        
                         },
                     })}>
+                        <FiLogOut onClick={logout} className={css({
+                            color: 'white',
+                            fontSize: '1.5rem',
+                            marginTop: '20px',
+                            marginBottom: '-20px',
+                            '@media (min-width: 900px)': {
+                                display: 'none'
+                            }
+                        })} />
                         <PhotosCard />
                         <UpdateCard />
                     </div>
