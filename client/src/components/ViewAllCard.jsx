@@ -89,7 +89,7 @@ import React from 'react'
 import { css } from 'emotion'
 import image from '../static/water.jpg'
 
-export default function ModelingCard() {
+export default function ViewAllCard() {
     return (
         <div className={css({
             height: 350,
