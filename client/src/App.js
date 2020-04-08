@@ -9,6 +9,8 @@ import Gallery from './views/Gallery'
 import Login from './views/Login'
 import Pictures from './views/Pictures'
 import axios from 'axios'
+import AdminPhotos from './views/AdminPhotos'
+import AdminUpdate from './views/AdminUpdate'
 
 function App() {
   const [photos, setPhotos] = useState([])
@@ -34,7 +36,7 @@ function App() {
       setPhotographyGallery(false)
       setArtGallery(false)
   },[])
-  console.log('modelingGallery?', modelingGallery)
+  // console.log('modelingGallery?', modelingGallery)
   // console.log('modeling_photosss', modelingPhotos)
   // console.log('photography_photosss', photographyPhotos)
   // console.log('art_photosss', artPhotos)
@@ -46,6 +48,8 @@ function App() {
         <Route exact path='/gallery' render={props => <Pictures {...props} photos={modelingGallery ? modelingPhotos : photographyGallery ? photographyPhotos : artGallery ? artPhotos : photos} />} setModelingGallery={setModelingGallery} setPhotographyGallery={setPhotographyGallery} setArtGallery={setArtGallery} />
         <Route exact path='/admin' render={props => <Login {...props} />} />
         <PrivateRoute exact path='/admin_access' view={Admin} />
+        <PrivateRoute exact path='/admin_access/manage_photos' view={AdminPhotos} photos={photos} />
+        <PrivateRoute exact path='/admin_access/update' view={AdminUpdate} />
       </Switch>
     </div>
   );

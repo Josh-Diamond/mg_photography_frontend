@@ -11,6 +11,7 @@ export default function Admin({ history }) {
         localStorage.removeItem('token')
         history.push('/admin')
     }
+
     return (
         <div className={css({
             height: '100vh',
@@ -150,6 +151,9 @@ export default function Admin({ history }) {
                             justifyContent: 'space-around',
                             marginTop: '-20px'                        
                         },
+                        '@media (min-width: 900px)': {
+                            marginTop: '-75px'                 
+                        },
                     })}>
                         <FiLogOut onClick={logout} className={css({
                             color: 'white',
@@ -160,8 +164,16 @@ export default function Admin({ history }) {
                                 display: 'none'
                             }
                         })} />
-                        <PhotosCard />
-                        <UpdateCard />
+                        <Link to='/admin_access/manage_photos' className={css({
+                            textDecoration: 'none'
+                        })}>
+                            <PhotosCard />
+                        </Link>
+                        <Link to='/admin_access/update' className={css({
+                            textDecoration: 'none'
+                        })}>
+                            <UpdateCard />
+                        </Link>
                     </div>
                 </div>
             </div>
