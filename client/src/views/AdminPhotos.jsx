@@ -3,6 +3,8 @@ import { css } from 'emotion'
 import image from '../static/modeling.jpg'
 import ManageCard from '../components/ManageCard'
 import axios from 'axios'
+import { IoMdAddCircle } from 'react-icons/io'
+import { Link } from 'react-router-dom'
 
 export default function AdminPhotos({ photos }) {
     const [allPhotos, setAllPhotos] = useState([])
@@ -35,9 +37,29 @@ export default function AdminPhotos({ photos }) {
             })}>
                 Manage Photos
             </h1>
+            <Link to='/admin_access/manage_photos/add_photo' className={css({
+                textDecoration: 'none'
+            })}>
+                <IoMdAddCircle className={css({
+                    fontSize: '2.5rem',
+                    margin: '25px 0',
+                    // color: '#e6e6e6',
+                    cursor: 'pointer',
+                    color: '#40310d',
+                    transition: '.4s',
+                    '&:hover': {
+                        color: '#7d6247'
+                    }
+                })} />
+            </Link>
             <div className={css({
                 display: 'flex',
-                flexWrap: 'wrap'
+                justifyContent: 'space-evenly',
+                // marginTop: '25px',
+                flexWrap: 'wrap',
+                overflowY: 'scroll',
+                // border: '1px solid red',
+                height: '75vh'
             })}>
                 {allPhotos.length !== 0 ?
                 allPhotos.map(photo => {

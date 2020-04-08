@@ -11,6 +11,7 @@ import Pictures from './views/Pictures'
 import axios from 'axios'
 import AdminPhotos from './views/AdminPhotos'
 import AdminUpdate from './views/AdminUpdate'
+import AdminPhotosAdd from './views/AdminPhotosAdd'
 
 function App() {
   const [photos, setPhotos] = useState([])
@@ -50,6 +51,7 @@ function App() {
         <PrivateRoute exact path='/admin_access' view={Admin} />
         <PrivateRoute exact path='/admin_access/manage_photos' view={AdminPhotos} photos={photos} />
         <PrivateRoute exact path='/admin_access/update' view={AdminUpdate} />
+        <PrivateRoute exact path='/admin_access/manage_photos/add_photo' view={AdminPhotosAdd} />
       </Switch>
     </div>
   );
