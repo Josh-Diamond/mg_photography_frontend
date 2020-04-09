@@ -58,7 +58,7 @@ export default function ManageCard({ photo, image }) {
                     transition: '.4s',
                     cursor: 'pointer',
                     '&:hover': {
-                        color: 'red',
+                        color: '#41cc66',
                     }
                 })} />
             </section>
