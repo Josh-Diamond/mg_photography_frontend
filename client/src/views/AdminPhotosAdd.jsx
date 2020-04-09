@@ -69,6 +69,8 @@ export default function AdminPhotosAdd() {
                     },
                     '@media (max-width: 450px)': {
                         overflowY: 'scroll',
+                        paddingTop: '35px',
+                        paddingBottom: '0px'
                     },
                     
                 })}>
