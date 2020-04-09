@@ -20,6 +20,9 @@ export default function AdminPhotos({ photos }) {
         <div className={css({
         height: '100vh',
         width: '100vw',
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'space-between',
         background: 'radial-gradient(circle, rgba(162,255,145,1) 20%, rgba(123,175,62,1) 34%, rgba(210,138,81,1) 74%, rgba(17,88,4,1) 82%)',
         '-webkit-touch-callout': 'none',
             '-webkit-user-select': 'none',
@@ -59,7 +62,7 @@ export default function AdminPhotos({ photos }) {
                 flexWrap: 'wrap',
                 overflowY: 'scroll',
                 // border: '1px solid red',
-                height: '75vh'
+                // height: '600px'
             })}>
                 {allPhotos.length !== 0 ?
                 allPhotos.map(photo => {
