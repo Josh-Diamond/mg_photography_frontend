@@ -36,7 +36,10 @@ export default function AdminPhotos({ photos }) {
                  fontFamily: "'Great Vibes', cursive",
                  fontSize: '5rem',
                  textShadow: '0px 0px 10px rgba(255, 255, 255, 1)',
-                 paddingTop: '25px'
+                 paddingTop: '25px',
+                 '@media (max-width: 550px)': {
+                     fontSize: '3rem'
+                 }
             })}>
                 Manage Photos
             </h1>
