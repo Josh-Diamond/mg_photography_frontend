@@ -55,6 +55,9 @@ export default function AdminPhotos({ photos }) {
                     transition: '.4s',
                     '&:hover': {
                         color: '#7d6247'
+                    },
+                    '@media (max-width: 550px)': {
+                        margin: '15px 0'
                     }
                 })} />
             </Link>
