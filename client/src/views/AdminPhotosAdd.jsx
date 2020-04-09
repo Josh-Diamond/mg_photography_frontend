@@ -434,7 +434,8 @@ export default function AdminPhotosAdd() {
                                 margin: '5px 0',
                                 '@media (max-width: 450px)': {
                                     flexDirection: 'column',
-                                    padding: '5px 10px'
+                                    padding: '5px 10px',
+                                    paddingBottom: '0px'
                                 },
                             })}>
                                 <label htmlFor='tags' className={css({
