@@ -67,6 +67,10 @@ export default function AdminPhotosAdd() {
                     '@media (max-width: 385px)': {
                         // height: '450px'
                     },
+                    '@media (max-width: 450px)': {
+                        overflowY: 'scroll',
+                    },
+                    
                 })}>
                     <header className={css({
                         display: 'block',
@@ -117,20 +121,31 @@ export default function AdminPhotosAdd() {
                         <form className={css({
                             maxWidth: '350px',
                             // border: '1px solid red',
-                            margin: '0 auto'
+                            margin: '0 auto',
+                            // '@media (max-width: 450px)': {
+                            //     padding: '0 10px'
+                            // },
                         })} >
                             {/* Image URL */}
                             <div className={css({
                                 display: 'flex',
                                 justifyContent: 'space-between',
                                 alignItems: 'center',
-                                margin: '5px 0'
+                                margin: '5px 0',
+                                '@media (max-width: 450px)': {
+                                    flexDirection: 'column',
+                                    padding: '5px 10px'
+                                },
                             })}>
                                 <label htmlFor='image_url' className={css({
                                     color: `${styles.profile_picture_border_color}`,
                                     textTransform: 'uppercase',
                                     fontWeight: '300',
-                                    letterSpacing: '1.5px'
+                                    letterSpacing: '1.5px',
+                                    '@media (max-width: 450px)': {
+                                        alignSelf: 'flex-start',
+                                        paddingBottom: '5px'
+                                    },
                                 })}>Image Url<span className={css({
                                     color: '#41cc66'
                                 })}>*</span> </label>
@@ -144,6 +159,9 @@ export default function AdminPhotosAdd() {
                                     outline: 'none',
                                     color: `${styles.icon_color_hover}`,
                                     fontWeight: 'bold',
+                                    '@media (max-width: 450px)': {
+                                        width: '100%'
+                                    },
                                     "::placeholder" : {
                                         color: `${styles.profile_picture_border_color}`,
                                         textTransform: 'uppercase',
@@ -157,13 +175,21 @@ export default function AdminPhotosAdd() {
                                 display: 'flex',
                                 justifyContent: 'space-between',
                                 alignItems: 'center',
-                                margin: '5px 0'
+                                margin: '5px 0',
+                                '@media (max-width: 450px)': {
+                                    flexDirection: 'column',
+                                    padding: '5px 10px'
+                                },
                             })}>
                                 <label htmlFor='category' className={css({
                                     color: `${styles.profile_picture_border_color}`,
                                     textTransform: 'uppercase',
                                     fontWeight: '300',
-                                    letterSpacing: '1.5px'
+                                    letterSpacing: '1.5px',
+                                    '@media (max-width: 450px)': {
+                                        alignSelf: 'flex-start',
+                                        paddingBottom: '5px'
+                                    },
                                 })}>Category<span className={css({
                                     color: '#41cc66'
                                 })}>*</span> </label>
@@ -177,6 +203,9 @@ export default function AdminPhotosAdd() {
                                     outline: 'none',
                                     color: `${styles.icon_color_hover}`,
                                     fontWeight: 'bold',
+                                    '@media (max-width: 450px)': {
+                                        width: '100%'
+                                    },
                                     "::placeholder" : {
                                         color: `${styles.profile_picture_border_color}`,
                                         textTransform: 'uppercase',
@@ -190,13 +219,21 @@ export default function AdminPhotosAdd() {
                                 display: 'flex',
                                 justifyContent: 'space-between',
                                 alignItems: 'center',
-                                margin: '5x 0'
+                                margin: '5x 0',
+                                '@media (max-width: 450px)': {
+                                    flexDirection: 'column',
+                                    padding: '5px 10px'
+                                },
                             })}>
                                 <label htmlFor='date' className={css({
                                     color: `${styles.profile_picture_border_color}`,
                                     textTransform: 'uppercase',
                                     fontWeight: '300',
-                                    letterSpacing: '1.5px'
+                                    letterSpacing: '1.5px',
+                                    '@media (max-width: 450px)': {
+                                        alignSelf: 'flex-start',
+                                        paddingBottom: '5px'
+                                    },
                                 })}>Date </label>
                                 <input type='text' placeholder='date' id='date' className={css({
                                     height: '25px',
@@ -208,6 +245,9 @@ export default function AdminPhotosAdd() {
                                     outline: 'none',
                                     color: `${styles.icon_color_hover}`,
                                     fontWeight: 'bold',
+                                    '@media (max-width: 450px)': {
+                                        width: '100%'
+                                    },
                                     "::placeholder" : {
                                         color: `${styles.profile_picture_border_color}`,
                                         textTransform: 'uppercase',
@@ -221,13 +261,21 @@ export default function AdminPhotosAdd() {
                                 display: 'flex',
                                 justifyContent: 'space-between',
                                 alignItems: 'center',
-                                margin: '5px 0'
+                                margin: '5px 0',
+                                '@media (max-width: 450px)': {
+                                    flexDirection: 'column',
+                                    padding: '5px 10px'
+                                },
                             })}>
                                 <label htmlFor='description' className={css({
                                     color: `${styles.profile_picture_border_color}`,
                                     textTransform: 'uppercase',
                                     fontWeight: '300',
-                                    letterSpacing: '1.5px'
+                                    letterSpacing: '1.5px',
+                                    '@media (max-width: 450px)': {
+                                        alignSelf: 'flex-start',
+                                        paddingBottom: '5px'
+                                    },
                                 })}>Description </label>
                                 <input type='text' placeholder='description' id='description' className={css({
                                     height: '25px',
@@ -239,6 +287,9 @@ export default function AdminPhotosAdd() {
                                     outline: 'none',
                                     color: `${styles.icon_color_hover}`,
                                     fontWeight: 'bold',
+                                    '@media (max-width: 450px)': {
+                                        width: '100%'
+                                    },
                                     "::placeholder" : {
                                         color: `${styles.profile_picture_border_color}`,
                                         textTransform: 'uppercase',
@@ -252,13 +303,21 @@ export default function AdminPhotosAdd() {
                                 display: 'flex',
                                 justifyContent: 'space-between',
                                 alignItems: 'center',
-                                margin: '5px 0'
+                                margin: '5px 0',
+                                '@media (max-width: 450px)': {
+                                    flexDirection: 'column',
+                                    padding: '5px 10px'
+                                },
                             })}>
                                 <label htmlFor='location' className={css({
                                     color: `${styles.profile_picture_border_color}`,
                                     textTransform: 'uppercase',
                                     fontWeight: '300',
-                                    letterSpacing: '1.5px'
+                                    letterSpacing: '1.5px',
+                                    '@media (max-width: 450px)': {
+                                        alignSelf: 'flex-start',
+                                        paddingBottom: '5px'
+                                    },
                                 })}>Location </label>
                                 <input type='text' placeholder='location' id='location' className={css({
                                     height: '25px',
@@ -270,6 +329,9 @@ export default function AdminPhotosAdd() {
                                     outline: 'none',
                                     color: `${styles.icon_color_hover}`,
                                     fontWeight: 'bold',
+                                    '@media (max-width: 450px)': {
+                                        width: '100%'
+                                    },
                                     "::placeholder" : {
                                         color: `${styles.profile_picture_border_color}`,
                                         textTransform: 'uppercase',
@@ -283,13 +345,21 @@ export default function AdminPhotosAdd() {
                                 display: 'flex',
                                 justifyContent: 'space-between',
                                 alignItems: 'center',
-                                margin: '5px 0'
+                                margin: '5px 0',
+                                '@media (max-width: 450px)': {
+                                    flexDirection: 'column',
+                                    padding: '5px 10px'
+                                },
                             })}>
                                 <label htmlFor='photographer' className={css({
                                     color: `${styles.profile_picture_border_color}`,
                                     textTransform: 'uppercase',
                                     fontWeight: '300',
-                                    letterSpacing: '1.5px'
+                                    letterSpacing: '1.5px',
+                                    '@media (max-width: 450px)': {
+                                        alignSelf: 'flex-start',
+                                        paddingBottom: '5px'
+                                    },
                                 })}>Photographer </label>
                                 <input type='text' placeholder='photographer' id='photographer' className={css({
                                     height: '25px',
@@ -301,6 +371,9 @@ export default function AdminPhotosAdd() {
                                     outline: 'none',
                                     color: `${styles.icon_color_hover}`,
                                     fontWeight: 'bold',
+                                    '@media (max-width: 450px)': {
+                                        width: '100%'
+                                    },
                                     "::placeholder" : {
                                         color: `${styles.profile_picture_border_color}`,
                                         textTransform: 'uppercase',
@@ -314,13 +387,21 @@ export default function AdminPhotosAdd() {
                                 display: 'flex',
                                 justifyContent: 'space-between',
                                 alignItems: 'center',
-                                margin: '5px 0'
+                                margin: '5px 0',
+                                '@media (max-width: 450px)': {
+                                    flexDirection: 'column',
+                                    padding: '5px 10px'
+                                },
                             })}>
                                 <label htmlFor='Event' className={css({
                                     color: `${styles.profile_picture_border_color}`,
                                     textTransform: 'uppercase',
                                     fontWeight: '300',
-                                    letterSpacing: '1.5px'
+                                    letterSpacing: '1.5px',
+                                    '@media (max-width: 450px)': {
+                                        alignSelf: 'flex-start',
+                                        paddingBottom: '5px'
+                                    },
                                 })}>Event </label>
                                 <input type='text' placeholder='event' id='event' className={css({
                                     height: '25px',
@@ -332,6 +413,9 @@ export default function AdminPhotosAdd() {
                                     outline: 'none',
                                     color: `${styles.icon_color_hover}`,
                                     fontWeight: 'bold',
+                                    '@media (max-width: 450px)': {
+                                        width: '100%'
+                                    },
                                     "::placeholder" : {
                                         color: `${styles.profile_picture_border_color}`,
                                         textTransform: 'uppercase',
@@ -345,13 +429,21 @@ export default function AdminPhotosAdd() {
                                 display: 'flex',
                                 justifyContent: 'space-between',
                                 alignItems: 'center',
-                                margin: '5px 0'
+                                margin: '5px 0',
+                                '@media (max-width: 450px)': {
+                                    flexDirection: 'column',
+                                    padding: '5px 10px'
+                                },
                             })}>
                                 <label htmlFor='tags' className={css({
                                     color: `${styles.profile_picture_border_color}`,
                                     textTransform: 'uppercase',
                                     fontWeight: '300',
-                                    letterSpacing: '1.5px'
+                                    letterSpacing: '1.5px',
+                                    '@media (max-width: 450px)': {
+                                        alignSelf: 'flex-start',
+                                        paddingBottom: '5px'
+                                    },
                                 })}>Tags </label>
                                 <input type='text' placeholder='tags' id='tags' className={css({
                                     height: '25px',
@@ -363,6 +455,9 @@ export default function AdminPhotosAdd() {
                                     outline: 'none',
                                     color: `${styles.icon_color_hover}`,
                                     fontWeight: 'bold',
+                                    '@media (max-width: 450px)': {
+                                        width: '100%'
+                                    },
                                     "::placeholder" : {
                                         color: `${styles.profile_picture_border_color}`,
                                         textTransform: 'uppercase',
