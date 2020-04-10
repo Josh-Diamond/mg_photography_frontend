@@ -49,7 +49,7 @@ function App() {
         <Route exact path='/gallery' render={props => <Pictures {...props} photos={modelingGallery ? modelingPhotos : photographyGallery ? photographyPhotos : artGallery ? artPhotos : photos} />} setModelingGallery={setModelingGallery} setPhotographyGallery={setPhotographyGallery} setArtGallery={setArtGallery} />
         <Route exact path='/admin' render={props => <Login {...props} />} />
         <PrivateRoute exact path='/admin_access' view={Admin} />
-        <PrivateRoute exact path='/admin_access/manage_photos' view={AdminPhotos} photos={photos} />
+        <PrivateRoute exact path='/admin_access/manage_photos' view={AdminPhotos} photos={photos}  />
         <PrivateRoute exact path='/admin_access/update' view={AdminUpdate} />
         <PrivateRoute exact path='/admin_access/manage_photos/add_photo' view={AdminPhotosAdd} />
       </Switch>

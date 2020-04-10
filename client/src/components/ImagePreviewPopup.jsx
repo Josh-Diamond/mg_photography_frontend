@@ -26,13 +26,13 @@ export default function ImagePreviewPopup({ image, setImagePreview }) {
             justifyContent: 'center',
             alignItems: 'center'
         })}>
-            <div className={css({
+           {imageURL ? <div className={css({
                 display: 'flex',
                 flexDirection: 'column',
                 justifyContent: 'space-between',
                 alignItems: 'flex-start',
-                padding: '2%',
-                paddingTop: '1%',
+                padding: '5%',
+                // paddingTop: '1%',
                 backgroundColor: 'white',
                 maxWidth: '800px',
                 // width: '80%',
@@ -45,22 +45,43 @@ export default function ImagePreviewPopup({ image, setImagePreview }) {
                 border: '2px solid #e6e6e6'
                 // border: '2px solid #515E66'
             })}>
-                {imageURL ?
+                {/* {imageURL ?
                 <h2 className={css({
                     // marginTop: '10px',
                     marginBottom: '8%'
                     // textTransform: 'uppercase'
-                })}>Image Preview</h2> : null }
-                { imageURL ? <img src={`https://i.imgur.com/${imageURL}.jpg`} className={css({
+                })}>Image Preview</h2> : null } */}
+                <img src={`https://i.imgur.com/${imageURL}.jpg`} className={css({
                     maxHeight: '75vh',
                     maxWidth: '75vw',
                     borderRadius: '5px',
                 '-webkit-box-shadow': '0px 0px 25px 2px rgba(230,230,230,1)',
                 '-moz-box-shadow': '0px 0px 25px 2px rgba(230,230,230,1)',
                 boxShadow: '0px 0px 25px 2px rgba(230,230,230,1)',
-                })} /> :
-            <h2>No Image URL provided</h2> }
-            </div>
+                })} /> 
+                </div> :
+                <div className={css({
+                    display: 'flex',
+                    flexDirection: 'column',
+                    justifyContent: 'space-between',
+                    alignItems: 'flex-start',
+                    padding: '2%',
+                    // paddingTop: '1%',
+                    backgroundColor: 'white',
+                    maxWidth: '800px',
+                    // width: '80%',
+                    flexWrap: 'wrap',
+                    // minHeight: '100px',
+                    borderRadius: '5px',
+                    letterSpacing: '0.15rem',
+                    backgroundColor: '#110C11',
+                    color: '#e6e6e6',
+                    border: '2px solid #e6e6e6'
+                    // border: '2px solid #515E66'
+                })}>
+                    <h2>No Image URL provided</h2>
+                    </div> }
+            
         </div>
     )
 }

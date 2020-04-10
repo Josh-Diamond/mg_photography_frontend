@@ -6,9 +6,9 @@ import axios from 'axios'
 import { IoMdAddCircle } from 'react-icons/io'
 import { Link } from 'react-router-dom'
 
-export default function AdminPhotos({ photos }) {
-    const [allPhotos, setAllPhotos] = useState([])
 
+export default function AdminPhotos({ photos, uploadSuccess, setUploadSuccess }) {
+    const [allPhotos, setAllPhotos] = useState([])
     useEffect(() => {
         axios
             .get('https://mg-photography-backend.herokuapp.com/api/pictures')

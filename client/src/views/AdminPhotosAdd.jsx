@@ -4,9 +4,16 @@ import { styles } from '../Styles'
 import { AiFillPicture } from 'react-icons/ai'
 import imagePreviewPopup from '../components/ImagePreviewPopup'
 import ImagePreviewPopup from '../components/ImagePreviewPopup'
+import axiosWithAuth from '../components/axiosWIthAuth'
+import axios from 'axios'
+import SuccessPopup from '../components/SuccessPopup'
+import uploadFailure from '../components/UploadFailure'
+import UploadFailure from '../components/UploadFailure'
 
-export default function AdminPhotosAdd() {
+export default function AdminPhotosAdd({ history }) {
     const [imagePreview, setImagePreview] = useState(false)
+    const [uploadSuccess, setUploadSuccess] = useState(false)
+    const [uploadFailure, setUploadFailure] = useState(false)
     const [formData, setFormData] = useState({
        category: '',
        date: '',
@@ -21,7 +28,15 @@ export default function AdminPhotosAdd() {
     const formHandler = e => {
         setFormData({...formData, [e.target.name]: e.target.value})
     }
-    console.log('formData', formData)
+
+    const submitHandler = e => {
+        e.preventDefault()
+        axios
+            .post('https://mg-photography-backend.herokuapp.com/api/pictures/', formData)
+            .then(res => setUploadSuccess(true))
+            .catch(err => setUploadFailure(true))
+    }
+
     return (
         <div className={css({
             height: '100vh',
@@ -38,6 +53,8 @@ export default function AdminPhotosAdd() {
                 '-ms-user-select': 'none',
                 'user-select': 'none',
             })}>
+                {uploadFailure ? <UploadFailure setUploadFailure={setUploadFailure} history={history} /> : null}
+                {uploadSuccess ? <SuccessPopup setUploadSuccess={setUploadSuccess} history={history} /> : null }
                 { imagePreview ? <ImagePreviewPopup setImagePreview={setImagePreview} image={formData.image_url} /> : null}
                 {/* <h1 className={css({
                      color: '#41cc66',
@@ -140,7 +157,7 @@ export default function AdminPhotosAdd() {
                             {/* Marysa <span className={css({ color: '#41cc66'})}>Garcia</span> */}
                             {`Add Photo`}
                         </h1>
-                        <form className={css({
+                        <form onSubmit={submitHandler} className={css({
                             maxWidth: '350px',
                             // border: '1px solid red',
                             margin: '0 auto',
@@ -574,7 +591,7 @@ export default function AdminPhotosAdd() {
                                 })} />
                             </div>
                         </form>
-                        <ul className={css({ 
+                        {/* <ul className={css({ 
                             margin: '35px 0px 0rem',
                             width: '100%',
                             marginLeft: '0px',
@@ -597,6 +614,71 @@ export default function AdminPhotosAdd() {
                             
                         })}> 
                             
+                        </ul> */}
+                        <ul onClick={submitHandler} className={css({ 
+                            margin: '35px 0px 0rem',
+                            width: '100%',
+                            marginLeft: '0px',
+                            display: 'flex',
+                            // cursor: 'default',
+                            paddingLeft: '0px',
+                            listStyle: 'none',
+                            // marginBlockStart: '1rem',
+                            // marginBlockEnd: '1rem',
+                            // marginInlineStart: '0px',
+                            // marginInlineEnd: '0px',
+                            // paddingInlineStart: '40px',
+                            textSlign: 'center',
+                            '-webkit-touch-callout': 'none',
+                            '-webkit-user-select': 'none',
+                            '-khtml-user-select': 'none',
+                            '-moz-user-select': 'none',
+                            '-ms-user-select': 'none',
+                            'user-select': 'none',
+                            
+                        })}> 
+                            <li className={css({
+                                margin: '0 auto',
+                                paddingLeft: '0px',
+                                verticalAlign: 'middle',
+                                padding: '0px 0px 0px 0.75rem',
+                                display: 'list-item',
+                                textAlign: '-webkit-match-parent',
+                                '@media (max-width: 385px)': {
+                                    padding: '0px 0px 0px 0px'  
+                                },
+                            })}>
+                                <div className={css({
+                                    '-webkit-appearance': 'none',
+                                    display: 'inline-block',
+                                    height: '2.75rem',
+                                    lineHeight: '2.75rem',
+                                    backgroundColor: 'transparent',
+                                    cursor: 'pointer',
+                                    textAlign: 'center',
+                                    whiteSpace: 'nowrap',
+                                    color: `${styles.view_gallery_text_color} !important`,
+                                    transition: 'background-color 0.2s ease-in-out 0s, border-color 0.2s ease-in-out 0s, color 0.2s ease-in-out 0s',
+                                    padding: '0px 1.5rem',
+                                    borderRadius: '4px',
+                                    borderWidth: '1px',
+                                    borderStyle: 'solid',
+                                    borderColor: `${styles.view_gallery_border_color}`,
+                                    borderImage: 'initial',
+                                    textDecoration: 'none',
+                                    "&:hover": {
+                                        color: `${styles.view_gallery_text_color_hover} !important`,
+                                        border: `1px solid ${styles.view_gallery_border_color_hover} !important`
+                                        // color: '#648f63 !important',
+                                        // border: '1px solid #648f63 !important'
+                                    },
+                                    '@media (max-width: 470px)': {
+                                        width: '75%',
+                                        margin: '0 auto',
+                                        fontSize: '.9rem',
+                                    }
+                                })}>ADD PHOTO</div>
+                            </li>
                         </ul>
                 </header>
                 </section>
