@@ -1,9 +1,27 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { css } from 'emotion'
 import { styles } from '../Styles'
 import { AiFillPicture } from 'react-icons/ai'
+import imagePreviewPopup from '../components/ImagePreviewPopup'
+import ImagePreviewPopup from '../components/ImagePreviewPopup'
 
 export default function AdminPhotosAdd() {
+    const [imagePreview, setImagePreview] = useState(false)
+    const [formData, setFormData] = useState({
+       category: '',
+       date: '',
+       description: '',
+       location: '',
+       photographer: '',
+       event: '',
+       tags: '',
+       image_url: '' 
+    })
+
+    const formHandler = e => {
+        setFormData({...formData, [e.target.name]: e.target.value})
+    }
+    console.log('formData', formData)
     return (
         <div className={css({
             height: '100vh',
@@ -20,6 +38,7 @@ export default function AdminPhotosAdd() {
                 '-ms-user-select': 'none',
                 'user-select': 'none',
             })}>
+                { imagePreview ? <ImagePreviewPopup setImagePreview={setImagePreview} image={formData.image_url} /> : null}
                 {/* <h1 className={css({
                      color: '#41cc66',
                      fontFamily: "'Great Vibes', cursive",
@@ -143,8 +162,7 @@ export default function AdminPhotosAdd() {
                                 <div className={css({
                                     display: 'flex',
                                     justifyContent: 'space-between',
-                                    width: '100%',
-                                    
+                                    width: '100%'
                                 })}>
                                     <label htmlFor='image_url' className={css({
                                         color: `${styles.profile_picture_border_color}`,
@@ -158,11 +176,12 @@ export default function AdminPhotosAdd() {
                                     })}>Image Url <span className={css({
                                         color: '#41cc66'
                                     })}>*</span> </label>
-                                    <AiFillPicture className={css({
+                                    <AiFillPicture onClick={() => setImagePreview(true)} className={css({
                                 // marginRight: '-100px',
                                 // position: 'relative',
                                 // right: '70px',
                                 fontSize: '1.21rem',
+                                // border: '1px solid red',
                                 color: `#7d6247`,
                                 transition: '.4s',
                                 cursor: 'pointer',
@@ -175,7 +194,7 @@ export default function AdminPhotosAdd() {
                                 }
                             })} />
                                 </div>
-                                <input type='text' placeholder='image url' id='image_url' className={css({
+                                <input type='text' placeholder='image url' id='image_url' name='image_url' onChange={formHandler} className={css({
                                     height: '25px',
                                     width: '35%',
                                     minWidth: '150px',
@@ -198,7 +217,7 @@ export default function AdminPhotosAdd() {
                                         letterSpacing: '1.5px'
                                     }
                                 })} />
-                            <AiFillPicture className={css({
+                            <AiFillPicture onClick={() => setImagePreview(true)} className={css({
                                 marginRight: '-100px',
                                 position: 'relative',
                                 right: '70px',
@@ -258,7 +277,7 @@ export default function AdminPhotosAdd() {
                                         letterSpacing: '1.5px'
                                     }
                                 })} /> */}
-                                <select id="category" name="category" placeholder='category' className={css({
+                                <select id="category" name="category" placeholder='category' onChange={formHandler} className={css({
                                     height: '25px',
                                     width: '35%',
                                     appearance: 'none',
@@ -322,7 +341,7 @@ export default function AdminPhotosAdd() {
                                         paddingBottom: '5px'
                                     },
                                 })}>Date </label>
-                                <input type='text' placeholder='date' id='date' className={css({
+                                <input type='text' placeholder='date' id='date' name='date' onChange={formHandler} className={css({
                                     height: '25px',
                                     width: '35%',
                                     minWidth: '150px',
@@ -364,7 +383,7 @@ export default function AdminPhotosAdd() {
                                         paddingBottom: '5px'
                                     },
                                 })}>Description </label>
-                                <input type='text' placeholder='description' id='description' className={css({
+                                <input type='text' placeholder='description' id='description' name='description' onChange={formHandler} className={css({
                                     height: '25px',
                                     width: '35%',
                                     minWidth: '150px',
@@ -406,7 +425,7 @@ export default function AdminPhotosAdd() {
                                         paddingBottom: '5px'
                                     },
                                 })}>Location </label>
-                                <input type='text' placeholder='location' id='location' className={css({
+                                <input type='text' placeholder='location' id='location' name='location' onChange={formHandler} className={css({
                                     height: '25px',
                                     width: '35%',
                                     minWidth: '150px',
@@ -448,7 +467,7 @@ export default function AdminPhotosAdd() {
                                         paddingBottom: '5px'
                                     },
                                 })}>Photographer </label>
-                                <input type='text' placeholder='photographer' id='photographer' className={css({
+                                <input type='text' placeholder='photographer' id='photographer' name='photographer' onChange={formHandler} className={css({
                                     height: '25px',
                                     width: '35%',
                                     minWidth: '150px',
@@ -490,7 +509,7 @@ export default function AdminPhotosAdd() {
                                         paddingBottom: '5px'
                                     },
                                 })}>Event </label>
-                                <input type='text' placeholder='event' id='event' className={css({
+                                <input type='text' placeholder='event' id='event' name='event' onChange={formHandler} className={css({
                                     height: '25px',
                                     width: '35%',
                                     minWidth: '150px',
@@ -533,7 +552,7 @@ export default function AdminPhotosAdd() {
                                         paddingBottom: '5px'
                                     },
                                 })}>Tags </label>
-                                <input type='text' placeholder='tags' id='tags' className={css({
+                                <input type='text' placeholder='tags' id='tags' name='tags' onChange={formHandler} className={css({
                                     height: '25px',
                                     width: '35%',
                                     minWidth: '150px',
