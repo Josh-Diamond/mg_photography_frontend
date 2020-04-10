@@ -148,7 +148,7 @@ export default function AdminPhotosAdd() {
                                         alignSelf: 'flex-start',
                                         paddingBottom: '5px'
                                     },
-                                })}>Image Url<span className={css({
+                                })}>Image Url <span className={css({
                                     color: '#41cc66'
                                 })}>*</span> </label>
                                 <input type='text' placeholder='image url' id='image_url' className={css({
@@ -192,7 +192,7 @@ export default function AdminPhotosAdd() {
                                         alignSelf: 'flex-start',
                                         paddingBottom: '5px'
                                     },
-                                })}>Category<span className={css({
+                                })}>Category <span className={css({
                                     color: '#41cc66'
                                 })}>*</span> </label>
                                 <input type='text' placeholder='category' id='category' className={css({
