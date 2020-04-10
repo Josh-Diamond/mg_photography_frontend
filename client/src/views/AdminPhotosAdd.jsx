@@ -219,7 +219,7 @@ export default function AdminPhotosAdd() {
                                     height: '25px',
                                     width: '35%',
                                     appearance: 'none',
-                                    // background: 'red',
+                                    background: 'white',
                                     minWidth: '150px',
                                     borderRadius: '5px',
                                     border: 'none',
