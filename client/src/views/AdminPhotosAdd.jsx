@@ -1,6 +1,7 @@
 import React from 'react'
 import { css } from 'emotion'
 import { styles } from '../Styles'
+import { AiFillPicture } from 'react-icons/ai'
 
 export default function AdminPhotosAdd() {
     return (
@@ -56,7 +57,7 @@ export default function AdminPhotosAdd() {
                     },
                     '@media (max-width: 500px)': {
                         padding: '3rem 0rem',
-                        width: '85%'
+                        width: '95%'
                     },
                     '@media (max-width: 470px)': {
                         // height: '525px'
@@ -139,18 +140,41 @@ export default function AdminPhotosAdd() {
                                     padding: '5px 10px'
                                 },
                             })}>
-                                <label htmlFor='image_url' className={css({
-                                    color: `${styles.profile_picture_border_color}`,
-                                    textTransform: 'uppercase',
-                                    fontWeight: '300',
-                                    letterSpacing: '1.5px',
-                                    '@media (max-width: 450px)': {
-                                        alignSelf: 'flex-start',
-                                        paddingBottom: '5px'
-                                    },
-                                })}>Image Url <span className={css({
-                                    color: '#41cc66'
-                                })}>*</span> </label>
+                                <div className={css({
+                                    display: 'flex',
+                                    justifyContent: 'space-between',
+                                    width: '100%',
+                                    
+                                })}>
+                                    <label htmlFor='image_url' className={css({
+                                        color: `${styles.profile_picture_border_color}`,
+                                        textTransform: 'uppercase',
+                                        fontWeight: '300',
+                                        letterSpacing: '1.5px',
+                                        '@media (max-width: 450px)': {
+                                            alignSelf: 'flex-start',
+                                            paddingBottom: '5px'
+                                        },
+                                    })}>Image Url <span className={css({
+                                        color: '#41cc66'
+                                    })}>*</span> </label>
+                                    <AiFillPicture className={css({
+                                // marginRight: '-100px',
+                                // position: 'relative',
+                                // right: '70px',
+                                fontSize: '1.21rem',
+                                color: `#7d6247`,
+                                transition: '.4s',
+                                cursor: 'pointer',
+                                '&:hover': {
+                                    color: `${styles.icon_color_hover}`,
+                                },
+                                '@media (min-width: 451px)': {
+                                    opacity: '0',
+                                    transition: 'none'
+                                }
+                            })} />
+                                </div>
                                 <input type='text' placeholder='image url' id='image_url' className={css({
                                     height: '25px',
                                     width: '35%',
@@ -164,6 +188,9 @@ export default function AdminPhotosAdd() {
                                     '@media (max-width: 450px)': {
                                         width: '100%'
                                     },
+                                    '@media (min-width: 450px)': {
+                                        marginLeft: '-230px'
+                                    },
                                     "::placeholder" : {
                                         color: `${styles.profile_picture_border_color}`,
                                         textTransform: 'uppercase',
@@ -171,6 +198,22 @@ export default function AdminPhotosAdd() {
                                         letterSpacing: '1.5px'
                                     }
                                 })} />
+                            <AiFillPicture className={css({
+                                marginRight: '-100px',
+                                position: 'relative',
+                                right: '70px',
+                                fontSize: '1.21rem',
+                                color: `#7d6247`,
+                                transition: '.4s',
+                                cursor: 'pointer',
+                                '&:hover': {
+                                    color: `${styles.icon_color_hover}`,
+                                },
+                                '@media (max-width: 450px)': {
+                                    display: 'none',
+                                    // transition: 'none'
+                                }
+                            })} />
                             </div>
                             {/* Category */}
                             <div className={css({
