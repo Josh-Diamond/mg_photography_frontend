@@ -32,6 +32,7 @@ export default function ImagePreviewPopup({ image, setImagePreview }) {
                 justifyContent: 'space-between',
                 alignItems: 'flex-start',
                 padding: '2%',
+                paddingTop: '1%',
                 backgroundColor: 'white',
                 maxWidth: '800px',
                 // width: '80%',
@@ -42,15 +43,21 @@ export default function ImagePreviewPopup({ image, setImagePreview }) {
                 backgroundColor: '#110C11',
                 color: '#e6e6e6',
                 border: '2px solid #e6e6e6'
+                // border: '2px solid #515E66'
             })}>
                 {imageURL ?
                 <h2 className={css({
-                    margin: '10px 0px',
+                    // marginTop: '10px',
+                    marginBottom: '8%'
                     // textTransform: 'uppercase'
                 })}>Image Preview</h2> : null }
                 { imageURL ? <img src={`https://i.imgur.com/${imageURL}.jpg`} className={css({
                     maxHeight: '75vh',
-                    maxWidth: '75vw'
+                    maxWidth: '75vw',
+                    borderRadius: '5px',
+                '-webkit-box-shadow': '0px 0px 25px 2px rgba(230,230,230,1)',
+                '-moz-box-shadow': '0px 0px 25px 2px rgba(230,230,230,1)',
+                boxShadow: '0px 0px 25px 2px rgba(230,230,230,1)',
                 })} /> :
             <h2>No Image URL provided</h2> }
             </div>
