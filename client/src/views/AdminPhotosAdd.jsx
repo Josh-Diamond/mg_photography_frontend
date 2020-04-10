@@ -195,7 +195,7 @@ export default function AdminPhotosAdd() {
                                 })}>Category <span className={css({
                                     color: '#41cc66'
                                 })}>*</span> </label>
-                                <input type='text' placeholder='category' id='category' className={css({
+                                {/* <input type='text' placeholder='category' id='category' className={css({
                                     height: '25px',
                                     width: '35%',
                                     minWidth: '150px',
@@ -214,7 +214,49 @@ export default function AdminPhotosAdd() {
                                         fontWeight: '300',
                                         letterSpacing: '1.5px'
                                     }
-                                })} />
+                                })} /> */}
+                                <select id="category" name="category" placeholder='category' className={css({
+                                    height: '25px',
+                                    width: '35%',
+                                    appearance: 'none',
+                                    // background: 'red',
+                                    minWidth: '150px',
+                                    borderRadius: '5px',
+                                    border: 'none',
+                                    textAlign: 'center',
+                                    outline: 'none',
+                                    color: `${styles.icon_color_hover}`,
+                                    fontWeight: 'bold',
+                                    '@media (max-width: 450px)': {
+                                        width: '100%'
+                                    },
+                                    "::placeholder" : {
+                                        color: `${styles.profile_picture_border_color}`,
+                                        textTransform: 'uppercase',
+                                        fontWeight: '300',
+                                        letterSpacing: '1.5px'
+                                    }
+                                })}>
+                                    <option value=''></option>
+                                    <option value="modeling" className={css({
+                                        color: `${styles.profile_picture_border_color}`,
+                                        textTransform: 'uppercase',
+                                        fontWeight: '300',
+                                        letterSpacing: '1.5px',
+                                    })}>Modeling</option>
+                                    <option value="photography" className={css({
+                                        color: `${styles.profile_picture_border_color}`,
+                                        textTransform: 'uppercase',
+                                        fontWeight: '300',
+                                        letterSpacing: '1.5px'
+                                    })}>Photography</option>
+                                    <option value="art" className={css({
+                                        color: `${styles.profile_picture_border_color}`,
+                                        textTransform: 'uppercase',
+                                        fontWeight: '300',
+                                        letterSpacing: '1.5px'
+                                    })}>Art</option>
+                                </select>
                             </div>
                             {/* Date */}
                             <div className={css({
