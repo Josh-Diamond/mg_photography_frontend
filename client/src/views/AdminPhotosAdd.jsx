@@ -14,6 +14,7 @@ export default function AdminPhotosAdd({ history }) {
     const [imagePreview, setImagePreview] = useState(false)
     const [uploadSuccess, setUploadSuccess] = useState(false)
     const [uploadFailure, setUploadFailure] = useState(false)
+
     const [formData, setFormData] = useState({
        category: '',
        date: '',

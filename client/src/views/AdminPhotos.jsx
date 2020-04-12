@@ -5,16 +5,31 @@ import ManageCard from '../components/ManageCard'
 import axios from 'axios'
 import { IoMdAddCircle } from 'react-icons/io'
 import { Link } from 'react-router-dom'
+import DeletePopup from '../components/DeletePopup'
+import SuccessfulDelete from '../components/SuccessfulDelete'
+import DeleteFailure from '../components/DeleteFailure'
 
-
-export default function AdminPhotos({ photos, uploadSuccess, setUploadSuccess }) {
+export default function AdminPhotos({ photos, uploadSuccess, setUploadSuccess, history, location }) {
     const [allPhotos, setAllPhotos] = useState([])
+    const [confirmDelete, setConfirmDelete] = useState(false)
+    const [deleteID, setDeleteID] = useState(null)
+    const [successfulDelete, setSuccessfulDelete] = useState(false)
+    const [deleteFailure, setDeleteFailure] = useState(false)
+
+    const deleteSubmitter = e => {
+        axios
+            .delete(`https://mg-photography-backend.herokuapp.com/api/pictures/${deleteID}`)
+            .then(res => setSuccessfulDelete(true))
+            .catch(err => setDeleteFailure(true))
+    }
+    console.log('deleteID', deleteID)
     useEffect(() => {
         axios
             .get('https://mg-photography-backend.herokuapp.com/api/pictures')
             .then(res => setAllPhotos(res.data))
             .catch(err => console.log(err))
     },[])
+
 
     return (
         <div className={css({
@@ -31,6 +46,9 @@ export default function AdminPhotos({ photos, uploadSuccess, setUploadSuccess })
             '-ms-user-select': 'none',
             'user-select': 'none',
         })}>
+            {confirmDelete ? <DeletePopup setConfirmDelete={setConfirmDelete} history={history} deleteSubmitter={deleteSubmitter} /> : null}
+            {successfulDelete ? <SuccessfulDelete setSuccessfulDelete={setSuccessfulDelete} setConfirmDelete={setConfirmDelete} setAllPhotos={setAllPhotos} /> : null}
+            {deleteFailure ? <DeleteFailure setDeleteFailure={setDeleteFailure} /> : null}
             <h1 className={css({
                  color: '#41cc66',
                  fontFamily: "'Great Vibes', cursive",
@@ -73,7 +91,7 @@ export default function AdminPhotos({ photos, uploadSuccess, setUploadSuccess })
                 {allPhotos.length !== 0 ?
                 allPhotos.map(photo => {
                     let img_url = photo.image_url.slice(18, photo.image_url.length)
-                   return <ManageCard photo={photo} image={img_url} />
+                   return <ManageCard photo={photo} image={img_url} setConfirmDelete={setConfirmDelete} deleteID={deleteID} setDeleteID={setDeleteID} />
                 }) :
                 <p>Loading...</p>}                
             </div>

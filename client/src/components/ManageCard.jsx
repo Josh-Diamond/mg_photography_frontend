@@ -3,8 +3,14 @@ import { css } from 'emotion'
 import { TiInfoLarge } from 'react-icons/ti'
 import { FaRegEdit } from 'react-icons/fa'
 import { MdDeleteForever } from 'react-icons/md'
+import axiosWithAuth from '../components/axiosWIthAuth'
 
-export default function ManageCard({ photo, image }) {
+export default function ManageCard({ photo, image, setConfirmDelete, setDeleteID }) {
+    const clickDelete = () => {
+        setConfirmDelete(true)
+        setDeleteID(photo.id)
+    }
+
     return (
         <div className={css({
             width: '220px',
@@ -52,7 +58,7 @@ export default function ManageCard({ photo, image }) {
                     }
                 })} />
                 {/* <MdDelete /> */}
-                <MdDeleteForever className={css({
+                <MdDeleteForever onClick={clickDelete} className={css({
                     fontSize: '1.8rem',
                     color: '#e6e6e6',
                     transition: '.4s',
