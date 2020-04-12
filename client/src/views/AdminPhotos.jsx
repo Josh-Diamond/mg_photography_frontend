@@ -11,7 +11,7 @@ import DeleteFailure from '../components/DeleteFailure'
 
 export default function AdminPhotos({ photos, uploadSuccess, setUploadSuccess, history, location }) {
     const [allPhotos, setAllPhotos] = useState([])
-    const [confirmDelete, setConfirmDelete] = useState(true)
+    const [confirmDelete, setConfirmDelete] = useState(false)
     const [deleteID, setDeleteID] = useState(null)
     const [successfulDelete, setSuccessfulDelete] = useState(false)
     const [deleteFailure, setDeleteFailure] = useState(false)
