@@ -276,6 +276,10 @@ export default function Pictures({ history, photos, setModelingGallery, setPhoto
                <img src={`https://i.imgur.com/${selected.image_url}.jpg`} className={css({
                     maxHeight: '100vh',
                     maxWidth: '100vw',
+                    borderRadius: '5px',
+                '-webkit-box-shadow': '0px 0px 20px 2px rgba(230,230,230,1)',
+                '-moz-box-shadow': '0px 0px 20px 2px rgba(230,230,230,1)',
+                boxShadow: '0px 0px 20px 2px rgba(230,230,230,1)',
                     '@media (max-width: 1150px)': {
                         alignSelf: 'center'
                     },
