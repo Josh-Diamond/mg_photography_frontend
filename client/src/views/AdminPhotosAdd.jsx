@@ -624,7 +624,7 @@ export default function AdminPhotosAdd({ history }) {
                             
                         </ul> */}
                         <ul onClick={submitHandler} className={css({ 
-                            margin: '35px 0px 0rem',
+                            margin: '20px 0px 0rem',
                             width: '100%',
                             marginLeft: '0px',
                             display: 'flex',
@@ -684,6 +684,7 @@ export default function AdminPhotosAdd({ history }) {
                                         width: '75%',
                                         margin: '0 auto',
                                         fontSize: '.9rem',
+                                        marginBottom: '20px'
                                     }
                                 })}>ADD PHOTO</div>
                             </li>
