@@ -42,6 +42,12 @@ export default function DeletePopup({ history, setConfirmDelete, deleteSubmitter
                 color: '#e6e6e6',
                 border: '2px solid #e6e6e6',
                 // border: '2px solid #515E66'
+                // '@media (max-width: 800px)': {
+                //     width: '50%'
+                // },
+                '@media (max-width: 600px)': {
+                    padding: '5%'
+                }
             })}>
             <h2 className={css({
                 margin: '0 auto'
@@ -50,7 +56,8 @@ export default function DeletePopup({ history, setConfirmDelete, deleteSubmitter
                 display: 'flex',
                 // border: '1px solid red',
                 alignItems: 'center',
-                justifyContent: 'space-between'
+                justifyContent: 'space-between',
+                margin: '0 auto'
             })}>
             <ul onClick={deleteSubmitter} className={css({ 
                             margin: '10px 0px 0rem',
@@ -81,9 +88,9 @@ export default function DeletePopup({ history, setConfirmDelete, deleteSubmitter
                                 // padding: '0px 0px 0px 0.75rem',
                                 display: 'list-item',
                                 textAlign: '-webkit-match-parent',
-                                '@media (max-width: 385px)': {
-                                    padding: '0px 0px 0px 0px'  
-                                },
+                                // '@media (max-width: 385px)': {
+                                //     padding: '0px 0px 0px 0px'  
+                                // },
                             })}>
                                 <div className={css({
                                     '-webkit-appearance': 'none',
@@ -110,11 +117,11 @@ export default function DeletePopup({ history, setConfirmDelete, deleteSubmitter
                                         // color: '#648f63 !important',
                                         // border: '1px solid #648f63 !important'
                                     },
-                                    '@media (max-width: 470px)': {
-                                        width: '75%',
-                                        margin: '0 auto',
-                                        fontSize: '.9rem',
-                                    }
+                                    // '@media (max-width: 470px)': {
+                                    //     width: '75%',
+                                    //     margin: '0 auto',
+                                    //     fontSize: '.9rem',
+                                    // }
                                 })}>YES</div>
                             </li>
                         </ul>
@@ -147,9 +154,9 @@ export default function DeletePopup({ history, setConfirmDelete, deleteSubmitter
                                 padding: '0px 0px 0px 1rem',
                                 display: 'list-item',
                                 textAlign: '-webkit-match-parent',
-                                '@media (max-width: 385px)': {
-                                    padding: '0px 0px 0px 0px'  
-                                },
+                                // '@media (max-width: 385px)': {
+                                //     padding: '0px 0px 0px 0px'  
+                                // },
                             })}>
                                 <div className={css({
                                     '-webkit-appearance': 'none',
@@ -176,11 +183,11 @@ export default function DeletePopup({ history, setConfirmDelete, deleteSubmitter
                                         // color: '#648f63 !important',
                                         // border: '1px solid #648f63 !important'
                                     },
-                                    '@media (max-width: 470px)': {
-                                        width: '75%',
-                                        margin: '0 auto',
-                                        fontSize: '.9rem',
-                                    }
+                                    // '@media (max-width: 470px)': {
+                                    //     width: '75%',
+                                    //     margin: '0 auto',
+                                    //     fontSize: '.9rem',
+                                    // }
                                 })}>NO</div>
                             </li>
                         </ul>
