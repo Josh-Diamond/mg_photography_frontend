@@ -9,11 +9,13 @@ import axios from 'axios'
 import SuccessPopup from '../components/SuccessPopup'
 import uploadFailure from '../components/UploadFailure'
 import UploadFailure from '../components/UploadFailure'
+import RequiredFields from '../components/RequiredFields'
 
 export default function AdminPhotosAdd({ history }) {
     const [imagePreview, setImagePreview] = useState(false)
     const [uploadSuccess, setUploadSuccess] = useState(false)
     const [uploadFailure, setUploadFailure] = useState(false)
+    const [validation, setValidation] = useState(false)
 
     const [formData, setFormData] = useState({
        category: '',
@@ -31,11 +33,15 @@ export default function AdminPhotosAdd({ history }) {
     }
 
     const submitHandler = e => {
+        if(formData.image_url === '' || formData.category === ''){
+            setValidation(true)
+        } else {
         e.preventDefault()
         axios
             .post('https://mg-photography-backend.herokuapp.com/api/pictures/', formData)
             .then(res => setUploadSuccess(true))
             .catch(err => setUploadFailure(true))
+        }
     }
 
     return (
@@ -54,8 +60,9 @@ export default function AdminPhotosAdd({ history }) {
                 '-ms-user-select': 'none',
                 'user-select': 'none',
             })}>
-                {uploadFailure ? <UploadFailure setUploadFailure={setUploadFailure} history={history} /> : null}
-                {uploadSuccess ? <SuccessPopup setUploadSuccess={setUploadSuccess} history={history} /> : null }
+                { validation ? <RequiredFields setValidation={setValidation} formData={formData} /> : null}
+                { uploadFailure ? <UploadFailure setUploadFailure={setUploadFailure} history={history} /> : null}
+                { uploadSuccess ? <SuccessPopup setUploadSuccess={setUploadSuccess} history={history} /> : null }
                 { imagePreview ? <ImagePreviewPopup setImagePreview={setImagePreview} image={formData.image_url} /> : null}
                 {/* <h1 className={css({
                      color: '#41cc66',
@@ -295,7 +302,7 @@ export default function AdminPhotosAdd({ history }) {
                                         letterSpacing: '1.5px'
                                     }
                                 })} /> */}
-                                <select id="category" name="category" placeholder='category' onChange={formHandler} className={css({
+                                <select id="category" required name="category" placeholder='category' onChange={formHandler} className={css({
                                     height: '25px',
                                     width: '35%',
                                     appearance: 'none',

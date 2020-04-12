@@ -19,15 +19,23 @@ export default function AdminPhotos({ photos, uploadSuccess, setUploadSuccess, h
     const deleteSubmitter = e => {
         axios
             .delete(`https://mg-photography-backend.herokuapp.com/api/pictures/${deleteID}`)
-            .then(res => setSuccessfulDelete(true))
+            .then(res => completedDelete())
             .catch(err => setDeleteFailure(true))
     }
-    console.log('deleteID', deleteID)
+
+    const completedDelete = () => {
+        setSuccessfulDelete(true)
+        axios
+        .get('https://mg-photography-backend.herokuapp.com/api/pictures')
+        .then(res => setAllPhotos(res.data))
+        .catch(err => console.log(err))
+    }
+    
     useEffect(() => {
         axios
-            .get('https://mg-photography-backend.herokuapp.com/api/pictures')
-            .then(res => setAllPhotos(res.data))
-            .catch(err => console.log(err))
+        .get('https://mg-photography-backend.herokuapp.com/api/pictures')
+        .then(res => setAllPhotos(res.data))
+        .catch(err => console.log(err))
     },[])
 
 
