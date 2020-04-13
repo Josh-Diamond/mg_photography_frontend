@@ -297,6 +297,10 @@ export default function Pictures({ history, photos, setModelingGallery, setPhoto
                             maxWidth: 'calc(100vw)',
                             maxHeight: '90vh'
                             },
+                            '@media (max-width: 400px)': {
+                                maxWidth: 'calc(96vw)'
+                                // display: 'none'
+                            },
                             // '@media (max-width: 600px)': {
                             //     maxWidth: 'calc(100vw)',
                             //     maxHeight: '100vh'
@@ -446,8 +450,9 @@ export default function Pictures({ history, photos, setModelingGallery, setPhoto
               display: 'flex',
               flexDirection: 'column',
               transition: '1s',
-              backgroundColor: '#110C11',
-            //   borderLeft: '6px solid #110c11',
+            //   backgroundColor: '#110C11',
+            backgroundColor: 'rgba(17,88,4,1)',
+              borderLeft: `2px solid #e6e6e6`,
               '@media (max-width: 1150px)': {
                 width: '0%',
                 display: 'none',
@@ -463,6 +468,7 @@ export default function Pictures({ history, photos, setModelingGallery, setPhoto
              flexDirection: 'column',
              overflowX: 'hidden',
              transition: '1s',
+             backgroundColor: 'rgba(17,88,4,1)',
              '@media (max-width: 1150px)': {
                 width: '0%',
                 display: 'none'
