@@ -12,6 +12,7 @@ import art from '../static/art.jpg'
 import { FaCalculator } from 'react-icons/fa'
 import Thumbnail from '../components/Thumbnail'
 import Popup from '../components/Popup'
+import { styles } from '../Styles'
 
 export default function Pictures({ history, photos, setModelingGallery, setPhotographyGallery, setArtGallery }) {
     const [openMenu, setOpenMenu] = useState(false)
@@ -102,8 +103,10 @@ export default function Pictures({ history, photos, setModelingGallery, setPhoto
         <div className={ css({
             display: 'flex',
             backgroundColor: '#110C11',
+            // backgroundColor: `${styles.card_background_color}`,
             overflowY: 'hidden',
             boxSizing: 'border-box',
+            // backgroundColor: `${styles.main_background_color}`,
             '-webkit-touch-callout': 'none',
                 '-webkit-user-select': 'none',
                 '-khtml-user-select': 'none',
@@ -124,6 +127,8 @@ export default function Pictures({ history, photos, setModelingGallery, setPhoto
             justifyContent: 'space-between',
             boxSizing: 'border-box',
             backgroundColor: '#110C11',
+            background: "radial-gradient(circle, rgba(162,255,145,1) 20%, rgba(123,175,62,1) 34%, rgba(210,138,81,1) 74%, rgba(17,88,4,1) 82%)",
+
             '@media (max-width: 1125px)': {
               justifyContent: 'center',
             },
@@ -135,6 +140,8 @@ export default function Pictures({ history, photos, setModelingGallery, setPhoto
             justifyContent: 'space-between',
             boxSizing: 'border-box',
             backgroundColor: '#110C11',
+            // backgroundColor: `${styles.main_background_color}`,
+            background: "radial-gradient(circle, rgba(162,255,145,1) 20%, rgba(123,175,62,1) 34%, rgba(210,138,81,1) 74%, rgba(17,88,4,1) 82%)",
             width: 'calc(100vw)',
             transition: '1s',
             // border: '1px solid red',
@@ -529,7 +536,8 @@ export default function Pictures({ history, photos, setModelingGallery, setPhoto
             <section className={ openMenu ? css({
              width: '300px',
               display: 'flex',
-              backgroundColor: '#110C11',
+            //   backgroundColor: '#110C11',
+            background: "radial-gradient(circle, rgba(162,255,145,1) 20%, rgba(123,175,62,1) 34%, rgba(210,138,81,1) 74%, rgba(17,88,4,1) 82%)",
               flexDirection: 'column',
               '-webkit-touch-callout': 'none',
                 '-webkit-user-select': 'none',
