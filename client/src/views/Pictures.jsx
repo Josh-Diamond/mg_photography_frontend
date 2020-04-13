@@ -13,6 +13,7 @@ import { FaCalculator } from 'react-icons/fa'
 import Thumbnail from '../components/Thumbnail'
 import Popup from '../components/Popup'
 import { styles } from '../Styles'
+import MobileNavPopup from '../components/MobileNavPopup'
 
 export default function Pictures({ history, photos, setModelingGallery, setPhotographyGallery, setArtGallery }) {
     const [openMenu, setOpenMenu] = useState(false)
@@ -119,7 +120,7 @@ export default function Pictures({ history, photos, setModelingGallery, setPhoto
                 maxHeight: '100vh'
             // },
         })}>
-
+            {/* <MobileNavPopup /> */}
 
         <div className={openMenu ? css({
             display: 'flex',
