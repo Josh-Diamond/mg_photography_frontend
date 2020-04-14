@@ -16,7 +16,7 @@ import { styles } from '../Styles'
 import MobileNavPopup from '../components/MobileNavPopup'
 
 export default function Pictures({ history, photos, setModelingGallery, setPhotographyGallery, setArtGallery }) {
-    const [openMenu, setOpenMenu] = useState(true)
+    const [openMenu, setOpenMenu] = useState(false)
     const [selectedIndex, setSelectedIndex] = useState(0)
     const [selected, setSelected] = useState('')
     const [popup, setPopup] = useState(false)
