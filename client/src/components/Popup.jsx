@@ -36,7 +36,9 @@ export default function Popup({ selected, setPopup }) {
                 color: '#e6e6e6',
                 border: '2px solid #e6e6e6'
             })}>
-                { selected.date || selected.location ?
+                { selected.location === '' && selected.date === '' && selected.description === '' && selected.photographer === '' ?
+                <h4>No Information Provided</h4>
+                : selected.date || selected.location ?
                 <div className={css({
                     maxWidth: '100%',
                     // border: '1px solid red',
