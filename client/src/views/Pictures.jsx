@@ -300,6 +300,9 @@ export default function Pictures({ history, photos, setModelingGallery, setPhoto
                     padding: '16px',
                     maxWidth: '88vw'
                 },
+                '@media (max-height: 300px)': {
+                    maxHeight: '80vh'
+                },
             })}>
                <img src={`https://i.imgur.com/${selected.image_url}.jpg`} className={css({
                     maxHeight: '90vh',
@@ -315,6 +318,9 @@ export default function Pictures({ history, photos, setModelingGallery, setPhoto
                 '@media (max-width: 450px)': {
                     // padding: '16px',
                     maxWidth: '88vw'
+                },
+                '@media (max-height: 300px)': {
+                    maxHeight: '80vh'
                 },
                     // '@media (max-width: 1150px)': {
                     //     alignSelf: 'center'
