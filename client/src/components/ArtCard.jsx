@@ -27,7 +27,7 @@ export default function ArtCard() {
                 width: 250,
             },
             
-            '@media (max-width: 900px)': {
+            '@media (max-width: 899px)': {
                 maxHeight: '500px',
                 maxWidth: '500px',
                 height: '100%',
@@ -82,7 +82,7 @@ export default function ArtCard() {
             '@media (min-width: 900px)': {
                 width: '200px',
                 height: '200px',
-                margin: '10%'
+                margin: '0%'
                 // margin: '10%',
                 // marginLeft: '80px',
                 // marginTop: '13px'
@@ -90,17 +90,17 @@ export default function ArtCard() {
             '@media (min-width: 1100px)': {
                 width: '225px',
                 height: '225px',
-                margin: '15%'
+                // margin: '15%'
             },
             '@media (min-width: 1200px)': {
                 width: '250px',
                 height: '250px',
-                margin: '15%'
+                // margin: '15%'
             },
             '@media (min-width: 1400px)': {
                 width: '300px',
                 height: '300px',
-                margin: '15%'
+                // margin: '15%'
             }
             // '@media (min-width: 950px)': {
             //     margin: '8%',

@@ -60,8 +60,9 @@ export default function Gallery({ history, setModelingGallery, setPhotographyGal
                         // borderBottom: '3px solid #e6e6e6',
                         // boxShadowBottom: '0px 0px 200px rgba(255, 255, 255, 1)',
                         borderRadius: '50%',
-                        '@media (max-width: 950px)': {
-                            margin: '2%'
+                        '@media (min-width: 900px)': {
+                            fontSize: '6rem',
+                            // marginBottom: '500px'
                         },
                         '@media (max-width: 600px)': {
                             marginTop: '5%'
@@ -77,13 +78,20 @@ export default function Gallery({ history, setModelingGallery, setPhotographyGal
                          display: 'block',
                          '@media (min-width: 900px)': {
                             display: 'flex',
-                            width: '100%',
+                            flexDirection: 'row',
+                            width: '100vw',
                             flexWrap: 'wrap',
                             overflowY: 'auto',
+                            padding: '50px 0px',
                             justifyContent: 'space-evenly',
                             // border: '1px solid red',
+                            // paddingTop: '-50px'
+                            // width: '800px'
+                            // position: 'relative',
+                            // bottom: '150px'
                             
                          },
+                         
                          '@media (max-width: 600px)': {
                             width: '500px'},
                         '@media (max-width: 470px)': {
