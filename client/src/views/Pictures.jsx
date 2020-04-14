@@ -271,7 +271,7 @@ export default function Pictures({ history, photos, setModelingGallery, setPhoto
                 justifyContent: 'center',
                 alignItems: 'center',
                 // alignItems: 'flex-start',
-                padding: '30px',
+                padding: '24px',
                 maxHeight: '90vh',
                 maxWidth: '70vw',
                 // paddingTop: '1%',
@@ -290,6 +290,16 @@ export default function Pictures({ history, photos, setModelingGallery, setPhoto
                 '@media (max-width: 900px)': {
                     maxWidth: '90vw'
                 },
+                '@media (max-width: 600px)': {
+                    padding: '20px'
+                },
+                '@media (max-width: 500px)': {
+                    padding: '18px'
+                },
+                '@media (max-width: 450px)': {
+                    padding: '16px',
+                    maxWidth: '88vw'
+                },
             })}>
                <img src={`https://i.imgur.com/${selected.image_url}.jpg`} className={css({
                     maxHeight: '90vh',
@@ -301,6 +311,10 @@ export default function Pictures({ history, photos, setModelingGallery, setPhoto
                 boxShadow: '0px 0px 20px 2px rgba(230,230,230,1)',
                 '@media (max-width: 900px)': {
                     maxWidth: '90vw'
+                },
+                '@media (max-width: 450px)': {
+                    // padding: '16px',
+                    maxWidth: '88vw'
                 },
                     // '@media (max-width: 1150px)': {
                     //     alignSelf: 'center'
