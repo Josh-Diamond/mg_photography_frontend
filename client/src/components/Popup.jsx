@@ -34,7 +34,10 @@ export default function Popup({ selected, setPopup }) {
                 letterSpacing: '0.15rem',
                 backgroundColor: '#110C11',
                 color: '#e6e6e6',
-                border: '2px solid #e6e6e6'
+                border: '2px solid #e6e6e6',
+                '@media (min-width: 601px)': {
+                    padding: '12px'
+                }
             })}>
                 { selected.location === '' && selected.date === '' && selected.description === '' && selected.photographer === '' ?
                 <h4>No Information Provided</h4>
@@ -46,14 +49,17 @@ export default function Popup({ selected, setPopup }) {
                     flexDirection: 'row',
                     display: 'flex',
                     width: '100%',
-                    justifyContent: 'center'
+                    justifyContent: 'center',
+                    // border: '1px solid yellow',
+                    padding: '2% 0px'
                     // color: '#7d6247'
                     // justifyContent: 'space-around'
                 })}>
                     <h4>{selected.location}</h4>
                     { selected.location ?
                     <p className={css({
-                        margin: '0 7px'
+                        margin: '0 10px',
+                        
                     })}>•</p>
                     : null}
                     <h4>{selected.date}</h4>
@@ -70,14 +76,16 @@ export default function Popup({ selected, setPopup }) {
                     fontSize: '1.3rem',
                     fontStyle: 'italic',
                     justifyContent: 'center',
-                    marginTop: '2%'
+                    // margin: '2% 0px',
+                    // border: '1px solid red'
                     // margin: '5px 0',
                     // color: '#7d6247',
                     // color: '#543313'
                 })}>
                     <h4 className={css({
                         letterSpacing: '0.1rem',
-                        marginTop: '2%'
+                        padding: '2% 0px',
+                        // border: '1px solid blue'
                         // fontSize: '1.rem'
                     })}>{selected.description}</h4>
                 </div>
@@ -98,14 +106,14 @@ export default function Popup({ selected, setPopup }) {
                 { selected.photographer ?
                 <div className={css({
                     maxWidth: '100%',
-                    // border: '1px solid red',
+                    // border: '1px solid purple',
                     wordWrap: 'break-word',
                     flexDirection: 'row',
                     display: 'flex',
                     width: '100%',
                     alignItems: 'center',
                     justifyContent: 'space-between',
-                    marginTop: '5%'
+                    padding: '3% 0px'
                 })}>
                     <h4 className={css({
                         fontFamily: "'Great Vibes', cursive",
