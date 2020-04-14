@@ -202,9 +202,11 @@ export default function Pictures({ history, photos, setModelingGallery, setPhoto
                 alignItems: 'center',
                 justifyContent: 'center',
                 height: '100vh',
-                '@media (max-width: 1150px)': {
-                    flexDirection: 'column'
-                },
+                // width: '100vw',
+                // border: '1px solid blue',
+                // '@media (max-width: 1150px)': {
+                //     flexDirection: 'column'
+                // },
             })}>
                 {/* top mobile row */}
                 {/* MENU ICON TEST */}
@@ -262,33 +264,60 @@ export default function Pictures({ history, photos, setModelingGallery, setPhoto
                     })} onClick={() => setOpenMenu(true)} />
                 </section> */}
                {photos[0] ? 
+            //    imageFrameTEST
+            <div className={css({
+                display: 'flex',
+                // flexDirection: 'column',
+                justifyContent: 'center',
+                alignItems: 'center',
+                // alignItems: 'flex-start',
+                padding: '30px',
+                maxHeight: '90vh',
+                maxWidth: '70vw',
+                // paddingTop: '1%',
+                // backgroundColor: 'white',
+                // maxWidth: '800px',
+                // width: '80%',
+                flexWrap: 'wrap',
+                // minHeight: '100px',
+                borderRadius: '5px',
+                // letterSpacing: '0.15rem',
+                backgroundColor: '#110C11',
+                // backgroundColor: 'rgba(230,230,230,1)',
+                color: '#e6e6e6',
+                border: '2px solid #e6e6e6'
+                // border: '2px solid #515E66'
+            })}>
                <img src={`https://i.imgur.com/${selected.image_url}.jpg`} className={css({
-                    maxHeight: '100vh',
-                    maxWidth: '100vw',
+                    maxHeight: '90vh',
+                    maxWidth: '70vw',
                     borderRadius: '5px',
                     // border: '1px solid red',
                 '-webkit-box-shadow': '0px 0px 20px 2px rgba(230,230,230,1)',
                 '-moz-box-shadow': '0px 0px 20px 2px rgba(230,230,230,1)',
                 boxShadow: '0px 0px 20px 2px rgba(230,230,230,1)',
-                    '@media (max-width: 1150px)': {
-                        alignSelf: 'center'
-                    },
-                    '@media (max-width: 1150px)': {
-                        maxWidth: 'calc(100vw - 128px)'
-                        },
-                        '@media (max-width: 900px)': {
-                            maxWidth: 'calc(98vw)',
-                            maxHeight: '98vh'
-                            },
-                            '@media (max-width: 400px)': {
-                                maxWidth: 'calc(96vw)'
-                                // display: 'none'
-                            },
+                    // '@media (max-width: 1150px)': {
+                    //     alignSelf: 'center'
+                    // },
+                    // '@media (max-width: 1150px)': {
+                    //     maxWidth: 'calc(100vw - 128px)'
+                    //     },
+                    //     '@media (max-width: 900px)': {
+                    //         maxWidth: 'calc(98vw)',
+                    //         maxHeight: '98vh'
+                    //         },
+                    //         '@media (max-width: 400px)': {
+                    //             maxWidth: 'calc(96vw)'
+                    //             // display: 'none'
+                    //         },
                             // '@media (max-width: 600px)': {
                             //     maxWidth: 'calc(100vw)',
                             //     maxHeight: '100vh'
                             //     },
-                })} /> :
+                })} />
+                </div>
+                // imageFrameTESTend
+                :
                 <h1 className={css({
                     color: '#41cc66',
                     fontFamily: "'Great Vibes', cursive",
