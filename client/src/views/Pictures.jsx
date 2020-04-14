@@ -303,6 +303,11 @@ export default function Pictures({ history, photos, setModelingGallery, setPhoto
                     padding: '16px',
                     maxWidth: '88vw'
                 },
+                '@media (max-width: 350px)': {
+                    // padding: '16px',
+                    maxWidth: '84vw',
+                    // margin: '5px'
+                },
                 '@media (max-height: 300px)': {
                     maxHeight: '80vh'
                 },
@@ -325,6 +330,11 @@ export default function Pictures({ history, photos, setModelingGallery, setPhoto
                     // padding: '16px',
                     maxWidth: '88vw',
                     margin: '5px'
+                },
+                '@media (max-width: 350px)': {
+                    // padding: '16px',
+                    maxWidth: '84vw',
+                    // margin: '5px'
                 },
                 '@media (max-height: 300px)': {
                     maxHeight: '80vh'
