@@ -4,7 +4,7 @@ import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io'
 import { AiOutlineMenu, AiOutlineClose } from 'react-icons/ai'
 import { TiInfoLarge } from 'react-icons/ti'
 
-export default function MobileNavPopup() {
+export default function MobileNavPopup({ setOpenMenu, setPopup, rightPicture, leftPicture, selectedIndex }) {
     
     return (
         <div className={css({
@@ -21,7 +21,10 @@ export default function MobileNavPopup() {
             backgroundColor: 'rgba(0,0,0, 0)',
             display: 'flex',
             justifyContent: 'center',
-            alignItems: 'center'
+            alignItems: 'center',
+            '@media (min-width: 901px)': {
+                display: 'none'
+            }
         })}>
             <div className={css({
                 display: 'flex',
@@ -36,7 +39,7 @@ export default function MobileNavPopup() {
                     justifyContent: 'space-between',
                     margin: '2%'
                 })}>
-                    <h2><TiInfoLarge className={css({
+                    <h2><TiInfoLarge onClick={() => setPopup(true)} className={css({
                         fontSize: '2.5rem',
                         cursor: 'pointer',
                         color: '#e6e6e6',
@@ -45,7 +48,7 @@ export default function MobileNavPopup() {
                             color: '#41cc66',
                         }
                     })} /></h2>
-                    <h2><AiOutlineMenu className={css({
+                    <h2><AiOutlineMenu onClick={() => setOpenMenu(true)} className={css({
                         fontSize: '2.5rem',
                         cursor: 'pointer',
                         color: '#e6e6e6',
@@ -60,7 +63,7 @@ export default function MobileNavPopup() {
                     justifyContent: 'space-between',
                     margin: '2%'
                 })}>
-                    <h2><IoIosArrowBack className={css({
+                    <h2><IoIosArrowBack onClick={() => leftPicture(selectedIndex)} className={css({
                         fontSize: '2.5rem',
                         cursor: 'pointer',
                         color: '#e6e6e6',
@@ -69,7 +72,7 @@ export default function MobileNavPopup() {
                             color: '#41cc66',
                         }
                     })} /></h2>
-                    <h2><IoIosArrowForward className={css({
+                    <h2><IoIosArrowForward onClick={() => rightPicture(selectedIndex)} className={css({
                         fontSize: '2.5rem',
                         cursor: 'pointer',
                         color: '#e6e6e6',

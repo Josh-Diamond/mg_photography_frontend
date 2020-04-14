@@ -120,7 +120,7 @@ export default function Pictures({ history, photos, setModelingGallery, setPhoto
                 maxHeight: '100vh'
             // },
         })}>
-            {/* <MobileNavPopup /> */}
+           {openMenu ? null : <MobileNavPopup setOpenMenu={setOpenMenu} leftPicture={leftPicture} selectedIndex={selectedIndex} rightPicture={rightPicture} setPopup={setPopup} /> }
 
         <div className={openMenu ? css({
             display: 'flex',
@@ -169,23 +169,10 @@ export default function Pictures({ history, photos, setModelingGallery, setPhoto
                     display: 'none'
                 },
             })}>
-                {/* <MdInfoOutline className={css({
-                    fontSize: '2rem',
-                    marginTop: '5px'
-                })} />
-                <GoInfo className={css({
-                    fontSize: '2rem',
-                    marginTop: '5px'
-                })} />
-                <TiInfoOutline className={css({
-                    fontSize: '2rem',
-                    marginTop: '5px'
-                })} /> */}
+               
                 <TiInfoLarge onClick={() => setPopup(true)} className={css({
                     fontSize: '2rem',
-                    // marginTop: '10px',
                     color: '#e6e6e6',
-                    // paddingTop: '5px'
                     transition: '.4s',
                     cursor: 'pointer',
                     '@media (max-width: 1200px)': {
@@ -220,12 +207,12 @@ export default function Pictures({ history, photos, setModelingGallery, setPhoto
                 },
             })}>
                 {/* top mobile row */}
-                <section className={css({
+                {/* MENU ICON TEST */}
+                {/* <section className={css({
                     '@media (min-width: 900px)': {
                         display: 'none'
                     },
                     '@media (max-width: 900px)': {
-                    // border: '1px solid red',
                     width: '100vw',
                     display: 'flex',
                     justifyContent: 'space-between',
@@ -241,17 +228,11 @@ export default function Pictures({ history, photos, setModelingGallery, setPhoto
                             transition: '.4s',
                             alignSelf: 'flex-end',
                             position: 'relative',
-                            // top: '-10px',
-                            // left: '10%'
                             paddingBottom: '5px',
-                            // paddingLeft: '5px'
                         },
                         '@media (max-width: 1200px)': {
                             fontSize: '1.8rem'
                         },
-                        // '@media (max-width: 600px)': {
-                        //     top: '-7%'
-                        // },
                     "&:hover": {
                         color: '#41cc66',
                     }
@@ -279,12 +260,13 @@ export default function Pictures({ history, photos, setModelingGallery, setPhoto
                         color: '#41cc66',
                     }
                     })} onClick={() => setOpenMenu(true)} />
-                </section>
+                </section> */}
                {photos[0] ? 
                <img src={`https://i.imgur.com/${selected.image_url}.jpg`} className={css({
                     maxHeight: '100vh',
                     maxWidth: '100vw',
                     borderRadius: '5px',
+                    // border: '1px solid red',
                 '-webkit-box-shadow': '0px 0px 20px 2px rgba(230,230,230,1)',
                 '-moz-box-shadow': '0px 0px 20px 2px rgba(230,230,230,1)',
                 boxShadow: '0px 0px 20px 2px rgba(230,230,230,1)',
@@ -295,8 +277,8 @@ export default function Pictures({ history, photos, setModelingGallery, setPhoto
                         maxWidth: 'calc(100vw - 128px)'
                         },
                         '@media (max-width: 900px)': {
-                            maxWidth: 'calc(100vw)',
-                            maxHeight: '90vh'
+                            maxWidth: 'calc(98vw)',
+                            maxHeight: '98vh'
                             },
                             '@media (max-width: 400px)': {
                                 maxWidth: 'calc(96vw)'
@@ -318,7 +300,8 @@ export default function Pictures({ history, photos, setModelingGallery, setPhoto
                 })}>Loading...</h1> }
                 
                 {/* bottom mobile row */}
-                <section className={css({
+                {/* ICON TEST PT 2 */}
+                {/* <section className={css({
                     // border: '1px solid red',
                     
                     '@media (min-width: 900px)': {
@@ -377,7 +360,7 @@ export default function Pictures({ history, photos, setModelingGallery, setPhoto
                         color: '#41cc66',
                     }
                     })} onClick={() => rightPicture(selectedIndex)} />
-                </section>
+                </section> */}
                 {/* end bottom mobile row */}
 
             </section>
