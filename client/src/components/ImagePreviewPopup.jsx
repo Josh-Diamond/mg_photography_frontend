@@ -34,7 +34,7 @@ export default function ImagePreviewPopup({ image, setImagePreview }) {
                 padding: '5%',
                 // paddingTop: '1%',
                 backgroundColor: 'white',
-                maxWidth: '800px',
+                // maxWidth: '800px',
                 // width: '80%',
                 flexWrap: 'wrap',
                 // minHeight: '100px',
