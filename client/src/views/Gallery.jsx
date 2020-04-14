@@ -69,7 +69,7 @@ export default function Gallery({ history, setModelingGallery, setPhotographyGal
                         '@media (max-width: 470px)': {
                             fontSize: '2rem'
                         },
-                    })}>Gallery Selection</h2>
+                    })}>Gallery</h2>
                     <div className={css({
                         //  border: '1px solid purple',
                          overflowY: 'scroll',

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { css } from 'emotion'
 import { Link } from 'react-router-dom'
-import { AiOutlineMenu, AiOutlineClose } from 'react-icons/ai'
+import { AiOutlineMenu, AiOutlineClose, AiFillHome } from 'react-icons/ai'
 import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io'
 import { MdInfoOutline } from 'react-icons/md'
 import { TiInfoOutline, TiInfoLarge, TiArrowBack} from 'react-icons/ti'
@@ -16,7 +16,7 @@ import { styles } from '../Styles'
 import MobileNavPopup from '../components/MobileNavPopup'
 
 export default function Pictures({ history, photos, setModelingGallery, setPhotographyGallery, setArtGallery }) {
-    const [openMenu, setOpenMenu] = useState(false)
+    const [openMenu, setOpenMenu] = useState(true)
     const [selectedIndex, setSelectedIndex] = useState(0)
     const [selected, setSelected] = useState('')
     const [popup, setPopup] = useState(false)
@@ -530,7 +530,14 @@ export default function Pictures({ history, photos, setModelingGallery, setPhoto
                 display: 'none'
             },
          })}>
-                Menu Area
+                <div className={css({
+                    display: 'flex',
+                    alignItems: 'center',
+                    // marginBottom: '25px',
+                    padding: '10px',
+                    paddingBottom: '0px',
+                    // border: '1px solid yellow'
+                })}>
                 <Link to='/gallery_selection' className={css({
                         display: 'flex',
                         alignItems: 'center',
@@ -538,7 +545,7 @@ export default function Pictures({ history, photos, setModelingGallery, setPhoto
                         color: '#e6e6e6',
                         transition: '.4s',
                         textDecoration: 'none',
-                        marginBottom: '25px',
+                        
                         "&:hover": {
                             color: '#41cc66',
                         }
@@ -548,7 +555,7 @@ export default function Pictures({ history, photos, setModelingGallery, setPhoto
                             // paddingLeft: '0 1%'
                             // marginLeft: '1%'
                         })} />
-                        <h4 className={css({
+                        {/* <h4 className={css({
                             fontFamily: "'Great Vibes', cursive",
                             fontWeight: 'bold',
                             marginLeft: '1%',
@@ -556,14 +563,42 @@ export default function Pictures({ history, photos, setModelingGallery, setPhoto
                             color: '#41cc66',
                             fontSize: '1.5rem',
                             marginTop: '7px'
-                        })}>Back to Gallery</h4>
+                        })}>Gallery</h4> */}
                     </Link>
+                    <Link to='/' className={css({
+                         display: 'flex',
+                         alignItems: 'center',
+                        //  width: '80%',
+                         color: '#e6e6e6',
+                         transition: '.4s',
+                         textDecoration: 'none',
+                         
+                         "&:hover": {
+                             color: '#41cc66',
+                         }
+                    })}>
+                        <AiFillHome className={css({
+                            fontSize: '1.8rem'
+                        })} />
+                    </Link>
+                    </div>
                 <input placeholder='Search' onChange={searchFilter} className={css({
                     width: '80%',
-                    margin: '0 auto',
-                    marginBottom: '10%',
+                    height: '25px',
+                    borderRadius: '5px',
+                    border: 'none',
+                    textAlign: 'center',
+                    outline: 'none',
+                    color: `${styles.icon_color_hover}`,
+                    fontWeight: 'bold',
+                    // margin: '0 auto',
+                    margin: '8% auto',
                     "::placeholder": {
-                        textAlign: 'center'
+                        textAlign: 'center',
+                        color: `${styles.profile_picture_border_color}`,
+                        textTransform: 'uppercase',
+                        fontWeight: '300',
+                        letterSpacing: '1.5px'
                     }
                 })} />
                 <div className={css({
@@ -652,14 +687,12 @@ export default function Pictures({ history, photos, setModelingGallery, setPhoto
                     display: 'flex',
                     justifyContent: 'space-between',
                     alignItems: 'center',
-                    marginTop: '2%',
-                    marginLeft: '3%',
-                    marginRight: '3%'
+                    margin: '3%'
                 })}>
                     <Link to='/gallery_selection' className={css({
                         display: 'flex',
                         alignItems: 'center',
-                        width: '80%',
+                        // width: '80%',
                         color: '#e6e6e6',
                         transition: '.4s',
                         textDecoration: 'none',
@@ -672,7 +705,24 @@ export default function Pictures({ history, photos, setModelingGallery, setPhoto
                             // paddingLeft: '0 1%'
                             // marginLeft: '1%'
                         })} />
-                        <h4 className={css({
+                        </Link>
+                        <Link to='/' className={css({
+                            display: 'flex',
+                            alignItems: 'center',
+                           //  width: '80%',
+                            color: '#e6e6e6',
+                            transition: '.4s',
+                            textDecoration: 'none',
+                            
+                            "&:hover": {
+                                color: '#41cc66',
+                            }
+                        })}>
+                            <AiFillHome className={css({
+                                fontSize: '1.8rem'
+                            })} />
+                        </Link>
+                        {/* <h4 className={css({
                             fontFamily: "'Great Vibes', cursive",
                             fontWeight: 'bold',
                             marginLeft: '1%',
@@ -680,8 +730,7 @@ export default function Pictures({ history, photos, setModelingGallery, setPhoto
                             color: '#41cc66',
                             fontSize: '1.5rem',
                             marginTop: '7px'
-                        })}>Back to Gallery</h4>
-                    </Link>
+                        })}>Back to Gallery</h4> */}
                     <AiOutlineClose onClick={() => setOpenMenu(false)} className={css({
                         fontSize: '2.5rem',
                         cursor: 'pointer',
@@ -695,9 +744,6 @@ export default function Pictures({ history, photos, setModelingGallery, setPhoto
                     }
                     })} onClick={() => setOpenMenu(false)} />
                 </div>
-                <p className={css({
-                    color: '#110C11'
-                })}>Menu Area Mobile</p>
                 {/* <div>
                     <p onClick={setToAll}>All</p>
                     <p>|</p>
@@ -707,12 +753,23 @@ export default function Pictures({ history, photos, setModelingGallery, setPhoto
                     <p>|</p>
                     <p onClick={setToArt}>art</p>
                 </div> */}
-                <input placeholder='Search - Under Construction' onChange={searchFilter} className={css({
+                <input placeholder='Search' onChange={searchFilter} className={css({
                     width: '80%',
-                    margin: '0 auto',
-                    marginBottom: '2%',
+                    height: '25px',
+                    borderRadius: '5px',
+                    border: 'none',
+                    textAlign: 'center',
+                    outline: 'none',
+                    color: `${styles.icon_color_hover}`,
+                    fontWeight: 'bold',
+                    // margin: '0 auto',
+                    margin: '2% auto',
                     "::placeholder": {
-                        textAlign: 'center'
+                        textAlign: 'center',
+                        color: `${styles.profile_picture_border_color}`,
+                        textTransform: 'uppercase',
+                        fontWeight: '300',
+                        letterSpacing: '1.5px'
                     }
                 })} />
                 <div className={css({
