@@ -323,7 +323,8 @@ export default function Pictures({ history, photos, setModelingGallery, setPhoto
                 },
                 '@media (max-width: 450px)': {
                     // padding: '16px',
-                    maxWidth: '88vw'
+                    maxWidth: '88vw',
+                    margin: '5px'
                 },
                 '@media (max-height: 300px)': {
                     maxHeight: '80vh'
