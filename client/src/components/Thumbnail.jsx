@@ -77,9 +77,15 @@ export default function Thumbnail({ photo, image, index, setSelectedIndex, setSe
                 maxWidth: '200px',
                 borderRadius: '5px',
                 // border: '1px solid red',
-                '-webkit-box-shadow': '0px 0px 20px 2px rgba(230,230,230,1)',
+                transition: '.4s',
+                '-webkit-box-shadow': '0px 0px 20px 2px rgba(0,0,0,1)',
+                '-moz-box-shadow': '0px 0px 20px 2px rgba(0,0,0,1)',
+                boxShadow: '0px 0px 20px 2px rgba(0,0,0,1)',
+                '&:hover': {
+                    '-webkit-box-shadow': '0px 0px 20px 2px rgba(230,230,230,1)',
                 '-moz-box-shadow': '0px 0px 20px 2px rgba(230,230,230,1)',
                 boxShadow: '0px 0px 20px 2px rgba(230,230,230,1)',
+                },
                 // padding: '1%',
                 '@media (max-width: 1150px)': {
                     maxWidth: ' 280px'
