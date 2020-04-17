@@ -2,19 +2,18 @@ import React, { useState } from 'react'
 import { css } from 'emotion'
 import { styles } from '../Styles'
 import { AiFillPicture } from 'react-icons/ai'
-import imagePreviewPopup from '../components/ImagePreviewPopup'
+// import imagePreviewPopup from '../components/ImagePreviewPopup'
 import ImagePreviewPopup from '../components/ImagePreviewPopup'
 import axiosWithAuth from '../components/axiosWIthAuth'
 import axios from 'axios'
-import SuccessPopup from '../components/SuccessPopup'
-import uploadFailure from '../components/UploadFailure'
-import UploadFailure from '../components/UploadFailure'
+import EditSuccessPopup from '../components/EditSuccessPopup'
+import EditFailure from '../components/EditFailure'
 import RequiredFields from '../components/RequiredFields'
 
 export default function AdminPhotosAdd({ history, editID, editPhoto }) {
     const [imagePreview, setImagePreview] = useState(false)
-    const [uploadSuccess, setUploadSuccess] = useState(false)
-    const [uploadFailure, setUploadFailure] = useState(false)
+    const [ editSuccess, setEditSuccess] = useState(false)
+    const [ editFailure, setEditFailure] = useState(false)
     const [validation, setValidation] = useState(false)
     const [formData, setFormData] = useState( editPhoto || {
         category: '',
@@ -37,10 +36,10 @@ export default function AdminPhotosAdd({ history, editID, editPhoto }) {
             setValidation(true)
         } else {
         e.preventDefault()
-        axios
-            .post(`https://mg-photography-backend.herokuapp.com/api/pictures/`, formData)
-            .then(res => setUploadSuccess(true))
-            .catch(err => setUploadFailure(true))
+        axiosWithAuth()
+            .patch(`https://mg-photography-backend.herokuapp.com/api/pictures/${editID}`, formData)
+            .then(res => setEditSuccess(true))
+            .catch(err => setEditFailure(true))
         }
     }
 
@@ -61,8 +60,8 @@ export default function AdminPhotosAdd({ history, editID, editPhoto }) {
                 'user-select': 'none',
             })}>
                 { validation ? <RequiredFields setValidation={setValidation} formData={formData} /> : null}
-                { uploadFailure ? <UploadFailure setUploadFailure={setUploadFailure} history={history} /> : null}
-                { uploadSuccess ? <SuccessPopup setUploadSuccess={setUploadSuccess} history={history} /> : null }
+                { editFailure ? <EditFailure setEditFailure={setEditFailure} history={history} /> : null}
+                { editSuccess ? <EditSuccessPopup setEditSuccess={setEditSuccess} history={history} /> : null }
                 { imagePreview ? <ImagePreviewPopup setImagePreview={setImagePreview} image={formData.image_url} /> : null}
                 {/* <h1 className={css({
                      color: '#41cc66',
