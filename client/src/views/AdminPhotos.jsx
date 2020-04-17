@@ -9,7 +9,7 @@ import DeletePopup from '../components/DeletePopup'
 import SuccessfulDelete from '../components/SuccessfulDelete'
 import DeleteFailure from '../components/DeleteFailure'
 
-export default function AdminPhotos({ photos, uploadSuccess, setUploadSuccess, history, location }) {
+export default function AdminPhotos({ photos, uploadSuccess, setUploadSuccess, history, location, setEditID, setEditPhoto }) {
     const [allPhotos, setAllPhotos] = useState([])
     const [confirmDelete, setConfirmDelete] = useState(false)
     const [deleteID, setDeleteID] = useState(null)
@@ -30,7 +30,7 @@ export default function AdminPhotos({ photos, uploadSuccess, setUploadSuccess, h
         .then(res => setAllPhotos(res.data))
         .catch(err => console.log(err))
     }
-    
+
     useEffect(() => {
         axios
         .get('https://mg-photography-backend.herokuapp.com/api/pictures')
@@ -99,7 +99,7 @@ export default function AdminPhotos({ photos, uploadSuccess, setUploadSuccess, h
                 {allPhotos.length !== 0 ?
                 allPhotos.map(photo => {
                     let img_url = photo.image_url.slice(18, photo.image_url.length)
-                   return <ManageCard photo={photo} image={img_url} setConfirmDelete={setConfirmDelete} deleteID={deleteID} setDeleteID={setDeleteID} />
+                   return <ManageCard photo={photo} image={img_url} setConfirmDelete={setConfirmDelete} deleteID={deleteID} setDeleteID={setDeleteID} setEditID={setEditID} setEditPhoto={setEditPhoto} />
                 }) :
                 <p>Loading...</p>}                
             </div>

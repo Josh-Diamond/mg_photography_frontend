@@ -12,6 +12,7 @@ import axios from 'axios'
 import AdminPhotos from './views/AdminPhotos'
 import AdminUpdate from './views/AdminUpdate'
 import AdminPhotosAdd from './views/AdminPhotosAdd'
+import AdminPhotosEdit from './views/AdminPhotosEdit'
 
 function App() {
   const [photos, setPhotos] = useState([])
@@ -21,6 +22,9 @@ function App() {
   const [modelingGallery, setModelingGallery] = useState(false)
   const [photographyGallery, setPhotographyGallery] = useState(false)
   const [artGallery, setArtGallery] = useState(false)
+  const [editID, setEditID] = useState(null)
+  const [editPhoto, setEditPhoto] = useState({})
+ console.log('editOBJappJS', editPhoto)
   useEffect(() => {
     axios
       .get('https://mg-photography-backend.herokuapp.com/api/pictures')
@@ -49,9 +53,10 @@ function App() {
         <Route exact path='/gallery' render={props => <Pictures {...props} photos={modelingGallery ? modelingPhotos : photographyGallery ? photographyPhotos : artGallery ? artPhotos : photos} />} setModelingGallery={setModelingGallery} setPhotographyGallery={setPhotographyGallery} setArtGallery={setArtGallery} />
         <Route exact path='/admin' render={props => <Login {...props} />} />
         <PrivateRoute exact path='/admin_access' view={Admin} />
-        <PrivateRoute exact path='/admin_access/manage_photos' view={AdminPhotos} photos={photos}  />
+        <PrivateRoute exact path='/admin_access/manage_photos' view={AdminPhotos} photos={photos} setEditID={setEditID} setEditPhoto={setEditPhoto} />
         <PrivateRoute exact path='/admin_access/update' view={AdminUpdate} />
         <PrivateRoute exact path='/admin_access/manage_photos/add_photo' view={AdminPhotosAdd} />
+        <PrivateRoute exact path='/admin_access/manage_photos/edit_photo' view={AdminPhotosEdit} editID={editID} editPhoto={editPhoto} />
       </Switch>
     </div>
   );

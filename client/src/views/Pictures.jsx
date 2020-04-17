@@ -283,6 +283,7 @@ export default function Pictures({ history, photos, setModelingGallery, setPhoto
                 borderRadius: '5px',
                 // letterSpacing: '0.15rem',
                 backgroundColor: '#110C11',
+                // backgroundColor: '#543313',
                 // backgroundColor: 'rgba(230,230,230,1)',
                 color: '#e6e6e6',
                 border: '2px solid #e6e6e6',

@@ -1,14 +1,21 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { css } from 'emotion'
 import { TiInfoLarge } from 'react-icons/ti'
 import { FaRegEdit } from 'react-icons/fa'
 import { MdDeleteForever } from 'react-icons/md'
-import axiosWithAuth from '../components/axiosWIthAuth'
+import { Link } from 'react-router-dom'
 
-export default function ManageCard({ photo, image, setConfirmDelete, setDeleteID }) {
+export default function ManageCard({ photo, image, setConfirmDelete, setDeleteID, setEditID, setEditPhoto }) {
+
+
     const clickDelete = () => {
         setConfirmDelete(true)
         setDeleteID(photo.id)
+    }
+    
+    const clickEdit = () => {
+        setEditID(photo.id)
+        setEditPhoto({...photo})
     }
 
     return (
@@ -48,15 +55,19 @@ export default function ManageCard({ photo, image, setConfirmDelete, setDeleteID
                         color: '#41cc66',
                     }
                 })} />
-                <FaRegEdit className={css({
-                    fontSize: '1.5rem',
-                    color: '#e6e6e6',
-                    transition: '.4s',
-                    cursor: 'pointer',
-                    '&:hover': {
-                        color: '#41cc66',
-                    }
-                })} />
+                <Link to='/admin_access/manage_photos/edit_photo' onClick={clickEdit} className={css({
+                    textDecoration: 'none'
+                })}>
+                    <FaRegEdit onClick={() => setEditID(photo.id)} className={css({
+                        fontSize: '1.5rem',
+                        color: '#e6e6e6',
+                        transition: '.4s',
+                        cursor: 'pointer',
+                        '&:hover': {
+                            color: '#41cc66',
+                        }
+                    })} />
+                </Link>
                 {/* <MdDelete /> */}
                 <MdDeleteForever onClick={clickDelete} className={css({
                     fontSize: '1.8rem',
