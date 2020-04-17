@@ -2,10 +2,8 @@ import React, { useState } from 'react'
 import { css } from 'emotion'
 import { styles } from '../Styles'
 import { AiFillPicture } from 'react-icons/ai'
-// import imagePreviewPopup from '../components/ImagePreviewPopup'
 import ImagePreviewPopup from '../components/ImagePreviewPopup'
 import axiosWithAuth from '../components/axiosWIthAuth'
-import axios from 'axios'
 import EditSuccessPopup from '../components/EditSuccessPopup'
 import EditFailure from '../components/EditFailure'
 import RequiredFields from '../components/RequiredFields'
@@ -25,7 +23,6 @@ export default function AdminPhotosAdd({ history, editID, editPhoto }) {
         tags: '',
         image_url: '' 
     })
-    console.log('formDataEDIT', formData)
 
     const formHandler = e => {
         setFormData({...formData, [e.target.name]: e.target.value})
@@ -63,19 +60,6 @@ export default function AdminPhotosAdd({ history, editID, editPhoto }) {
                 { editFailure ? <EditFailure setEditFailure={setEditFailure} history={history} /> : null}
                 { editSuccess ? <EditSuccessPopup setEditSuccess={setEditSuccess} history={history} /> : null }
                 { imagePreview ? <ImagePreviewPopup setImagePreview={setImagePreview} image={formData.image_url} /> : null}
-                {/* <h1 className={css({
-                     color: '#41cc66',
-                     fontFamily: "'Great Vibes', cursive",
-                     fontSize: '5rem',
-                     textShadow: '0px 0px 10px rgba(255, 255, 255, 1)',
-                     paddingTop: '25px',
-                     '@media (max-width: 550px)': {
-                         fontSize: '3rem'
-                     }
-                })}>
-                    Add Photo
-                </h1> */}
-                {/* test */}
                 <section className={css({
                     transformOrigin: '50% 50%',
                     transform: 'rotateX(0deg)',
@@ -83,12 +67,9 @@ export default function AdminPhotosAdd({ history, editID, editPhoto }) {
                     maxWidth: '480px',
                     width: '100%',
                     opacity: 0.95,
-                    // position: 'relative',
-                    // textAlign: 'center',
                     transition: 'opacity 1s ease 0s, transform 1s ease 0s',
                     padding: '3rem 3rem 3rem',
                     borderRadius: '4px',
-                    // height: '575px',
                     backgroundColor: `${styles.card_background_color}`,
                     '@media (max-width: 600px)': {
                         padding: '3rem 1.5rem',
@@ -96,20 +77,10 @@ export default function AdminPhotosAdd({ history, editID, editPhoto }) {
                     '@media (max-width: 550px)': {
                         padding: '3rem .5rem',
                         width: '90%',
-                        // height: '575px'
                     },
                     '@media (max-width: 500px)': {
                         padding: '3rem 0rem',
                         width: '95%'
-                    },
-                    '@media (max-width: 470px)': {
-                        // height: '525px'
-                    },
-                    '@media (max-width: 400px)': {
-                        // height: '480px'
-                    },
-                    '@media (max-width: 385px)': {
-                        // height: '450px'
                     },
                     '@media (max-width: 450px)': {
                         overflowY: 'scroll',
@@ -136,14 +107,7 @@ export default function AdminPhotosAdd({ history, editID, editPhoto }) {
                             fontWeight: 100,
                             paddingBottom: '5px',
                             color: `${styles.display_name_color}`,
-                            // color: 'rgb(65, 79, 87)',
-                            // fontFamily: "'Parisienne', cursive",
                             fontFamily: "'Great Vibes', cursive",
-                            // fontFamily: "'Sacramento', cursive",
-                            // fontFamily: "'Dancing Script', cursive",
-                            // fontFamily: "'Indie Flower', cursive",
-                            // fontFamily: "'Rock Salt', cursive", /* favorite */
-                            // fontFamily: "'Amatic SC', cursive",
                             textTransform: 'none',
                             '-webkit-touch-callout': 'none',
                                 '-webkit-user-select': 'none',
@@ -161,16 +125,12 @@ export default function AdminPhotosAdd({ history, editID, editPhoto }) {
                                 fontSize: '1.8rem'
                             },
                         })}>
-                            {/* Marysa <span className={css({ color: '#41cc66'})}>Garcia</span> */}
+
                             {`Edit Photo`}
                         </h1>
                         <form onSubmit={submitHandler} className={css({
                             maxWidth: '350px',
-                            // border: '1px solid red',
                             margin: '0 auto',
-                            // '@media (max-width: 450px)': {
-                            //     padding: '0 10px'
-                            // },
                         })} >
                             {/* Image URL */}
                             <div className={css({
@@ -201,11 +161,7 @@ export default function AdminPhotosAdd({ history, editID, editPhoto }) {
                                         color: '#41cc66'
                                     })}>*</span> </label>
                                     <AiFillPicture onClick={() => setImagePreview(true)} className={css({
-                                // marginRight: '-100px',
-                                // position: 'relative',
-                                // right: '70px',
                                 fontSize: '1.21rem',
-                                // border: '1px solid red',
                                 color: `#7d6247`,
                                 transition: '.4s',
                                 cursor: 'pointer',
@@ -254,7 +210,6 @@ export default function AdminPhotosAdd({ history, editID, editPhoto }) {
                                 },
                                 '@media (max-width: 450px)': {
                                     display: 'none',
-                                    // transition: 'none'
                                 }
                             })} />
                             </div>
@@ -281,26 +236,6 @@ export default function AdminPhotosAdd({ history, editID, editPhoto }) {
                                 })}>Category <span className={css({
                                     color: '#41cc66'
                                 })}>*</span> </label>
-                                {/* <input type='text' placeholder='category' id='category' className={css({
-                                    height: '25px',
-                                    width: '35%',
-                                    minWidth: '150px',
-                                    borderRadius: '5px',
-                                    border: 'none',
-                                    textAlign: 'center',
-                                    outline: 'none',
-                                    color: `${styles.icon_color_hover}`,
-                                    fontWeight: 'bold',
-                                    '@media (max-width: 450px)': {
-                                        width: '100%'
-                                    },
-                                    "::placeholder" : {
-                                        color: `${styles.profile_picture_border_color}`,
-                                        textTransform: 'uppercase',
-                                        fontWeight: '300',
-                                        letterSpacing: '1.5px'
-                                    }
-                                })} /> */}
                                 <select id="category" required name="category" placeholder='category' onChange={formHandler} value={formData.category} className={css({
                                     height: '25px',
                                     width: '35%',
@@ -598,43 +533,13 @@ export default function AdminPhotosAdd({ history, editID, editPhoto }) {
                                 })} />
                             </div>
                         </form>
-                        {/* <ul className={css({ 
-                            margin: '35px 0px 0rem',
-                            width: '100%',
-                            marginLeft: '0px',
-                            display: 'flex',
-                            // cursor: 'default',
-                            paddingLeft: '0px',
-                            listStyle: 'none',
-                            // marginBlockStart: '1rem',
-                            // marginBlockEnd: '1rem',
-                            // marginInlineStart: '0px',
-                            // marginInlineEnd: '0px',
-                            // paddingInlineStart: '40px',
-                            textSlign: 'center',
-                            '-webkit-touch-callout': 'none',
-                            '-webkit-user-select': 'none',
-                            '-khtml-user-select': 'none',
-                            '-moz-user-select': 'none',
-                            '-ms-user-select': 'none',
-                            'user-select': 'none',
-                            
-                        })}> 
-                            
-                        </ul> */}
                         <ul onClick={submitHandler} className={css({ 
                             margin: '20px 0px 0rem',
                             width: '100%',
                             marginLeft: '0px',
                             display: 'flex',
-                            // cursor: 'default',
                             paddingLeft: '0px',
                             listStyle: 'none',
-                            // marginBlockStart: '1rem',
-                            // marginBlockEnd: '1rem',
-                            // marginInlineStart: '0px',
-                            // marginInlineEnd: '0px',
-                            // paddingInlineStart: '40px',
                             textSlign: 'center',
                             '-webkit-touch-callout': 'none',
                             '-webkit-user-select': 'none',
@@ -676,8 +581,6 @@ export default function AdminPhotosAdd({ history, editID, editPhoto }) {
                                     "&:hover": {
                                         color: `${styles.view_gallery_text_color_hover} !important`,
                                         border: `1px solid ${styles.view_gallery_border_color_hover} !important`
-                                        // color: '#648f63 !important',
-                                        // border: '1px solid #648f63 !important'
                                     },
                                     '@media (max-width: 470px)': {
                                         width: '75%',
@@ -690,7 +593,6 @@ export default function AdminPhotosAdd({ history, editID, editPhoto }) {
                         </ul>
                 </header>
                 </section>
-                {/* end test */}
         </div>
     )
 }
