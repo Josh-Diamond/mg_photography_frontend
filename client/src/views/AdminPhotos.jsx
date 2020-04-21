@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { css } from 'emotion'
-import image from '../static/modeling.jpg'
+// import image from '../static/modeling.jpg'
 import ManageCard from '../components/ManageCard'
 import axios from 'axios'
 import { IoMdAddCircle } from 'react-icons/io'
@@ -8,6 +8,7 @@ import { Link } from 'react-router-dom'
 import DeletePopup from '../components/DeletePopup'
 import SuccessfulDelete from '../components/SuccessfulDelete'
 import DeleteFailure from '../components/DeleteFailure'
+import InfoPopup from '../components/InfoPopup'
 
 export default function AdminPhotos({ photos, uploadSuccess, setUploadSuccess, history, location, setEditID, setEditPhoto }) {
     const [allPhotos, setAllPhotos] = useState([])
@@ -15,7 +16,9 @@ export default function AdminPhotos({ photos, uploadSuccess, setUploadSuccess, h
     const [deleteID, setDeleteID] = useState(null)
     const [successfulDelete, setSuccessfulDelete] = useState(false)
     const [deleteFailure, setDeleteFailure] = useState(false)
-
+    const [showInfo, setShowInfo] = useState(true)
+    const [showInfoPic, setShowInfoPic] = useState({})
+    console.log('showInfoPic', showInfoPic)
     const deleteSubmitter = e => {
         axios
             .delete(`https://mg-photography-backend.herokuapp.com/api/pictures/${deleteID}`)
@@ -54,6 +57,7 @@ export default function AdminPhotos({ photos, uploadSuccess, setUploadSuccess, h
             '-ms-user-select': 'none',
             'user-select': 'none',
         })}>
+            { showInfo ? <InfoPopup showInfoPic={showInfoPic} setShowInfo={setShowInfo} /> : null}
             {confirmDelete ? <DeletePopup setConfirmDelete={setConfirmDelete} history={history} deleteSubmitter={deleteSubmitter} /> : null}
             {successfulDelete ? <SuccessfulDelete setSuccessfulDelete={setSuccessfulDelete} setConfirmDelete={setConfirmDelete} setAllPhotos={setAllPhotos} /> : null}
             {deleteFailure ? <DeleteFailure setDeleteFailure={setDeleteFailure} /> : null}
@@ -99,7 +103,7 @@ export default function AdminPhotos({ photos, uploadSuccess, setUploadSuccess, h
                 {allPhotos.length !== 0 ?
                 allPhotos.map(photo => {
                     let img_url = photo.image_url.slice(18, photo.image_url.length)
-                   return <ManageCard photo={photo} image={img_url} setConfirmDelete={setConfirmDelete} deleteID={deleteID} setDeleteID={setDeleteID} setEditID={setEditID} setEditPhoto={setEditPhoto} />
+                   return <ManageCard photo={photo} setShowInfo={setShowInfo} image={img_url} setConfirmDelete={setConfirmDelete} deleteID={deleteID} setDeleteID={setDeleteID} setEditID={setEditID} setEditPhoto={setEditPhoto} setShowInfoPic={setShowInfoPic} />
                 }) :
                 <p>Loading...</p>}                
             </div>

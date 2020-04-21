@@ -3,6 +3,7 @@ import axios from 'axios'
 import { css } from 'emotion'
 import { styles } from '../Styles'
 import { Link } from 'react-router-dom'
+import { FaLock } from 'react-icons/fa'
 
 export default function Login({ history }) {
     const [user, setUser] = useState("Marysa")
@@ -164,6 +165,15 @@ export default function Login({ history }) {
                                 }
                             })} />
                         </form>
+                        {/* <div className={css({
+                            display: 'flex',
+                            alignItems: 'center',
+                            fontSize: '.6rem',
+                            justifyContent: 'center'
+                        })}>
+                            <h4>Forgot Password?</h4>
+                            <FaLock />
+                        </div> */}
                         <ul onClick={viewSite} className={css({ 
                             margin: '35px 0px 0rem',
                             width: '100%',
@@ -229,6 +239,7 @@ export default function Login({ history }) {
                                 })}>View Site</Link>
                             </li>
                         </ul>
+                        
                 </header>
                 </section>
                 <footer className={css({

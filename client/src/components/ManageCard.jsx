@@ -5,8 +5,11 @@ import { FaRegEdit } from 'react-icons/fa'
 import { MdDeleteForever } from 'react-icons/md'
 import { Link } from 'react-router-dom'
 
-export default function ManageCard({ photo, image, setConfirmDelete, setDeleteID, setEditID, setEditPhoto }) {
-
+export default function ManageCard({ photo, setShowInfo, image, setConfirmDelete, setDeleteID, setEditID, setEditPhoto, setShowInfoPic }) {
+    const clickInfo = () => {
+        setShowInfoPic(photo)
+        setShowInfo(true)
+    }
 
     const clickDelete = () => {
         setConfirmDelete(true)
@@ -46,7 +49,7 @@ export default function ManageCard({ photo, image, setConfirmDelete, setDeleteID
                 height: '35px',
                 marginBottom: '5px',
             })}>
-                <TiInfoLarge className={css({
+                <TiInfoLarge onClick={clickInfo} className={css({
                     fontSize: '1.8rem',
                     color: '#e6e6e6',
                     transition: '.4s',

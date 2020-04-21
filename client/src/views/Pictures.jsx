@@ -85,6 +85,25 @@ export default function Pictures({ history, photos, setModelingGallery, setPhoto
       }
     }
 
+    const arrowSelection = e => {
+        if ([39].includes(e.keyCode)) {
+            photos.length !== 0 && rightPicture(selectedIndex)
+          }
+          if ([37].includes(e.keyCode)) {
+              photos.length !== 0 && leftPicture(selectedIndex)
+          }
+    }
+
+    // document.addEventListener("keydown", e => {
+     
+    //     if ([39].includes(e.keyCode)) {
+    //       photos.length !== 0 && rightPicture(selectedIndex)
+    //     }
+    //     if ([37].includes(e.keyCode)) {
+    //         photos.length !== 0 && leftPicture(selectedIndex)
+    //     }
+    //   });
+
     const leftPicture = index => {
         let last_index = photos.length-1
         if(index === 0) {
