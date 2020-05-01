@@ -1,17 +1,69 @@
-import React, { useEffect } from 'react'
+import React, { useState,useEffect } from 'react'
 import { css } from 'emotion'
 import ModelingCard from '../components/ModelingCard'
 import PhotographyCard from '../components/PhotographyCard'
 import ArtCard from '../components/ArtCard'
 import { Link } from 'react-router-dom'
 import ViewAllCard from '../components/ViewAllCard'
+import axios from 'axios'
 
 export default function Gallery({ history, setModelingGallery, setPhotographyGallery, setArtGallery }) {
+    const [beStyles, setBeStyles] = useState('')
+    const [loading, setLoading] = useState(true)
+
     useEffect(() => {
         setModelingGallery(false)
         setPhotographyGallery(false)
         setArtGallery(false)
     },[])
+
+    useEffect(() => {
+        getStyles();
+    },[])
+
+    const getStyles = () => {
+        axios
+            .get('https://mg-photography-backend.herokuapp.com/api/profile/1')
+            .then(res => {
+                setBeStyles(res.data)
+                setLoading(false)
+            })
+            .catch(err => console.log(err))
+    }
+
+    if(loading) {
+        return (
+
+        
+
+            <div className={css({
+                height: '100vh',
+                width: '100vw',
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+                '-webkit-touch-callout': 'none',
+                '-webkit-user-select': 'none',
+                '-khtml-user-select': 'none',
+                '-moz-user-select': 'none',
+                '-ms-user-select': 'none',
+                'user-select': 'none',
+                background: "radial-gradient(circle, rgba(162,255,145,1) 20%, rgba(123,175,62,1) 34%, rgba(210,138,81,1) 74%, rgba(17,88,4,1) 82%)"
+            })}>
+                <h1 className={css({
+                    color: '#41cc66',
+                    fontFamily: "'Great Vibes', cursive",
+                    fontSize: '7rem',
+                    textShadow: '0px 0px 10px rgba(255, 255, 255, 1)',
+                    '@media (max-width: 450px)': {
+                        fontSize: '5rem'
+                    },
+                })}>Loading...</h1>
+            </div>
+        )
+    }
+
+    if(loading === false) {
     return (
         <div className={css({
             height: '100vh',
@@ -110,19 +162,20 @@ export default function Gallery({ history, setModelingGallery, setPhotographyGal
                     })}>
                         <Link to='/gallery' className={css({
                             textDecoration: 'none',
-                        })}><ViewAllCard /></Link>
+                        })}><ViewAllCard image={beStyles.view_all_picture_url} /></Link>
                         <Link to='/gallery' onClick={() => setModelingGallery(true)} className={css({
                             textDecoration: 'none'
-                        })}><ModelingCard /></Link>
+                        })}><ModelingCard image={beStyles.modeling_picture_url} /></Link>
                         <Link to='/gallery' onClick={() => setPhotographyGallery(true)} className={css({
                             textDecoration: 'none'
-                        })}><PhotographyCard /></Link>
+                        })}><PhotographyCard image={beStyles.photography_picture_url} /></Link>
                         <Link to='/gallery' onClick={() => setArtGallery(true)} className={css({
                             textDecoration: 'none'
-                        })}><ArtCard /></Link>
+                        })}><ArtCard image={beStyles.art_picture_url} /></Link>
                     </div>
                 </div>
             </div>
         </div>
     )
+}
 }

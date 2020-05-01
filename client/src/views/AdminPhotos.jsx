@@ -9,6 +9,7 @@ import DeletePopup from '../components/DeletePopup'
 import SuccessfulDelete from '../components/SuccessfulDelete'
 import DeleteFailure from '../components/DeleteFailure'
 import InfoPopup from '../components/InfoPopup'
+import axiosWithAuth from '../components/axiosWIthAuth'
 
 export default function AdminPhotos({ photos, uploadSuccess, setUploadSuccess, history, location, setEditID, setEditPhoto }) {
     const [allPhotos, setAllPhotos] = useState([])
@@ -16,7 +17,7 @@ export default function AdminPhotos({ photos, uploadSuccess, setUploadSuccess, h
     const [deleteID, setDeleteID] = useState(null)
     const [successfulDelete, setSuccessfulDelete] = useState(false)
     const [deleteFailure, setDeleteFailure] = useState(false)
-    const [showInfo, setShowInfo] = useState(true)
+    const [showInfo, setShowInfo] = useState(false)
     const [showInfoPic, setShowInfoPic] = useState({})
     console.log('showInfoPic', showInfoPic)
     const deleteSubmitter = e => {
@@ -24,6 +25,10 @@ export default function AdminPhotos({ photos, uploadSuccess, setUploadSuccess, h
             .delete(`https://mg-photography-backend.herokuapp.com/api/pictures/${deleteID}`)
             .then(res => completedDelete())
             .catch(err => setDeleteFailure(true))
+        // axiosWithAuth()
+        // .delete(`https://mg-photography-backend.herokuapp.com/${deleteID}`)
+        //     .then(res => completedDelete())
+        //     .catch(err => setDeleteFailure(true))
     }
 
     const completedDelete = () => {

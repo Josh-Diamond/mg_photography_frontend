@@ -1,8 +1,8 @@
 import React from 'react'
 import { css } from 'emotion'
-import image from '../static/photography.jpg'
+// import image from '../static/photography.jpg'
 
-export default function PhotographyCard() {
+export default function PhotographyCard({ image }) {
     return (
         <div className={css({
             height: 350,
@@ -105,7 +105,7 @@ export default function PhotographyCard() {
             //     marginRight: '80px'
             // }
         })}>
-            <img src={image} alt='Modeling Gallery' className={css({ height: '100%', width: '100%', borderRadius: '4px', opacity: .8, transitionTimingFunction: 'ease-in-out', transitionDuration: '.5s',})} />
+            <img src={`${image}.jpg`} alt='Photography Gallery' className={css({ height: '100%', width: '100%', borderRadius: '4px', opacity: .8, transitionTimingFunction: 'ease-in-out', transitionDuration: '.5s',})} />
             <h2 className={css({
                 marginTop: '-60%',
                 fontFamily: "'Great Vibes', cursive",

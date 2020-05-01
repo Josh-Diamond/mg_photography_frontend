@@ -6,25 +6,26 @@ import { AiOutlineMail } from 'react-icons/ai'
 import { Link } from 'react-router-dom'
 import CreatedBy from '../components/CreatedBy'
 import { styles } from '../Styles'
+import axios from 'axios'
 
 export default function Landing() {
-    // const [styles, setStyles] = useState({})
-    const [loading, setLoading] = useState(false)
+    const [beStyles, setBeStyles] = useState({})
+    const [loading, setLoading] = useState(true)
     const [createdBy, setCreatedBy] = useState(false)
 
     useEffect(() => {
-        // getStyles();
+        getStyles();
     },[])
 
-    // const getStyles = () => {
-    //     axios
-    //         .get('https://mg-photography-backend.herokuapp.com/api/profile/1')
-    //         .then(res => {
-    //             setStyles(res.data)
-    //             setLoading(false)
-    //         })
-    //         .catch(err => console.log(err))
-    // }
+    const getStyles = () => {
+        axios
+            .get('https://mg-photography-backend.herokuapp.com/api/profile/1')
+            .then(res => {
+                setBeStyles(res.data)
+                setLoading(false)
+            })
+            .catch(err => console.log(err))
+    }
 
     if(loading) {
         return (
@@ -165,7 +166,7 @@ export default function Landing() {
                                         left: '0rem'
                                     },
                                 })} />
-                                <img src={`${styles.profile_picture_url}.jpg`} alt='profile picture' className={css({
+                                <img src={`${beStyles.profile_picture_url}.jpg`} alt='profile picture' className={css({
                                     maxWidth: '250px',
                                     display: 'block',
                                     // boxShadow: 'rgb(255, 255, 255) 0px 0px 0px 1.5rem',
