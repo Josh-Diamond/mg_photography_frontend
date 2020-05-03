@@ -21,14 +21,14 @@ export default function AdminPhotos({ photos, uploadSuccess, setUploadSuccess, h
     const [showInfoPic, setShowInfoPic] = useState({})
     console.log('showInfoPic', showInfoPic)
     const deleteSubmitter = e => {
-        axios
+        // axios
+        //     .delete(`https://mg-photography-backend.herokuapp.com/api/pictures/${deleteID}`)
+        //     .then(res => completedDelete())
+        //     .catch(err => setDeleteFailure(true))
+        axiosWithAuth()
             .delete(`https://mg-photography-backend.herokuapp.com/api/pictures/${deleteID}`)
             .then(res => completedDelete())
             .catch(err => setDeleteFailure(true))
-        // axiosWithAuth()
-        // .delete(`https://mg-photography-backend.herokuapp.com/${deleteID}`)
-        //     .then(res => completedDelete())
-        //     .catch(err => setDeleteFailure(true))
     }
 
     const completedDelete = () => {

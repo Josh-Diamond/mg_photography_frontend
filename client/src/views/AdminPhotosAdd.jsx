@@ -37,7 +37,7 @@ export default function AdminPhotosAdd({ history }) {
             setValidation(true)
         } else {
         e.preventDefault()
-        axios
+        axiosWithAuth()
             .post('https://mg-photography-backend.herokuapp.com/api/pictures/', formData)
             .then(res => setUploadSuccess(true))
             .catch(err => setUploadFailure(true))

@@ -1,17 +1,27 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import { css } from 'emotion'
 import { styles } from '../Styles'
 import { Link } from 'react-router-dom'
 import { FaLock } from 'react-icons/fa'
+import ForgotPasswordPopup from '../components/ForgotPasswordPopup'
 
 export default function Login({ history }) {
+    const [forgot, setForgot] = useState(true)
+    const [securityQuestion, setSecurityQuestion] = useState(null)
     const [user, setUser] = useState("Marysa")
     const [pass, setPass] = useState("")
     const creds = {
         "username": user,
         "password": pass
     }
+
+    useEffect(() => {
+    axios
+        .get('https://mg-photography-backend.herokuapp.com/api/security/1')
+        .then(res => setSecurityQuestion(res.data.security_question))
+        .catch(err => console.log(err))
+    },[])
 
     const login = e => {
         e.preventDefault()
@@ -65,6 +75,7 @@ export default function Login({ history }) {
                 height: '100vh',
                 background: `${styles.main_background_color}`
             })}>
+                {forgot ? <ForgotPasswordPopup securityQuestion={securityQuestion} setForgot={setForgot} /> : null}
                 <section className={css({
                     transformOrigin: '50% 50%',
                     transform: 'rotateX(0deg)',
@@ -165,17 +176,25 @@ export default function Login({ history }) {
                                 }
                             })} />
                         </form>
-                        {/* <div className={css({
+                        <div onClick={() => setForgot(true)} className={css({
                             display: 'flex',
                             alignItems: 'center',
                             fontSize: '.6rem',
-                            justifyContent: 'center'
+                            marginTop: '15px',
+                            justifyContent: 'center',
+                            transition: '.4s',
+                            "&:hover" : {
+                                color: `${styles.view_gallery_text_color_hover}`,
+                                cursor: 'pointer'
+                            }
                         })}>
-                            <h4>Forgot Password?</h4>
+                            <h4 className={css({
+                                marginRight: '5px'
+                            })}>Forgot Password?</h4>
                             <FaLock />
-                        </div> */}
+                        </div>
                         <ul onClick={viewSite} className={css({ 
-                            margin: '35px 0px 0rem',
+                            margin: '15px 0px 0rem',
                             width: '100%',
                             marginLeft: '0px',
                             display: 'flex',
