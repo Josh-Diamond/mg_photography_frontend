@@ -7,7 +7,7 @@ import { FaLock } from 'react-icons/fa'
 import ForgotPasswordPopup from '../components/ForgotPasswordPopup'
 
 export default function Login({ history }) {
-    const [forgot, setForgot] = useState(true)
+    const [forgot, setForgot] = useState(false)
     const [securityQuestion, setSecurityQuestion] = useState(null)
     const [user, setUser] = useState("Marysa")
     const [pass, setPass] = useState("")
@@ -18,7 +18,7 @@ export default function Login({ history }) {
 
     useEffect(() => {
     axios
-        .get('https://mg-photography-backend.herokuapp.com/api/security/1')
+        .get('https://mg-photography-backend.herokuapp.com/api/security/Marysa')
         .then(res => setSecurityQuestion(res.data.security_question))
         .catch(err => console.log(err))
     },[])
@@ -75,7 +75,7 @@ export default function Login({ history }) {
                 height: '100vh',
                 background: `${styles.main_background_color}`
             })}>
-                {forgot ? <ForgotPasswordPopup securityQuestion={securityQuestion} setForgot={setForgot} /> : null}
+                {forgot ? <ForgotPasswordPopup securityQuestion={securityQuestion} setForgot={setForgot} history={history} /> : null}
                 <section className={css({
                     transformOrigin: '50% 50%',
                     transform: 'rotateX(0deg)',

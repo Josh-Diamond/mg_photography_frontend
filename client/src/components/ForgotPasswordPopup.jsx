@@ -8,13 +8,12 @@ export default function ForgotPasswordPopup({ history, setForgot, securityQuesti
     const success = () => {
         // setForgot(false)
     }
-    const [securitySave, setSecuritySave] = useState(null)
     const [answer, setAnswer] = useState({"security_question": securityQuestion, "security_question_answer": ''})
     const [incorrect, setIncorrect] = useState(false)
     const answerHandler = e => {
         setAnswer({...answer, security_question_answer: e.target.value})
     }
-
+   
     const catchHandler = error => {
         console.log(error)
         setIncorrect(true)
@@ -27,15 +26,20 @@ export default function ForgotPasswordPopup({ history, setForgot, securityQuesti
         setIncorrect(false)
     }
 
+    const correct = response => {
+        localStorage.setItem('token', response.data.token)
+        history.push('/reset_password')
+    }
+
     const submitAnswer = e => {
         e.preventDefault()
         axios
             .post('https://mg-photography-backend.herokuapp.com/api/security/reset_password', answer)
-            .then(res => console.log('successRES', res))
-            .catch(err => catchHandler())
+            .then(res => correct(res))
+            .catch(err => catchHandler(err))
     }
-    console.log('fullAnswer', answer)
 
+    console.log('answerr', answer)
     return (
         <div className={css({
             position: 'absolute',
