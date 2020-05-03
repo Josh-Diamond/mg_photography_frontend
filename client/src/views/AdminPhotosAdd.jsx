@@ -10,6 +10,8 @@ import SuccessPopup from '../components/SuccessPopup'
 import uploadFailure from '../components/UploadFailure'
 import UploadFailure from '../components/UploadFailure'
 import RequiredFields from '../components/RequiredFields'
+import { Link } from 'react-router-dom'
+import { TiArrowBack } from 'react-icons/ti'
 
 export default function AdminPhotosAdd({ history }) {
     const [imagePreview, setImagePreview] = useState(false)
@@ -45,6 +47,24 @@ export default function AdminPhotosAdd({ history }) {
     }
 
     return (
+        <>
+        <Link to='/admin_access/manage_photos' className={css({
+                        color: '#e6e6e6',
+                        transition: '.4s',
+                        textDecoration: 'none',
+                        position: 'absolute',
+                        display: 'flex',
+                        marginTop: '10px',
+                        "&:hover": {
+                            color: '#41cc66',
+                        }
+                    })}>
+                <TiArrowBack className={css({
+                    marginLeft: '10px',
+                    fontSize: '2.5rem'
+                })} />
+                </Link>
+
         <div className={css({
             height: '100vh',
             width: '100vw',
@@ -693,5 +713,6 @@ export default function AdminPhotosAdd({ history }) {
                 </section>
                 {/* end test */}
         </div>
+        </>
     )
 }

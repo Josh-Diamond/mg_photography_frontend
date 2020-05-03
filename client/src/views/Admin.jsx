@@ -86,26 +86,27 @@ export default function Admin({ history }) {
                                     display: 'inline-block',
                                     height: '2.75rem',
                                     lineHeight: '2.75rem',
-                                    backgroundColor: '#f0fce3',
+                                    backgroundColor: 'transparent',
                                     cursor: 'pointer',
                                     textAlign: 'center',
                                     whiteSpace: 'nowrap',
-                                    color: `${styles.view_gallery_text_color} !important`,
+                                    color: '#e6e6e6',
                                     transition: 'background-color 0.2s ease-in-out 0s, border-color 0.2s ease-in-out 0s, color 0.2s ease-in-out 0s',
                                     padding: '0px 1.5rem',
                                     borderRadius: '4px',
                                     borderWidth: '1px',
                                     borderStyle: 'solid',
-                                    borderColor: `${styles.view_gallery_border_color}`,
+                                    borderColor: 'transparent',
                                     borderImage: 'initial',
                                     textDecoration: 'none',
                                     fontSize: '1.5rem',
                                     fontFamily: '"Source Sans Pro", Helvetica, sans-serif',
                                     "&:hover": {
                                         color: `${styles.view_gallery_text_color_hover} !important`,
-                                        border: `1px solid ${styles.view_gallery_border_color_hover} !important`
+                                        // border: `1px solid ${styles.view_gallery_border_color_hover} !important`,
+                                        backgroundColor: '#e6e6e6',
                                         // color: '#648f63 !important',
-                                        // border: '1px solid #648f63 !important'
+                                        border: `1px solid ${styles.view_gallery_text_color_hover}`
                                     },
                                     // '@media (max-width: 470px)': {
                                     //     width: '75%',
@@ -162,6 +163,10 @@ export default function Admin({ history }) {
                             marginTop: '20px',
                             marginBottom: '-20px',
                             cursor: 'pointer',
+                            transition: '.4s',
+                            "&:hover" : {
+                                color: `${styles.view_gallery_text_color_hover}`
+                            },
                             '@media (min-width: 900px)': {
                                 display: 'none'
                             }

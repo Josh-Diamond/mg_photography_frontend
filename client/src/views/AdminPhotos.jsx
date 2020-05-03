@@ -10,6 +10,8 @@ import SuccessfulDelete from '../components/SuccessfulDelete'
 import DeleteFailure from '../components/DeleteFailure'
 import InfoPopup from '../components/InfoPopup'
 import axiosWithAuth from '../components/axiosWIthAuth'
+import { AiFillHome } from 'react-icons/ai'
+import { TiArrowBack } from 'react-icons/ti'
 
 export default function AdminPhotos({ photos, uploadSuccess, setUploadSuccess, history, location, setEditID, setEditPhoto }) {
     const [allPhotos, setAllPhotos] = useState([])
@@ -46,6 +48,9 @@ export default function AdminPhotos({ photos, uploadSuccess, setUploadSuccess, h
         .catch(err => console.log(err))
     },[])
 
+    const logout = e => {
+        localStorage.removeItem('token')
+    }
 
     return (
         <div className={css({
@@ -66,6 +71,46 @@ export default function AdminPhotos({ photos, uploadSuccess, setUploadSuccess, h
             {confirmDelete ? <DeletePopup setConfirmDelete={setConfirmDelete} history={history} deleteSubmitter={deleteSubmitter} /> : null}
             {successfulDelete ? <SuccessfulDelete setSuccessfulDelete={setSuccessfulDelete} setConfirmDelete={setConfirmDelete} setAllPhotos={setAllPhotos} /> : null}
             {deleteFailure ? <DeleteFailure setDeleteFailure={setDeleteFailure} /> : null}
+            
+            {/* nav start */}
+            <div className={css({
+                display: 'flex',
+                width: '100vw',
+                justifyContent: 'space-between',
+                alignItems: 'center',
+                // fontSize: '2rem',
+                marginTop: '10px'
+            })}>
+                <Link to='/admin_access' className={css({
+                        color: '#e6e6e6',
+                        transition: '.4s',
+                        textDecoration: 'none',
+                        
+                        "&:hover": {
+                            color: '#41cc66',
+                        }
+                    })}>
+                <TiArrowBack className={css({
+                    marginLeft: '10px',
+                    fontSize: '2.5rem'
+                })} />
+                </Link>
+                <Link to='/' onClick={logout} className={css({
+                        color: '#e6e6e6',
+                        transition: '.4s',
+                        textDecoration: 'none',
+                        
+                        "&:hover": {
+                            color: '#41cc66',
+                        }
+                    })}>
+                <AiFillHome className={css({
+                    marginRight: '14px',
+                    fontSize: '2rem'
+                })} />
+                </Link>
+            </div>
+            {/* nav end */}
             <h1 className={css({
                  color: '#41cc66',
                  fontFamily: "'Great Vibes', cursive",
@@ -110,7 +155,17 @@ export default function AdminPhotos({ photos, uploadSuccess, setUploadSuccess, h
                     let img_url = photo.image_url.slice(18, photo.image_url.length)
                    return <ManageCard photo={photo} setShowInfo={setShowInfo} image={img_url} setConfirmDelete={setConfirmDelete} deleteID={deleteID} setDeleteID={setDeleteID} setEditID={setEditID} setEditPhoto={setEditPhoto} setShowInfoPic={setShowInfoPic} />
                 }) :
-                <p>Loading...</p>}                
+                <h1 className={css({
+                    color: '#41cc66',
+                    fontFamily: "'Great Vibes', cursive",
+                    fontSize: '7rem',
+                    position: 'absolute',
+                    top: '75vh',
+                    textShadow: '0px 0px 10px rgba(255, 255, 255, 1)',
+                    '@media (max-width: 450px)': {
+                        fontSize: '5rem'
+                    },
+                })}>Loading...</h1>}                
             </div>
         </div>
     )

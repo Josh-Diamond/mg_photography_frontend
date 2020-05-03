@@ -7,6 +7,8 @@ import axiosWithAuth from '../components/axiosWIthAuth'
 import EditSuccessPopup from '../components/EditSuccessPopup'
 import EditFailure from '../components/EditFailure'
 import RequiredFields from '../components/RequiredFields'
+import { Link } from 'react-router-dom'
+import { TiArrowBack } from 'react-icons/ti'
 
 export default function AdminPhotosAdd({ history, editID, editPhoto }) {
     const [imagePreview, setImagePreview] = useState(false)
@@ -41,6 +43,24 @@ export default function AdminPhotosAdd({ history, editID, editPhoto }) {
     }
 
     return (
+        <>
+         <Link to='/admin_access/manage_photos' className={css({
+                        color: '#e6e6e6',
+                        transition: '.4s',
+                        textDecoration: 'none',
+                        position: 'absolute',
+                        display: 'flex',
+                        marginTop: '10px',
+                        "&:hover": {
+                            color: '#41cc66',
+                        }
+                    })}>
+                <TiArrowBack className={css({
+                    marginLeft: '10px',
+                    fontSize: '2.5rem'
+                })} />
+                </Link>
+
         <div className={css({
             height: '100vh',
             width: '100vw',
@@ -60,6 +80,7 @@ export default function AdminPhotosAdd({ history, editID, editPhoto }) {
                 { editFailure ? <EditFailure setEditFailure={setEditFailure} history={history} /> : null}
                 { editSuccess ? <EditSuccessPopup setEditSuccess={setEditSuccess} history={history} /> : null }
                 { imagePreview ? <ImagePreviewPopup setImagePreview={setImagePreview} image={formData.image_url} /> : null}
+               
                 <section className={css({
                     transformOrigin: '50% 50%',
                     transform: 'rotateX(0deg)',
@@ -594,5 +615,6 @@ export default function AdminPhotosAdd({ history, editID, editPhoto }) {
                 </header>
                 </section>
         </div>
+        </>
     )
 }
