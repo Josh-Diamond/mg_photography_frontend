@@ -160,8 +160,8 @@ export default function ForgotPasswordPopup({ history, setForgot, securityQuesti
             </>
              :
             <>
-            <h2>{securityQuestion}?</h2>
-            <input placeholder='Answer' onChange={answerHandler} value={answer.security_question_answer} className={css({
+            <h2>{securityQuestion}</h2>
+            <input placeholder='Answer' type='password' onChange={answerHandler} value={answer.security_question_answer} className={css({
                     width: '80%',
                     height: '25px',
                     borderRadius: '5px',

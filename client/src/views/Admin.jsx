@@ -122,6 +122,7 @@ export default function Admin({ history }) {
                                     })}>
                                     <FiLogOut className={css({
                                         marginRight: '7px',
+                                        cursor: 'pointer',
                                         '@media (max-width: 900px)': {
                                             // margin: '0px',
                                             // marginTop: '7px',
@@ -160,6 +161,7 @@ export default function Admin({ history }) {
                             fontSize: '1.5rem',
                             marginTop: '20px',
                             marginBottom: '-20px',
+                            cursor: 'pointer',
                             '@media (min-width: 900px)': {
                                 display: 'none'
                             }
