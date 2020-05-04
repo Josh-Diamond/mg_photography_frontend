@@ -57,6 +57,7 @@ export default function Pictures({ history, photos, setModelingGallery, setPhoto
         history.goBack()
     }
     useEffect(() => {
+        localStorage.removeItem('token')
       if(photos[0]) {
           let img_url_tail = photos[0].image_url.slice(18, photos[0].image_url.length)
         //   setSelected(img_url_tail)

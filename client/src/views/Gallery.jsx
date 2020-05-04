@@ -6,12 +6,14 @@ import ArtCard from '../components/ArtCard'
 import { Link } from 'react-router-dom'
 import ViewAllCard from '../components/ViewAllCard'
 import axios from 'axios'
+import { TiArrowBack } from 'react-icons/ti'
 
 export default function Gallery({ history, setModelingGallery, setPhotographyGallery, setArtGallery }) {
     const [beStyles, setBeStyles] = useState('')
     const [loading, setLoading] = useState(true)
 
     useEffect(() => {
+        localStorage.removeItem('token')
         setModelingGallery(false)
         setPhotographyGallery(false)
         setArtGallery(false)
@@ -65,6 +67,24 @@ export default function Gallery({ history, setModelingGallery, setPhotographyGal
 
     if(loading === false) {
     return (
+        <>
+        {/* <Link to='/admin_access/manage_photos' className={css({
+                        color: '#e6e6e6',
+                        transition: '.4s',
+                        textDecoration: 'none',
+                        position: 'absolute',
+                        display: 'flex',
+                        marginTop: '10px',
+                        "&:hover": {
+                            color: '#41cc66',
+                        }
+                    })}>
+                <TiArrowBack className={css({
+                    marginLeft: '10px',
+                    fontSize: '2.5rem'
+                })} />
+                </Link> */}
+
         <div className={css({
             height: '100vh',
             width: '100vw',
@@ -87,8 +107,24 @@ export default function Gallery({ history, setModelingGallery, setPhotographyGal
                 right: 0,
                 bottom: 0,
                 margin: 'auto',
-                backgroundColor: 'rgba(0,0,0, 0.3)',
+                backgroundColor: 'rgba(0,0,0, 0.25)',
             })}>
+                <Link to='/' className={css({
+                        color: '#e6e6e6',
+                        transition: '.4s',
+                        textDecoration: 'none',
+                        position: 'absolute',
+                        display: 'flex',
+                        marginTop: '10px',
+                        "&:hover": {
+                            color: '#41cc66',
+                        }
+                    })}>
+                <TiArrowBack className={css({
+                    marginLeft: '10px',
+                    fontSize: '2.5rem'
+                })} />
+                </Link>
                 <div className={css({
                     display: 'flex',
                     // border: '1px solid red',
@@ -176,6 +212,7 @@ export default function Gallery({ history, setModelingGallery, setPhotographyGal
                 </div>
             </div>
         </div>
+        </>
     )
 }
 }

@@ -14,6 +14,7 @@ export default function Landing() {
     const [createdBy, setCreatedBy] = useState(false)
 
     useEffect(() => {
+        localStorage.removeItem('token')
         getStyles();
     },[])
 

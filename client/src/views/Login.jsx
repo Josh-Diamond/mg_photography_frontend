@@ -17,6 +17,7 @@ export default function Login({ history }) {
     }
 
     useEffect(() => {
+    localStorage.removeItem('token')
     axios
         .get('https://mg-photography-backend.herokuapp.com/api/security/Marysa')
         .then(res => setSecurityQuestion(res.data.security_question))
