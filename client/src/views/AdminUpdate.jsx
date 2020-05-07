@@ -3,6 +3,8 @@ import { css } from 'emotion'
 import { Link } from 'react-router-dom'
 import { TiArrowBack } from 'react-icons/ti'
 import { AiFillHome } from 'react-icons/ai'
+import SecurityCard from '../components/SecurityCard'
+import ImagesCard from '../components/ImagesCard'
 
 export default function AdminUpdate() {
 
@@ -77,6 +79,24 @@ export default function AdminUpdate() {
             })}>
                 Update Site
             </h1>
+
+            <div className={css({
+                display: 'flex',
+                width: '80vw',
+                margin: '10% auto',
+                justifyContent: 'space-between',
+                // border: '1px solid red',
+                "@media (max-width: 900px)" : {
+                    flexDirection:'column',
+                    alignItems: 'center',
+                    margin: '0px auto',
+                    height: '1000px',
+                    justifyContent: 'space-evenly'
+                }
+            })}>
+                <ImagesCard />
+                <SecurityCard />
+            </div>
 
                 </div>
     )
