@@ -12,7 +12,7 @@ import UploadFailure from '../components/UploadFailure'
 import RequiredFields from '../components/RequiredFields'
 import { Link } from 'react-router-dom'
 import { TiArrowBack } from 'react-icons/ti'
-import { FaLock } from 'react-icons/fa'
+import { FaLock, FaQuestion } from 'react-icons/fa'
 
 export default function AdminUpdateSecurity({ history }) {
     const [imagePreview, setImagePreview] = useState(false)
@@ -20,42 +20,42 @@ export default function AdminUpdateSecurity({ history }) {
     const [uploadFailure, setUploadFailure] = useState(false)
     const [validation, setValidation] = useState(false)
 
-    useEffect(e => {
-        axios
-            .get('https://mg-photography-backend.herokuapp.com/api/security/Marysa')
-            .then(res => console.log('securityRes', res))
-            .catch(err => console.log(err))
-        // e.preventDefault()
-        //         axiosWithAuth()
-        //             .delete('https://mg-photography-backend.herokuapp.com/api/user/Marysa')
-        //             .then(res => console.log(res))
-        //             .catch(err => console.log(err))
-        //         axiosWithAuth()
-        //             .post('https://mg-photography-backend.herokuapp.com/api/user/', password)
-        //             .then(res => console.log(res))
-        //             .catch(err => console.log(err))
-    },[])
+    // useEffect(e => {
+    //     axios
+    //         .get('https://mg-photography-backend.herokuapp.com/api/security/Marysa')
+    //         .then(res => console.log('securityRes', res))
+    //         .catch(err => console.log(err))
+    //     // e.preventDefault()
+    //     //         axiosWithAuth()
+    //     //             .delete('https://mg-photography-backend.herokuapp.com/api/user/Marysa')
+    //     //             .then(res => console.log(res))
+    //     //             .catch(err => console.log(err))
+    //     //         axiosWithAuth()
+    //     //             .post('https://mg-photography-backend.herokuapp.com/api/user/', password)
+    //     //             .then(res => console.log(res))
+    //     //             .catch(err => console.log(err))
+    // },[])
 
     const [formData, setFormData] = useState({
        security_question: '',
        security_question_answer: ''
     })
 
-    const formHandler = e => {
-        setFormData({...formData, [e.target.name]: e.target.value})
-    }
+    // const formHandler = e => {
+    //     setFormData({...formData, [e.target.name]: e.target.value})
+    // }
 
-    const submitHandler = e => {
-        if(formData.image_url === '' || formData.category === ''){
-            setValidation(true)
-        } else {
-        e.preventDefault()
-        axiosWithAuth()
-            .post('https://mg-photography-backend.herokuapp.com/api/pictures/', formData)
-            .then(res => setUploadSuccess(true))
-            .catch(err => setUploadFailure(true))
-        }
-    }
+    // const submitHandler = e => {
+    //     if(formData.security_question === '' || formData.security_question_answer === ''){
+    //         setValidation(true)
+    //     } else {
+    //     e.preventDefault()
+    //     axiosWithAuth()
+    //         .post('https://mg-photography-backend.herokuapp.com/api/pictures/', formData)
+    //         .then(res => setUploadSuccess(true))
+    //         .catch(err => setUploadFailure(true))
+    //     }
+    // }
     
     return (
         <>
@@ -198,7 +198,7 @@ export default function AdminUpdateSecurity({ history }) {
                         </h1>
 
                         
-                        <form onSubmit={submitHandler} className={css({
+                        <form className={css({
                             maxWidth: '350px',
                             // border: '1px solid red',
                             margin: '0 auto',
@@ -213,7 +213,7 @@ export default function AdminUpdateSecurity({ history }) {
                             // fontSize: '.6rem',
                             marginBottom: '15px',
                             textDecoration: 'none',
-                            justifyContent: 'center',
+                            justifyContent: 'flex-start',
                             color: `${styles.profile_picture_border_color}`,
                             textTransform: 'uppercase',
                             fontWeight: '300',
@@ -226,186 +226,33 @@ export default function AdminUpdateSecurity({ history }) {
                         })}>
                             <h4 className={css({
                                 marginRight: '5px'
-                            })}>RESET PASSWORD</h4>
+                            })}>• RESET PASSWORD</h4>
                             <FaLock />
                         </Link>
-                            
-                            {/* Security Question */}
-                            <div className={css({
-                                display: 'flex',
-                                justifyContent: 'space-between',
-                                alignItems: 'center',
-                                margin: '5x 0',
-                                '@media (max-width: 450px)': {
-                                    flexDirection: 'column',
-                                    padding: '5px 10px'
-                                },
-                            })}>
-                                <label htmlFor='security_question' className={css({
-                                    color: `${styles.profile_picture_border_color}`,
-                                    textTransform: 'uppercase',
-                                    fontWeight: '300',
-                                    letterSpacing: '1.5px',
-                                    '@media (max-width: 450px)': {
-                                        alignSelf: 'flex-start',
-                                        paddingBottom: '5px'
-                                    },
-                                })}>Security Question </label>
-                                <input type='text' placeholder='question' id='security_question' name='security_question' onChange={formHandler} className={css({
-                                    height: '25px',
-                                    width: '35%',
-                                    minWidth: '150px',
-                                    borderRadius: '5px',
-                                    border: 'none',
-                                    textAlign: 'center',
-                                    outline: 'none',
-                                    color: `${styles.icon_color_hover}`,
-                                    fontWeight: 'bold',
-                                    '@media (max-width: 450px)': {
-                                        width: '100%'
-                                    },
-                                    "::placeholder" : {
-                                        color: `${styles.profile_picture_border_color}`,
-                                        textTransform: 'uppercase',
-                                        fontWeight: '300',
-                                        letterSpacing: '1.5px'
-                                    }
-                                })} />
-                            </div>
-                            {/* Security Question Answer */}
-                            <div className={css({
-                                display: 'flex',
-                                justifyContent: 'space-between',
-                                alignItems: 'center',
-                                margin: '5px 0',
-                                '@media (max-width: 450px)': {
-                                    flexDirection: 'column',
-                                    padding: '5px 10px'
-                                },
-                            })}>
-                                <label htmlFor='security_question_answer' className={css({
-                                    color: `${styles.profile_picture_border_color}`,
-                                    textTransform: 'uppercase',
-                                    fontWeight: '300',
-                                    letterSpacing: '1.5px',
-                                    '@media (max-width: 450px)': {
-                                        alignSelf: 'flex-start',
-                                        paddingBottom: '5px'
-                                    },
-                                })}>Security Answer </label>
-                                <input type='text' placeholder='answer' id='security_question_answer' name='security_question_answer' onChange={formHandler} className={css({
-                                    height: '25px',
-                                    width: '35%',
-                                    minWidth: '150px',
-                                    borderRadius: '5px',
-                                    border: 'none',
-                                    textAlign: 'center',
-                                    outline: 'none',
-                                    color: `${styles.icon_color_hover}`,
-                                    fontWeight: 'bold',
-                                    '@media (max-width: 450px)': {
-                                        width: '100%'
-                                    },
-                                    "::placeholder" : {
-                                        color: `${styles.profile_picture_border_color}`,
-                                        textTransform: 'uppercase',
-                                        fontWeight: '300',
-                                        letterSpacing: '1.5px'
-                                    }
-                                })} />
-                            </div>
-                            
-                        </form>
-                        {/* <ul className={css({ 
-                            margin: '35px 0px 0rem',
-                            width: '100%',
-                            marginLeft: '0px',
+                        <Link to='security/question_answer' className={css({
                             display: 'flex',
-                            // cursor: 'default',
-                            paddingLeft: '0px',
-                            listStyle: 'none',
-                            // marginBlockStart: '1rem',
-                            // marginBlockEnd: '1rem',
-                            // marginInlineStart: '0px',
-                            // marginInlineEnd: '0px',
-                            // paddingInlineStart: '40px',
-                            textSlign: 'center',
-                            '-webkit-touch-callout': 'none',
-                            '-webkit-user-select': 'none',
-                            '-khtml-user-select': 'none',
-                            '-moz-user-select': 'none',
-                            '-ms-user-select': 'none',
-                            'user-select': 'none',
-                            
-                        })}> 
-                            
-                        </ul> */}
-                        <ul onClick={submitHandler} className={css({ 
-                            margin: '20px 0px 0rem',
-                            width: '100%',
-                            marginLeft: '0px',
-                            display: 'flex',
-                            // cursor: 'default',
-                            paddingLeft: '0px',
-                            listStyle: 'none',
-                            // marginBlockStart: '1rem',
-                            // marginBlockEnd: '1rem',
-                            // marginInlineStart: '0px',
-                            // marginInlineEnd: '0px',
-                            // paddingInlineStart: '40px',
-                            textSlign: 'center',
-                            '-webkit-touch-callout': 'none',
-                            '-webkit-user-select': 'none',
-                            '-khtml-user-select': 'none',
-                            '-moz-user-select': 'none',
-                            '-ms-user-select': 'none',
-                            'user-select': 'none',
-                            
-                        })}> 
-                            <li className={css({
-                                margin: '0 auto',
-                                paddingLeft: '0px',
-                                verticalAlign: 'middle',
-                                padding: '0px 0px 0px 0.75rem',
-                                display: 'list-item',
-                                textAlign: '-webkit-match-parent',
-                                '@media (max-width: 385px)': {
-                                    padding: '0px 0px 0px 0px'  
-                                },
-                            })}>
-                                <div className={css({
-                                    '-webkit-appearance': 'none',
-                                    display: 'inline-block',
-                                    height: '2.75rem',
-                                    lineHeight: '2.75rem',
-                                    backgroundColor: 'transparent',
-                                    cursor: 'pointer',
-                                    textAlign: 'center',
-                                    whiteSpace: 'nowrap',
-                                    color: `${styles.view_gallery_text_color} !important`,
-                                    transition: 'background-color 0.2s ease-in-out 0s, border-color 0.2s ease-in-out 0s, color 0.2s ease-in-out 0s',
-                                    padding: '0px 1.5rem',
-                                    borderRadius: '4px',
-                                    borderWidth: '1px',
-                                    borderStyle: 'solid',
-                                    borderColor: `${styles.view_gallery_border_color}`,
-                                    borderImage: 'initial',
-                                    textDecoration: 'none',
-                                    "&:hover": {
-                                        color: `${styles.view_gallery_text_color_hover} !important`,
-                                        border: `1px solid ${styles.view_gallery_border_color_hover} !important`
-                                        // color: '#648f63 !important',
-                                        // border: '1px solid #648f63 !important'
-                                    },
-                                    '@media (max-width: 470px)': {
-                                        width: '75%',
-                                        margin: '0 auto',
-                                        fontSize: '.9rem',
-                                        marginBottom: '20px'
-                                    }
-                                })}>SAVE</div>
-                            </li>
-                        </ul>
+                            flexDirection: 'row',
+                            alignItems: 'center',
+                            // fontSize: '.6rem',
+                            marginBottom: '15px',
+                            textDecoration: 'none',
+                            justifyContent: 'flex-start',
+                            color: `${styles.profile_picture_border_color}`,
+                            textTransform: 'uppercase',
+                            fontWeight: '300',
+                            letterSpacing: '1.5px',
+                            transition: '.4s',
+                            "&:hover" : {
+                                color: `${styles.view_gallery_text_color_hover}`,
+                                cursor: 'pointer'
+                            }
+                        })}>
+                            <h4 className={css({
+                                marginRight: '5px'
+                            })}>• Question & Answer</h4>
+                            <FaQuestion />
+                        </Link>
+                         </form>
                         
                 </header>
                 </section>

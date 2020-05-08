@@ -16,6 +16,7 @@ import AdminPhotosEdit from './views/AdminPhotosEdit'
 import ResetPassword from './views/ResetPassword'
 import AdminUpdateImages from './views/AdminUpdateImages'
 import AdminUpdateSecurity from './views/AdminUpdateSecurity'
+import SecurityQuestionAnswer from './views/SecurityQuestionAnswer'
 
 function App() {
   const [photos, setPhotos] = useState([])
@@ -62,6 +63,7 @@ function App() {
         <PrivateRoute exact path='/admin_access/manage_photos/edit_photo' view={AdminPhotosEdit} editID={editID} editPhoto={editPhoto} />
         <PrivateRoute exact path='/admin_access/update_site/images' view={AdminUpdateImages} />
         <PrivateRoute exact path='/admin_access/update_site/security' view={AdminUpdateSecurity} />
+        <PrivateRoute exact path='/admin_access/update_site/security/question_answer' view={SecurityQuestionAnswer} />
         <PrivateRoute exact path='/reset_password' view={ResetPassword} />
       </Switch>
     </div>
