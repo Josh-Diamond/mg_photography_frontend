@@ -176,7 +176,7 @@ export default function Admin({ history }) {
                         })}>
                             <PhotosCard />
                         </Link>
-                        <Link to='/admin_access/update' className={css({
+                        <Link to='/admin_access/update_site' className={css({
                             textDecoration: 'none'
                         })}>
                             <UpdateCard />

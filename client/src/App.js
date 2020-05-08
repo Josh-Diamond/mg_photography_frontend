@@ -57,7 +57,7 @@ function App() {
         <Route exact path='/admin' render={props => <Login {...props} />} />
         <PrivateRoute exact path='/admin_access' view={Admin} />
         <PrivateRoute exact path='/admin_access/manage_photos' view={AdminPhotos} photos={photos} setEditID={setEditID} setEditPhoto={setEditPhoto} />
-        <PrivateRoute exact path='/admin_access/update' view={AdminUpdate} />
+        <PrivateRoute exact path='/admin_access/update_site' view={AdminUpdate} />
         <PrivateRoute exact path='/admin_access/manage_photos/add_photo' view={AdminPhotosAdd} />
         <PrivateRoute exact path='/admin_access/manage_photos/edit_photo' view={AdminPhotosEdit} editID={editID} editPhoto={editPhoto} />
         <PrivateRoute exact path='/admin_access/update_site/images' view={AdminUpdateImages} />

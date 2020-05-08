@@ -48,7 +48,7 @@ export default function AdminUpdateImages({ history }) {
 
     return (
         <>
-        <Link to='/admin_access/manage_photos' className={css({
+        <Link to='/admin_access/update_site' className={css({
                         color: '#e6e6e6',
                         transition: '.4s',
                         textDecoration: 'none',
