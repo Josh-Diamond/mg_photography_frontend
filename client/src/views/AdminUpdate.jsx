@@ -148,6 +148,7 @@ export default function AdminUpdate({ history }) {
                     width: '100vw',
                     justifyContent: 'space-between',
                     alignItems: 'center',
+                    position: 'absolute',
                     // fontSize: '2rem',
                     marginTop: '10px'
                 })}>
@@ -188,8 +189,7 @@ export default function AdminUpdate({ history }) {
                  textShadow: '0px 0px 10px rgba(255, 255, 255, 1)',
                  paddingTop: '25px',
                  '@media (max-width: 900px)': {
-                    fontSize: '4rem',
-                    paddingTop: '0px'
+                    display: 'none'
                  },
                  '@media (max-width: 550px)': {
                      fontSize: '3rem'
@@ -209,7 +209,7 @@ export default function AdminUpdate({ history }) {
                             flexDirection: 'column',
                             justifyContent: 'space-around',
                             marginTop: '10px',
-                            height: '800px'                        
+                            // height: '800px'                        
                         },
                         '@media (min-width: 901px)': {
                             marginTop: '-75px'                 
