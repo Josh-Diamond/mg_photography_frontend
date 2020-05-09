@@ -19,7 +19,7 @@ export default function SecurityQuestionAnswer({ history }) {
     useEffect(e => {
         axios
             .get('https://mg-photography-backend.herokuapp.com/api/security/Marysa')
-            .then(res => console.log('securityRes', res))
+            .then(res => console.log(res))
             .catch(err => console.log(err))
         // e.preventDefault()
         //         axiosWithAuth()
@@ -53,8 +53,8 @@ export default function SecurityQuestionAnswer({ history }) {
             .catch(err => console.log(err))
         axios
             .post('https://mg-photography-backend.herokuapp.com/api/security/', formData)
-            .then(res => console.log('resSuccess', res))
-            .catch(err => console.log('failure', err))
+            .then(res => setSecuritySuccess(true))
+            .catch(err => setSecurityFailure(true))
         }
     }
     

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { css } from 'emotion'
 
-export default function ImagePreviewPopup({ image, setImagePreview}) {
+export default function ViewAllPreview({ image, setViewAllPreview}) {
     const [imageURL, setImageURL] = useState('')
 
     useEffect(() => {
@@ -10,7 +10,7 @@ export default function ImagePreviewPopup({ image, setImagePreview}) {
     }, [image])
    
     return (
-        <div onClick={() => setImagePreview(false)} className={css({
+        <div onClick={() => setViewAllPreview(false)} className={css({
             position: 'absolute',
             zIndex: 7,
             color: 'darkred',

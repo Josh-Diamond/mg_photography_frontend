@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { css } from 'emotion'
 import { styles } from '../Styles'
 import { AiFillPicture } from 'react-icons/ai'
@@ -12,40 +12,88 @@ import UploadFailure from '../components/UploadFailure'
 import RequiredFields from '../components/RequiredFields'
 import { Link } from 'react-router-dom'
 import { TiArrowBack } from 'react-icons/ti'
+import ProfilePreview from '../components/ProfilePreview'
+import ViewAllPreview from '../components/ViewAllPreview'
+import ModelingPreview from '../components/ModelingPreview'
+import PhotographyPreview from '../components/PhotographyPreview'
+import ArtPreview from '../components/ArtPreview'
+import SaveSuccess from '../components/SaveSuccess'
+import SecurityFailure from '../components/SecurityFailure'
 
 export default function AdminUpdateImages({ history }) {
-    const [imagePreview, setImagePreview] = useState(false)
-    const [uploadSuccess, setUploadSuccess] = useState(false)
-    const [uploadFailure, setUploadFailure] = useState(false)
+    const [loading, setLoading] = useState(true)
+    const [profilePreview, setProfilePreview] = useState(false)
+    const [viewAllPreview, setViewAllPreview] = useState(false)
+    const [modelingPreview, setModelingPreview] = useState(false)
+    const [photographyPreview, setPhotographyPreview] = useState(false)
+    const [artPreview, setArtPreview] = useState(false)
+    const [saveSuccess, setSaveSuccess] = useState(false)
+    const [securityFailure, setSecurityFailure] = useState(true)
     const [validation, setValidation] = useState(false)
 
     const [formData, setFormData] = useState({
-       category: '',
-       date: '',
-       description: '',
-       location: '',
-       photographer: '',
-       event: '',
-       tags: '',
-       image_url: '' 
+       profile_picture_url: '',
+       view_all_picture_url: '',
+       modeling_picture_url: '',
+       photography_picture_url: '',
+       art_picture_url: ''
     })
 
+    useEffect(() => {
+        axios
+            .get('https://mg-photography-backend.herokuapp.com/api/profile/1')
+            .then(res => dataFetch(res))
+            .catch(err => console.log(err))
+    },[])
+
+    const dataFetch = response => {
+        setFormData({...response.data})
+        setLoading(false)
+    }
     const formHandler = e => {
         setFormData({...formData, [e.target.name]: e.target.value})
     }
 
     const submitHandler = e => {
-        if(formData.image_url === '' || formData.category === ''){
-            setValidation(true)
-        } else {
         e.preventDefault()
         axiosWithAuth()
-            .post('https://mg-photography-backend.herokuapp.com/api/pictures/', formData)
-            .then(res => setUploadSuccess(true))
-            .catch(err => setUploadFailure(true))
+            .patch('https://mg-photography-backend.herokuapp.com/api/profile/1', formData)
+            .then(res => setSaveSuccess(true))
+            .catch(err => setSecurityFailure(true))
         }
-    }
 
+    if(loading) {
+        return (
+
+        
+
+            <div className={css({
+                height: '100vh',
+                width: '100vw',
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+                '-webkit-touch-callout': 'none',
+                '-webkit-user-select': 'none',
+                '-khtml-user-select': 'none',
+                '-moz-user-select': 'none',
+                '-ms-user-select': 'none',
+                'user-select': 'none',
+                background: "radial-gradient(circle, rgba(162,255,145,1) 20%, rgba(123,175,62,1) 34%, rgba(210,138,81,1) 74%, rgba(17,88,4,1) 82%)"
+            })}>
+                <h1 className={css({
+                    color: '#41cc66',
+                    fontFamily: "'Great Vibes', cursive",
+                    fontSize: '7rem',
+                    textShadow: '0px 0px 10px rgba(255, 255, 255, 1)',
+                    '@media (max-width: 450px)': {
+                        fontSize: '5rem'
+                    },
+                })}>Loading...</h1>
+            </div>
+        )
+    }
+    if (loading === false) {
     return (
         <>
         <Link to='/admin_access/update_site' className={css({
@@ -81,9 +129,14 @@ export default function AdminUpdateImages({ history }) {
                 'user-select': 'none',
             })}>
                 { validation ? <RequiredFields setValidation={setValidation} formData={formData} /> : null}
-                { uploadFailure ? <UploadFailure setUploadFailure={setUploadFailure} history={history} /> : null}
-                { uploadSuccess ? <SuccessPopup setUploadSuccess={setUploadSuccess} history={history} /> : null }
-                { imagePreview ? <ImagePreviewPopup setImagePreview={setImagePreview} image={formData.image_url} /> : null}
+                { securityFailure ? <SecurityFailure setSecurityFailure={setSecurityFailure} history={history} /> : null}
+                { saveSuccess ? <SaveSuccess setSaveSuccess={setSaveSuccess} history={history} /> : null }
+                { profilePreview ? <ProfilePreview setProfilePreview={setProfilePreview} image={formData.profile_picture_url} /> : null}
+                { viewAllPreview ? <ViewAllPreview setViewAllPreview={setViewAllPreview} image={formData.view_all_picture_url} /> : null}
+                { modelingPreview ? <ModelingPreview setModelingPreview={setModelingPreview} image={formData.modeling_picture_url} /> : null}
+                { photographyPreview ? <PhotographyPreview setPhotographyPreview={setPhotographyPreview} image={formData.photography_picture_url} /> : null}
+                { artPreview ? <ArtPreview setArtPreview={setArtPreview} image={formData.art_picture_url} /> : null}
+
                 {/* <h1 className={css({
                      color: '#41cc66',
                      fontFamily: "'Great Vibes', cursive",
@@ -209,7 +262,7 @@ export default function AdminUpdateImages({ history }) {
                                     justifyContent: 'space-between',
                                     width: '100%'
                                 })}>
-                                    <label htmlFor='image_url' className={css({
+                                    <label htmlFor='profile_picture_url' className={css({
                                         color: `${styles.profile_picture_border_color}`,
                                         textTransform: 'uppercase',
                                         fontWeight: '300',
@@ -221,7 +274,7 @@ export default function AdminUpdateImages({ history }) {
                                     })}>Profile Picture <span className={css({
                                         color: '#41cc66'
                                     })}>*</span> </label>
-                                    <AiFillPicture onClick={() => setImagePreview(true)} className={css({
+                                    <AiFillPicture onClick={() => setProfilePreview(true)} className={css({
                                 // marginRight: '-100px',
                                 // position: 'relative',
                                 // right: '70px',
@@ -239,7 +292,7 @@ export default function AdminUpdateImages({ history }) {
                                 }
                             })} />
                                 </div>
-                                <input type='text' placeholder='image url' id='image_url' name='image_url' onChange={formHandler} className={css({
+                                <input type='text' placeholder='image url' id='profile_picture_url' name='profile_picture_url' value={formData.profile_picture_url} onChange={formHandler} className={css({
                                     height: '25px',
                                     width: '35%',
                                     minWidth: '150px',
@@ -262,7 +315,7 @@ export default function AdminUpdateImages({ history }) {
                                         letterSpacing: '1.5px'
                                     }
                                 })} />
-                            <AiFillPicture onClick={() => setImagePreview(true)} className={css({
+                            <AiFillPicture onClick={() => setProfilePreview(true)} className={css({
                                 marginRight: '-100px',
                                 position: 'relative',
                                 right: '70px',
@@ -294,7 +347,7 @@ export default function AdminUpdateImages({ history }) {
                                     justifyContent: 'space-between',
                                     width: '100%'
                                 })}>
-                                    <label htmlFor='image_url' className={css({
+                                    <label htmlFor='view_all_picture_url' className={css({
                                         color: `${styles.profile_picture_border_color}`,
                                         textTransform: 'uppercase',
                                         fontWeight: '300',
@@ -306,7 +359,7 @@ export default function AdminUpdateImages({ history }) {
                                     })}>View All <span className={css({
                                         color: '#41cc66'
                                     })}>*</span> </label>
-                                    <AiFillPicture onClick={() => setImagePreview(true)} className={css({
+                                    <AiFillPicture onClick={() => setViewAllPreview(true)} className={css({
                                 // marginRight: '-100px',
                                 // position: 'relative',
                                 // right: '70px',
@@ -324,7 +377,7 @@ export default function AdminUpdateImages({ history }) {
                                 }
                             })} />
                                 </div>
-                                <input type='text' placeholder='image url' id='image_url' name='image_url' onChange={formHandler} className={css({
+                                <input type='text' placeholder='image url' id='view_all_picture_url' name='view_all_picture_url' value={formData.view_all_picture_url} onChange={formHandler} className={css({
                                     height: '25px',
                                     width: '35%',
                                     minWidth: '150px',
@@ -347,7 +400,7 @@ export default function AdminUpdateImages({ history }) {
                                         letterSpacing: '1.5px'
                                     }
                                 })} />
-                            <AiFillPicture onClick={() => setImagePreview(true)} className={css({
+                            <AiFillPicture onClick={() => setViewAllPreview(true)} className={css({
                                 marginRight: '-100px',
                                 position: 'relative',
                                 right: '70px',
@@ -379,7 +432,7 @@ export default function AdminUpdateImages({ history }) {
                                     justifyContent: 'space-between',
                                     width: '100%'
                                 })}>
-                                    <label htmlFor='image_url' className={css({
+                                    <label htmlFor='modeling_picture_url' className={css({
                                         color: `${styles.profile_picture_border_color}`,
                                         textTransform: 'uppercase',
                                         fontWeight: '300',
@@ -391,7 +444,7 @@ export default function AdminUpdateImages({ history }) {
                                     })}>Modeling <span className={css({
                                         color: '#41cc66'
                                     })}>*</span> </label>
-                                    <AiFillPicture onClick={() => setImagePreview(true)} className={css({
+                                    <AiFillPicture onClick={() => setModelingPreview(true)} className={css({
                                 // marginRight: '-100px',
                                 // position: 'relative',
                                 // right: '70px',
@@ -409,7 +462,7 @@ export default function AdminUpdateImages({ history }) {
                                 }
                             })} />
                                 </div>
-                                <input type='text' placeholder='image url' id='image_url' name='image_url' onChange={formHandler} className={css({
+                                <input type='text' placeholder='image url' id='modeling_picture_url' name='modeling_picture_url' value={formData.modeling_picture_url} onChange={formHandler} className={css({
                                     height: '25px',
                                     width: '35%',
                                     minWidth: '150px',
@@ -432,7 +485,7 @@ export default function AdminUpdateImages({ history }) {
                                         letterSpacing: '1.5px'
                                     }
                                 })} />
-                            <AiFillPicture onClick={() => setImagePreview(true)} className={css({
+                            <AiFillPicture onClick={() => setModelingPreview(true)} className={css({
                                 marginRight: '-100px',
                                 position: 'relative',
                                 right: '70px',
@@ -464,7 +517,7 @@ export default function AdminUpdateImages({ history }) {
                                     justifyContent: 'space-between',
                                     width: '100%'
                                 })}>
-                                    <label htmlFor='image_url' className={css({
+                                    <label htmlFor='photography_picture_url' className={css({
                                         color: `${styles.profile_picture_border_color}`,
                                         textTransform: 'uppercase',
                                         fontWeight: '300',
@@ -476,7 +529,7 @@ export default function AdminUpdateImages({ history }) {
                                     })}>Photography <span className={css({
                                         color: '#41cc66'
                                     })}>*</span> </label>
-                                    <AiFillPicture onClick={() => setImagePreview(true)} className={css({
+                                    <AiFillPicture onClick={() => setPhotographyPreview(true)} className={css({
                                 // marginRight: '-100px',
                                 // position: 'relative',
                                 // right: '70px',
@@ -494,7 +547,7 @@ export default function AdminUpdateImages({ history }) {
                                 }
                             })} />
                                 </div>
-                                <input type='text' placeholder='image url' id='image_url' name='image_url' onChange={formHandler} className={css({
+                                <input type='text' placeholder='image url' id='photography_picture_url' name='photography_picture_url' value={formData.photography_picture_url} onChange={formHandler} className={css({
                                     height: '25px',
                                     width: '35%',
                                     minWidth: '150px',
@@ -517,7 +570,7 @@ export default function AdminUpdateImages({ history }) {
                                         letterSpacing: '1.5px'
                                     }
                                 })} />
-                            <AiFillPicture onClick={() => setImagePreview(true)} className={css({
+                            <AiFillPicture onClick={() => setPhotographyPreview(true)} className={css({
                                 marginRight: '-100px',
                                 position: 'relative',
                                 right: '70px',
@@ -549,7 +602,7 @@ export default function AdminUpdateImages({ history }) {
                                     justifyContent: 'space-between',
                                     width: '100%'
                                 })}>
-                                    <label htmlFor='image_url' className={css({
+                                    <label htmlFor='art_picture_url' className={css({
                                         color: `${styles.profile_picture_border_color}`,
                                         textTransform: 'uppercase',
                                         fontWeight: '300',
@@ -561,7 +614,7 @@ export default function AdminUpdateImages({ history }) {
                                     })}>Art <span className={css({
                                         color: '#41cc66'
                                     })}>*</span> </label>
-                                    <AiFillPicture onClick={() => setImagePreview(true)} className={css({
+                                    <AiFillPicture onClick={() => setArtPreview(true)} className={css({
                                 // marginRight: '-100px',
                                 // position: 'relative',
                                 // right: '70px',
@@ -579,7 +632,7 @@ export default function AdminUpdateImages({ history }) {
                                 }
                             })} />
                                 </div>
-                                <input type='text' placeholder='image url' id='image_url' name='image_url' onChange={formHandler} className={css({
+                                <input type='text' placeholder='image url' id='art_picture_url' name='art_picture_url' value={formData.art_picture_url} onChange={formHandler} className={css({
                                     height: '25px',
                                     width: '35%',
                                     minWidth: '150px',
@@ -602,7 +655,7 @@ export default function AdminUpdateImages({ history }) {
                                         letterSpacing: '1.5px'
                                     }
                                 })} />
-                            <AiFillPicture onClick={() => setImagePreview(true)} className={css({
+                            <AiFillPicture onClick={() => setArtPreview(true)} className={css({
                                 marginRight: '-100px',
                                 position: 'relative',
                                 right: '70px',
@@ -716,4 +769,5 @@ export default function AdminUpdateImages({ history }) {
         </div>
         </>
     )
+}
 }

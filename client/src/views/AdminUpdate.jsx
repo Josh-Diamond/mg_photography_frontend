@@ -207,7 +207,7 @@ export default function AdminUpdate({ history }) {
                         // border: '1px solid red',
                         '@media (max-width: 900px)': {
                             flexDirection: 'column',
-                            justifyContent: 'space-around',
+                            justifyContent: 'space-evenly',
                             marginTop: '10px',
                             // height: '800px'                        
                         },
