@@ -465,13 +465,18 @@ export default function Pictures({ history, photos, setModelingGallery, setPhoto
                     })
                 :
                 filtered.length === 0 && searchInput.length !== 0 ?
-                <div>
+                <div className={css({
+                    letterSpacing: '1.5px'
+                })}>
                     <p className={css({
                         color: '#e6e6e6'
-                    })}>Your search - <span className={css({
+                    })}>Your search <br/>- <span className={css({
                         fontWeight: 'bold',
-                        wordBreak: 'break-word'
-                    })}>{searchInput}</span> - did not return any results</p>
+                        wordBreak: 'break-word',
+                        // color: '#ab5a1b'
+                        color: '#FFAD34',
+                        
+                    })}>{searchInput}</span> -<br/> did not return any results</p>
                 </div>
                 :
                 filtered.map((photo, index) => {
@@ -628,10 +633,13 @@ export default function Pictures({ history, photos, setModelingGallery, setPhoto
                     })
                 :
                 filtered.length === 0 && searchInput.length !== 0 ?
-                <div>
+                <div className={css({
+                    letterSpacing: '1.5px'
+                })}>
                     <p>Your search - <span className={css({
                         fontWeight: 'bold',
-                        wordBreak: 'break-word'
+                        wordBreak: 'break-word',
+                        color: '#FFAD34'
                     })}>{searchInput}</span> - did not return any results</p>
                 </div>
                 :
