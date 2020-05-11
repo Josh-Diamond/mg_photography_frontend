@@ -429,6 +429,21 @@ export default function Pictures({ history, photos, setModelingGallery, setPhoto
                         letterSpacing: '1.5px'
                     }
                 })} />
+                {filtered.length !== 0 && searchInput !== 0 ? 
+                    <p className={css({
+                        // border: '1px solid red',
+                        width: '80%',
+                        margin: '0 auto',
+                        textAlign: 'left',
+                        fontSize: '1.25rem',
+                        color: '#e6e6e6',
+                        paddingBottom: '10px'
+                    //     color: '#41cc66',
+                    // fontFamily: "'Great Vibes', cursive",
+                    // fontSize: '3rem',
+                    // textShadow: '0px 0px 10px rgba(255, 255, 255, 1)'
+                    })}>Results ({filtered.length})</p> :
+                    null}
                 <div className={css({
                     maxHeight: '91vh',
                     overflowY: 'scroll',
@@ -444,10 +459,19 @@ export default function Pictures({ history, photos, setModelingGallery, setPhoto
                     })} */}
 
                     {/* search bar attempt */}
-                    {filtered.length === 0 ? photos.map((photo, index) => {
+                    {filtered.length === 0 && searchInput.length === 0 ? photos.map((photo, index) => {
                         let sliced_url = photo.image_url.slice(18, photo.image_url.length)
                      return <Thumbnail key={sliced_url} photo={photo} image={sliced_url} setSelected={setSelected} setSelectedIndex={setSelectedIndex} index={index} />
                     })
+                :
+                filtered.length === 0 && searchInput.length !== 0 ?
+                <div>
+                    <p className={css({
+                        color: '#e6e6e6'
+                    })}>Your search - <span className={css({
+                        fontWeight: 'bold'
+                    })}>{searchInput}</span> - did not return any results</p>
+                </div>
                 :
                 filtered.map((photo, index) => {
                     let sliced_url = photo.image_url.slice(18, photo.image_url.length)
@@ -568,7 +592,7 @@ export default function Pictures({ history, photos, setModelingGallery, setPhoto
                 
                 {filtered.length !== 0 && searchInput !== 0 ? 
                     <p className={css({
-                        border: '1px solid red',
+                        // border: '1px solid red',
                         width: '80%',
                         margin: '0 auto',
                         textAlign: 'left',
@@ -604,7 +628,9 @@ export default function Pictures({ history, photos, setModelingGallery, setPhoto
                 :
                 filtered.length === 0 && searchInput.length !== 0 ?
                 <div>
-                    <p>Your search - {searchInput} - did not return any results</p>
+                    <p>Your search - <span className={css({
+                        fontWeight: 'bold'
+                    })}>{searchInput}</span> - did not return any results</p>
                 </div>
                 :
                 filtered.map((photo, index) => {
