@@ -28,7 +28,7 @@ export default function AdminUpdateImages({ history }) {
     const [photographyPreview, setPhotographyPreview] = useState(false)
     const [artPreview, setArtPreview] = useState(false)
     const [saveSuccess, setSaveSuccess] = useState(false)
-    const [securityFailure, setSecurityFailure] = useState(true)
+    const [securityFailure, setSecurityFailure] = useState(false)
     const [validation, setValidation] = useState(false)
 
     const [formData, setFormData] = useState({

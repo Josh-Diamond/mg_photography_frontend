@@ -21,9 +21,10 @@ export default function Pictures({ history, photos, setModelingGallery, setPhoto
     const [selected, setSelected] = useState('')
     const [popup, setPopup] = useState(false)
     const [filtered, setFiltered] = useState([])
-    // const [searchInput, setSearchInput] = useState('')
+    const [searchInput, setSearchInput] = useState('')
 
     const searchFilter = e => {
+        setSearchInput(e.target.value)
         let filteredPics = photos.filter(photo => photo.category.toLowerCase().includes(e.target.value.toLowerCase()) || photo.date.toLowerCase().includes(e.target.value.toLowerCase()) || photo.description.toLowerCase().includes(e.target.value.toLowerCase()) || photo.location.toLowerCase().includes(e.target.value.toLowerCase()) || photo.photographer.toLowerCase().includes(e.target.value.toLowerCase()) || photo.event.toLowerCase().includes(e.target.value.toLowerCase()) || photo.tags.toLowerCase().includes(e.target.value.toLowerCase()))
         setFiltered(filteredPics)
       }
@@ -60,19 +61,9 @@ export default function Pictures({ history, photos, setModelingGallery, setPhoto
         localStorage.removeItem('token')
       if(photos[0]) {
           let img_url_tail = photos[0].image_url.slice(18, photos[0].image_url.length)
-        //   setSelected(img_url_tail)
         setSelected({...photos[0], image_url: img_url_tail})
          }
     },[photos])
- 
-    // useEffect(() => {
-    // if(selected.length !== 0) {
-    //     let img_url_tail = photos[selectedIndex].image_url.slice(18, testString.length)
-    //     setSelected(img_url_tail)
-    // }
-    // },[selected])
-    console.log('selectedDdD', selected)
-    console.log('selectedInDeX', selectedIndex)
     
     const rightPicture = index => {
       if(index === photos.length-1) {
@@ -118,24 +109,22 @@ export default function Pictures({ history, photos, setModelingGallery, setPhoto
         }
     }
     
+    console.log('searchInput', searchInput)
+
     return (
 
       
         <div className={ css({
             display: 'flex',
             backgroundColor: '#110C11',
-            // backgroundColor: `${styles.card_background_color}`,
             overflowY: 'hidden',
             boxSizing: 'border-box',
-            // backgroundColor: `${styles.main_background_color}`,
             '-webkit-touch-callout': 'none',
                 '-webkit-user-select': 'none',
                 '-khtml-user-select': 'none',
                 '-moz-user-select': 'none',
                 '-ms-user-select': 'none',
                 'user-select': 'none',
-            // '@media (max-width: 1150px)': {
-                // display: 'block',
                 overflowY: 'hidden',
                 maxHeight: '100vh'
             // },
@@ -161,11 +150,9 @@ export default function Pictures({ history, photos, setModelingGallery, setPhoto
             justifyContent: 'space-between',
             boxSizing: 'border-box',
             backgroundColor: '#110C11',
-            // backgroundColor: `${styles.main_background_color}`,
             background: "radial-gradient(circle, rgba(162,255,145,1) 20%, rgba(123,175,62,1) 34%, rgba(210,138,81,1) 74%, rgba(17,88,4,1) 82%)",
             width: 'calc(100vw)',
             transition: '1s',
-            // border: '1px solid red',
             '@media (max-width: 900px)': {
                 justifyContent: 'center',
               },
@@ -222,92 +209,21 @@ export default function Pictures({ history, photos, setModelingGallery, setPhoto
                 alignItems: 'center',
                 justifyContent: 'center',
                 height: '100vh',
-                // width: '100vw',
-                // border: '1px solid blue',
-                // '@media (max-width: 1150px)': {
-                //     flexDirection: 'column'
-                // },
             })}>
-                {/* top mobile row */}
-                {/* MENU ICON TEST */}
-                {/* <section className={css({
-                    '@media (min-width: 900px)': {
-                        display: 'none'
-                    },
-                    '@media (max-width: 900px)': {
-                    width: '100vw',
-                    display: 'flex',
-                    justifyContent: 'space-between',
-                    alignItems: 'center',
-                    
-                    }
-                })}>
-                <TiInfoLarge onClick={() => setPopup(true)} className={css({
-                        '@media (max-width: 900px)': {
-                            fontSize: '2.5rem',
-                            cursor: 'pointer',
-                            color: '#e6e6e6',
-                            transition: '.4s',
-                            alignSelf: 'flex-end',
-                            position: 'relative',
-                            paddingBottom: '5px',
-                        },
-                        '@media (max-width: 1200px)': {
-                            fontSize: '1.8rem'
-                        },
-                    "&:hover": {
-                        color: '#41cc66',
-                    }
-                    })} />
-                <AiOutlineMenu className={css({
-                        '@media (max-width: 900px)': {
-                            fontSize: '2.5rem',
-                            cursor: 'pointer',
-                            color: '#e6e6e6',
-                            transition: '.4s',
-                            alignSelf: 'flex-end',
-                            position: 'relative',
-                            // top: '-10px',
-                            // left: '10%'
-                            paddingBottom: '5px',
-                            paddingRight: '5px'
-                        },
-                        '@media (max-width: 1200px)': {
-                            fontSize: '1.8rem'
-                        },
-                        // '@media (max-width: 600px)': {
-                        //     top: '-7%'
-                        // },
-                    "&:hover": {
-                        color: '#41cc66',
-                    }
-                    })} onClick={() => setOpenMenu(true)} />
-                </section> */}
                {photos[0] ? 
             //    imageFrameTEST
             <div className={css({
                 display: 'flex',
-                // flexDirection: 'column',
                 justifyContent: 'center',
                 alignItems: 'center',
-                // alignItems: 'flex-start',
                 padding: '24px',
                 maxHeight: '90vh',
                 maxWidth: '70vw',
-                // paddingTop: '1%',
-                // backgroundColor: 'white',
-                // maxWidth: '800px',
-                // width: '80%',
                 flexWrap: 'wrap',
-                // minHeight: '100px',
                 borderRadius: '5px',
-                // letterSpacing: '0.15rem',
                 backgroundColor: '#110C11',
-                // backgroundColor: '#543313',
-                // backgroundColor: 'rgba(230,230,230,1)',
                 color: '#e6e6e6',
                 border: '2px solid #e6e6e6',
-                // border: '2px solid #515E66',
                 '@media (max-width: 1150px)': {
                     maxWidth: '80vw'
                 },
@@ -325,9 +241,7 @@ export default function Pictures({ history, photos, setModelingGallery, setPhoto
                     maxWidth: '88vw'
                 },
                 '@media (max-width: 350px)': {
-                    // padding: '16px',
                     maxWidth: '84vw',
-                    // margin: '5px'
                 },
                 '@media (max-height: 300px)': {
                     maxHeight: '80vh'
@@ -348,39 +262,17 @@ export default function Pictures({ history, photos, setModelingGallery, setPhoto
                     maxWidth: '90vw'
                 },
                 '@media (max-width: 450px)': {
-                    // padding: '16px',
                     maxWidth: '88vw',
                     margin: '5px'
                 },
                 '@media (max-width: 350px)': {
-                    // padding: '16px',
                     maxWidth: '84vw',
-                    // margin: '5px'
                 },
                 '@media (max-height: 300px)': {
                     maxHeight: '80vh'
                 },
-                    // '@media (max-width: 1150px)': {
-                    //     alignSelf: 'center'
-                    // },
-                    // '@media (max-width: 1150px)': {
-                    //     maxWidth: 'calc(100vw - 128px)'
-                    //     },
-                    //     '@media (max-width: 900px)': {
-                    //         maxWidth: 'calc(98vw)',
-                    //         maxHeight: '98vh'
-                    //         },
-                    //         '@media (max-width: 400px)': {
-                    //             maxWidth: 'calc(96vw)'
-                    //             // display: 'none'
-                    //         },
-                            // '@media (max-width: 600px)': {
-                            //     maxWidth: 'calc(100vw)',
-                            //     maxHeight: '100vh'
-                            //     },
                 })} />
                 </div>
-                // imageFrameTESTend
                 :
                 <h1 className={css({
                     color: '#41cc66',
@@ -392,69 +284,6 @@ export default function Pictures({ history, photos, setModelingGallery, setPhoto
                     },
                 })}>Loading...</h1> }
                 
-                {/* bottom mobile row */}
-                {/* ICON TEST PT 2 */}
-                {/* <section className={css({
-                    // border: '1px solid red',
-                    
-                    '@media (min-width: 900px)': {
-                        display: 'none'
-                    },
-                    '@media (max-width: 900px)': {
-                    width: '100vw',
-                    display: 'flex',
-                    justifyContent: 'space-between',
-                    alignItems: 'center'
-                    }
-                })}>
-                <IoIosArrowBack className={css({
-                        '@media (max-width: 900px)': {
-                            fontSize: '2.5rem',
-                            cursor: 'pointer',
-                            color: '#e6e6e6',
-                            transition: '.4s',
-                            alignSelf: 'flex-end',
-                            position: 'relative',
-                            // top: '-10px',
-                            // left: '10%'
-                            paddingTop: '5px',
-                            // paddingLeft: '5px'
-                        },
-                        '@media (max-width: 1200px)': {
-                            fontSize: '1.8rem'
-                        },
-                        // '@media (max-width: 600px)': {
-                        //     top: '-7%'
-                        // },
-                    "&:hover": {
-                        color: '#41cc66',
-                    }
-                    })} onClick={() => leftPicture(selectedIndex)} />
-                <IoIosArrowForward className={css({
-                        '@media (max-width: 900px)': {
-                            fontSize: '2.5rem',
-                            cursor: 'pointer',
-                            color: '#e6e6e6',
-                            transition: '.4s',
-                            alignSelf: 'flex-end',
-                            position: 'relative',
-                            // top: '-10px',
-                            // left: '10%'
-                            paddingTop: '5px',
-                            paddingRight: '5px'
-                        },
-                        '@media (max-width: 1200px)': {
-                            fontSize: '1.8rem'
-                        },
-                        // '@media (max-width: 600px)': {
-                        //     top: '-7%'
-                        // },
-                    "&:hover": {
-                        color: '#41cc66',
-                    }
-                    })} onClick={() => rightPicture(selectedIndex)} />
-                </section> */}
-                {/* end bottom mobile row */}
 
             </section>
             <section className={ openMenu ? css({
@@ -462,7 +291,6 @@ export default function Pictures({ history, photos, setModelingGallery, setPhoto
                 flexDirection: 'column',
                 alignItems: 'center',
                 marginTop: '10px',
-                // borderRight: '3px solid #e6e6e6',
                 '@media (max-width: 900px)': {
                     width: '0px',
                     display: 'none',
@@ -472,7 +300,6 @@ export default function Pictures({ history, photos, setModelingGallery, setPhoto
                 flexDirection: 'column',
                 alignItems: 'center',
                 marginTop: '10px',
-                // border: '1px solid red',
                 '@media (max-width: 900px)': {
                     display: 'none'
                 },
@@ -527,7 +354,6 @@ export default function Pictures({ history, photos, setModelingGallery, setPhoto
               display: 'flex',
               flexDirection: 'column',
               transition: '1s',
-            //   backgroundColor: '#110C11',
             backgroundColor: 'rgba(17,88,4,1)',
               borderLeft: `2px solid #e6e6e6`,
               '@media (max-width: 1150px)': {
@@ -535,10 +361,6 @@ export default function Pictures({ history, photos, setModelingGallery, setPhoto
                 display: 'none',
                 overflowY: 'hidden'
             },
-            // '@media (min-width: 1150px)': {
-            //     width: '0%',
-            //     display: 'none'
-            // },
          }) : css({
              width: '0px',
              display: 'flex',
@@ -554,10 +376,8 @@ export default function Pictures({ history, photos, setModelingGallery, setPhoto
                 <div className={css({
                     display: 'flex',
                     alignItems: 'center',
-                    // marginBottom: '25px',
                     padding: '10px',
                     paddingBottom: '0px',
-                    // border: '1px solid yellow'
                 })}>
                 <Link to='/gallery_selection' className={css({
                         display: 'flex',
@@ -573,23 +393,11 @@ export default function Pictures({ history, photos, setModelingGallery, setPhoto
                     })}>
                         <TiArrowBack className={css({
                             fontSize: '2rem',
-                            // paddingLeft: '0 1%'
-                            // marginLeft: '1%'
                         })} />
-                        {/* <h4 className={css({
-                            fontFamily: "'Great Vibes', cursive",
-                            fontWeight: 'bold',
-                            marginLeft: '1%',
-                            textShadow: '0px 0px 10px rgba(255, 255, 255, 1)',
-                            color: '#41cc66',
-                            fontSize: '1.5rem',
-                            marginTop: '7px'
-                        })}>Gallery</h4> */}
                     </Link>
                     <Link to='/' className={css({
                          display: 'flex',
                          alignItems: 'center',
-                        //  width: '80%',
                          color: '#e6e6e6',
                          transition: '.4s',
                          textDecoration: 'none',
@@ -612,7 +420,6 @@ export default function Pictures({ history, photos, setModelingGallery, setPhoto
                     outline: 'none',
                     color: `${styles.icon_color_hover}`,
                     fontWeight: 'bold',
-                    // margin: '0 auto',
                     margin: '8% auto',
                     "::placeholder": {
                         textAlign: 'center',
@@ -630,7 +437,6 @@ export default function Pictures({ history, photos, setModelingGallery, setPhoto
                     flexWrap: 'wrap',
                     justifyContent: 'space-evenly',
                     alignItems: 'center',
-                    // border: '1px solid green'
                 })}>
                     {/* {photos.map((photo, index) => {
                         let sliced_url = photo.image_url.slice(18, photo.image_url.length)
@@ -654,7 +460,6 @@ export default function Pictures({ history, photos, setModelingGallery, setPhoto
             <section className={ openMenu ? css({
              width: '300px',
               display: 'flex',
-            //   backgroundColor: '#110C11',
             background: "radial-gradient(circle, rgba(162,255,145,1) 20%, rgba(123,175,62,1) 34%, rgba(210,138,81,1) 74%, rgba(17,88,4,1) 82%)",
               flexDirection: 'column',
               '-webkit-touch-callout': 'none',
@@ -663,27 +468,16 @@ export default function Pictures({ history, photos, setModelingGallery, setPhoto
                 '-moz-user-select': 'none',
                 '-ms-user-select': 'none',
                 'user-select': 'none',
-            //   transition: '1s',
               overflowY: 'hidden',
               maxHeight: '100vh',
               color: '#e6e6e6',
-            //   '@media (max-width: 1125px)': {
-            //     width: '100vw',
-            //     height: '100vh',
-            //     position: 'relative',
-            //     backgroundColor: 'white',
-            //     // top: '-100vh',
-            //     // overflowY: 'hidden',
-            // },
               '@media (max-width: 1150px)': {
                 width: '100vw',
                 height: '100vh',
                 position: 'absolute',
                 backgroundColor: '#110C11',
                 color: '#e6e6e6',
-                // top: '-100vh',
                 overflowY: 'hidden',
-                // border: '1px solid red',
             },
             '@media (min-width: 1151px)': {
                width: '0%',
@@ -713,7 +507,6 @@ export default function Pictures({ history, photos, setModelingGallery, setPhoto
                     <Link to='/gallery_selection' className={css({
                         display: 'flex',
                         alignItems: 'center',
-                        // width: '80%',
                         color: '#e6e6e6',
                         transition: '.4s',
                         textDecoration: 'none',
@@ -723,14 +516,11 @@ export default function Pictures({ history, photos, setModelingGallery, setPhoto
                     })}>
                         <TiArrowBack className={css({
                             fontSize: '2rem',
-                            // paddingLeft: '0 1%'
-                            // marginLeft: '1%'
                         })} />
                         </Link>
                         <Link to='/' className={css({
                             display: 'flex',
                             alignItems: 'center',
-                           //  width: '80%',
                             color: '#e6e6e6',
                             transition: '.4s',
                             textDecoration: 'none',
@@ -743,15 +533,6 @@ export default function Pictures({ history, photos, setModelingGallery, setPhoto
                                 fontSize: '1.8rem'
                             })} />
                         </Link>
-                        {/* <h4 className={css({
-                            fontFamily: "'Great Vibes', cursive",
-                            fontWeight: 'bold',
-                            marginLeft: '1%',
-                            textShadow: '0px 0px 10px rgba(255, 255, 255, 1)',
-                            color: '#41cc66',
-                            fontSize: '1.5rem',
-                            marginTop: '7px'
-                        })}>Back to Gallery</h4> */}
                     <AiOutlineClose onClick={() => setOpenMenu(false)} className={css({
                         fontSize: '2.5rem',
                         cursor: 'pointer',
@@ -765,15 +546,6 @@ export default function Pictures({ history, photos, setModelingGallery, setPhoto
                     }
                     })} onClick={() => setOpenMenu(false)} />
                 </div>
-                {/* <div>
-                    <p onClick={setToAll}>All</p>
-                    <p>|</p>
-                    <p onClick={setToModeling}>Modeling</p>
-                    <p>|</p>
-                    <p onClick={setToPhotography}>photography</p>
-                    <p>|</p>
-                    <p onClick={setToArt}>art</p>
-                </div> */}
                 <input placeholder='Search' onChange={searchFilter} className={css({
                     width: '80%',
                     height: '25px',
@@ -793,6 +565,22 @@ export default function Pictures({ history, photos, setModelingGallery, setPhoto
                         letterSpacing: '1.5px'
                     }
                 })} />
+                
+                {filtered.length !== 0 && searchInput !== 0 ? 
+                    <p className={css({
+                        border: '1px solid red',
+                        width: '80%',
+                        margin: '0 auto',
+                        textAlign: 'left',
+                        fontSize: '1.25rem',
+                    //     color: '#41cc66',
+                    // fontFamily: "'Great Vibes', cursive",
+                    // fontSize: '3rem',
+                    // textShadow: '0px 0px 10px rgba(255, 255, 255, 1)'
+                    })}>Results ({filtered.length})</p> :
+                    null}
+                    
+          
                 <div className={css({
                     maxHeight: '91vh',
                     overflowY: 'scroll',
@@ -809,10 +597,15 @@ export default function Pictures({ history, photos, setModelingGallery, setPhoto
                     })} */}
 
                     {/* search bar attempt */}
-                    {filtered.length === 0 ? photos.map((photo, index) => {
+                    {filtered.length === 0 && searchInput.length === 0 ? photos.map((photo, index) => {
                         let sliced_url = photo.image_url.slice(18, photo.image_url.length)
                      return <Thumbnail key={sliced_url} photo={photo} mobile image={sliced_url} setOpenMenu={setOpenMenu} setSelected={setSelected} setSelectedIndex={setSelectedIndex} index={index} />
                     })
+                :
+                filtered.length === 0 && searchInput.length !== 0 ?
+                <div>
+                    <p>Your search - {searchInput} - did not return any results</p>
+                </div>
                 :
                 filtered.map((photo, index) => {
                     let sliced_url = photo.image_url.slice(18, photo.image_url.length)
@@ -825,341 +618,3 @@ export default function Pictures({ history, photos, setModelingGallery, setPhoto
     </div>
     )
 }
-
-///////////////
-{/* <div className={css({
-            width: '100%',
-            height: '100vh',
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-            flexDirection: 'column',
-            background: 'radial-gradient(circle, rgba(162,255,145,1) 20%, rgba(123,175,62,1) 34%, rgba(210,138,81,1) 74%, rgba(17,88,4,1) 82%)'
-        })}>
-            <h2 className={css({
-                 color: '#41cc66',
-                 fontFamily: "'Great Vibes', cursive",
-                 fontSize: '7rem',
-                 textShadow: '0px 0px 10px rgba(255, 255, 255, 1)',
-            })}>Under Construction </h2>
-            <h4 className={css({
-                fontFamily: "'Great Vibes', cursive",
-                fontSize: '5rem',
-                paddingTop: '50px',
-                textShadow: '0px 0px 10px rgba(255, 255, 255, 1)'
-            })}>🚧 🚧 🚧 🚧</h4>
-        </div>     */}
-        ////////////////////
-
-    // <div className={css({
-    //          height: '100vh',
-    //          width: '100%'
-    //      })}>
-    //         <section className={css({
-    //             height: '100%',
-    //             width: '100%',
-    //             boxSizing: 'border-box',
-    //             border: '1px solid blue',
-    //             display: 'flex',
-    //             flexDirection: 'column',
-    //             paddingTop: '35px',
-    //             backgroundImage: 'url("../static/modeling.jpg")',
-    //             backgroundPosition: 'center',
-    //             backgroundSize: 'cover'
-    //         })}>
-    //         {/* <section className='section-test'> */}
-    //             <div className={css({
-    //                 // border: '1px solid green',
-    //                 width: '100%',
-    //                 height: '20%',
-    //                 display: 'flex',
-    //                 justifyContent: 'flex-end',
-    //                 alignItems: 'flex-start',
-    //             })}>
-    //                 {openMenu ? <AiOutlineClose className={css({
-    //                     fontSize: '2.5rem',
-    //                     paddingRight: '35px',
-    //                     cursor: 'pointer'
-    //                 })} onClick={() => setOpenMenu(false)} /> :
-    //                 <AiOutlineMenu className={css({
-    //                     fontSize: '2.5rem',
-    //                     cursor: 'pointer',
-    //                     paddingRight: '35px',
-    //                 })} onClick={() => setOpenMenu(true)} />}
-    //             </div>
-    //             <div className={css({
-    //                 // border: '1px solid green',
-    //                 width: '100%',
-    //                 height: '60%',
-    //                 display: 'flex',
-    //                 justifyContent: 'space-between',
-    //                 alignItems: 'center'
-    //             })}>
-    //                 <IoIosArrowBack className={css({
-    //                     fontSize: '6rem',
-    //                     cursor: 'pointer'
-    //                 })} />
-    //                 <IoIosArrowForward className={css({
-    //                     fontSize: '6rem',
-    //                     cursor: 'pointer'
-    //                 })} />
-    //             </div>
-    //             <div className={css({
-    //                 // border: '1px solid green',
-    //                 width: '100%',
-    //                 height: '20%',
-    //                 display: 'flex',
-    //                 flexDirection: 'column',
-    //                 alignItems: 'flex-start',
-    //                 justifyContent: 'flex-end',
-    //                 backgroundImage: '-webkit-linear-gradient(bottom, rgba(16,16,16,0.75), rgba(16,16,16,0.25) 80%, rgba(16,16,16,0))'
-    //             })}>
-    //                 <h2 className={css({
-    //                     fontSize: '1.7rem',
-    //                     paddingLeft: '35px',
-    //                 })}>Heading Heading Heading Heading</h2>
-    //                 <h4 className={css({
-    //                     fontSize: '1.25rem',
-    //                     paddingTop: '15px',
-    //                     paddingLeft: '35px',
-    //                     paddingBottom: '35px'
-    //                 })}>Sub-heading Sub-heading Sub-heading Sub-heading</h4>
-    //             </div>
-    //         </section>
-    //         <section>
-
-    //         </section>
-    //     </div>
-
-
-    //////////////////////////////////
-    // fullscreen
-    // <div className={css({
-    //     display: 'flex',
-    //     width: '100%',
-    //     justifyContent: 'space-between',
-    //     boxSizing: 'border-box',
-    // })}>
-    //     <section className={css({
-    //         border: '1px solid red',
-    //         display: 'flex',
-    //         flexDirection: 'column',
-    //         alignItems: 'center'
-    //     })}>
-    //         {/* <MdInfoOutline className={css({
-    //             fontSize: '2rem',
-    //             marginTop: '5px'
-    //         })} />
-    //         <GoInfo className={css({
-    //             fontSize: '2rem',
-    //             marginTop: '5px'
-    //         })} />
-    //         <TiInfoOutline className={css({
-    //             fontSize: '2rem',
-    //             marginTop: '5px'
-    //         })} /> */}
-    //         <TiInfoLarge className={css({
-    //             fontSize: '2rem',
-    //             marginTop: '5px'
-    //         })} />
-    //         <IoIosArrowBack className={css({
-    //             fontSize: '6rem',
-    //             cursor: 'pointer',
-    //             marginTop: 'calc(50vh)'
-    //         })} />
-    //     </section>
-    //     <section className={css({
-    //         boxSizing: "border-box",
-    //         display: 'flex',
-    //         alignItems: 'center',
-    //         justifyContent: 'center',
-    //         height: '100vh'
-    //     })}>
-    //         <img src={art} className={css({
-    //             maxHeight: '100vh',
-    //             maxWidth: '100vw',
-    //         })} />
-    //     </section>
-    //     <section className={css({
-    //         border: '1px solid red',
-    //         display: 'flex',
-    //         flexDirection: 'column',
-    //         alignItems: 'center',
-    //     })}>
-    //         {openMenu ? <AiOutlineClose className={css({
-    //                 fontSize: '2.5rem',
-    //                 cursor: 'pointer'
-    //             })} onClick={() => setOpenMenu(false)} /> :
-    //             <AiOutlineMenu className={css({
-    //                 fontSize: '2.5rem',
-    //                 cursor: 'pointer'
-    //             })} onClick={() => setOpenMenu(true)} />}
-    //             <IoIosArrowForward className={css({
-    //                 fontSize: '6rem',
-    //                 cursor: 'pointer',
-    //                 marginTop: 'calc(50vh - 40px)'
-    //             })} />
-    //     </section>
-    // </div>
-
-
-
-
-    ///////////////////////
-
-    // most recent
-
-//     <div className={ openMenu ? css({
-//         display: 'flex',
-//     }): css({
-//         height: '100vh',
-//         overflow: 'hidden',
-//     }) }>
-
-
-//     <div className={openMenu ? css({
-//         display: 'flex',
-//         width: 'calc(100vw - 300px)',
-//         justifyContent: 'space-between',
-//         boxSizing: 'border-box',
-//         backgroundColor: '#110C11',
-//         transition: '.2s'
-//     }) : css({
-//         display: 'flex',
-//         justifyContent: 'space-between',
-//         boxSizing: 'border-box',
-//         backgroundColor: '#110C11',
-//         width: 'calc(100vw)',
-//         transition: '2s'
-//     })}>
-//         <section className={css({
-//             display: 'flex',
-//             flexDirection: 'column',
-//             alignItems: 'center',
-//             marginTop: '10px'
-//         })}>
-//             {/* <MdInfoOutline className={css({
-//                 fontSize: '2rem',
-//                 marginTop: '5px'
-//             })} />
-//             <GoInfo className={css({
-//                 fontSize: '2rem',
-//                 marginTop: '5px'
-//             })} />
-//             <TiInfoOutline className={css({
-//                 fontSize: '2rem',
-//                 marginTop: '5px'
-//             })} /> */}
-//             <TiInfoLarge className={css({
-//                 fontSize: '2rem',
-//                 // marginTop: '10px',
-//                 color: '#e6e6e6',
-//                 // paddingTop: '5px'
-//             })} />
-//             <IoIosArrowBack className={css({
-//                 fontSize: '6rem',
-//                 cursor: 'pointer',
-//                 marginTop: 'calc(50vh - 42px)',
-//                 color: '#e6e6e6'
-//             })} />
-//         </section>
-//         <section className={css({
-//             boxSizing: "border-box",
-//             display: 'flex',
-//             alignItems: 'center',
-//             justifyContent: 'center',
-//             height: '100vh'
-//         })}>
-//             <img src={selected} className={css({
-//                 maxHeight: '100vh',
-//                 maxWidth: '100vw'
-//             })} />
-//         </section>
-//         <section className={css({
-//             display: 'flex',
-//             flexDirection: 'column',
-//             alignItems: 'center',
-//             marginTop: '10px'
-//         })}>
-//             {openMenu ? <AiOutlineClose className={css({
-//                     fontSize: '2.5rem',
-//                     cursor: 'pointer',
-//                     color: '#e6e6e6'
-//                 })} onClick={() => setOpenMenu(false)} /> :
-//                 <AiOutlineMenu className={css({
-//                     fontSize: '2.5rem',
-//                     cursor: 'pointer',
-//                     color: '#e6e6e6'
-//                 })} onClick={() => setOpenMenu(true)} />}
-//                 <IoIosArrowForward className={css({
-//                     fontSize: '6rem',
-//                     cursor: 'pointer',
-//                     marginTop: 'calc(50vh - 50px)',
-//                     color: '#e6e6e6'
-//                 })} />
-//         </section>
-       
-//     </div>
-
-
-//     {/* menu */}
-//      {/* menu */}
-//      <section className={ css({
-//          width: '300px',
-//          border: '1px solid orange',
-//          display: 'flex',
-//          flexDirection: 'column',
-//         //  transition: '2s'
-//      })}>
-//             Menu Area
-//             <input placeholder='Search' className={css({
-//                 width: '80%',
-//                 margin: '0 auto',
-//                 marginBottom: '10%',
-//                 "::placeholder": {
-//                     textAlign: 'center'
-//                 }
-//             })} />
-//             <div className={css({
-//                 maxHeight: '91vh',
-//                 overflowY: 'scroll',
-//                 boxSizing: 'border-box',
-//                 display: 'flex',
-//                 flexWrap: 'wrap',
-//                 justifyContent: 'space-evenly',
-//                 alignItems: 'center'
-//             })}>
-//                 <Thumbnail image={model} setSelected={setSelected} />
-//                 <Thumbnail image={photography} setSelected={setSelected} />
-//                 <Thumbnail image={art} setSelected={setSelected} />
-//                 <Thumbnail image={model} setSelected={setSelected} />
-//                 <Thumbnail image={photography} setSelected={setSelected} />
-//                 <Thumbnail image={art} setSelected={setSelected} />
-//                 <Thumbnail image={model} setSelected={setSelected} />
-//                 <Thumbnail image={photography} setSelected={setSelected} />
-//                 <Thumbnail image={art} setSelected={setSelected} />
-//                 <Thumbnail image={model} setSelected={setSelected} />
-//                 <Thumbnail image={photography} setSelected={setSelected} />
-//                 <Thumbnail image={art} setSelected={setSelected} />
-//                 <Thumbnail image={model} setSelected={setSelected} />
-//                 <Thumbnail image={photography} setSelected={setSelected} />
-//                 <Thumbnail image={art} setSelected={setSelected} />
-//                 <Thumbnail image={model} setSelected={setSelected} />
-//                 <Thumbnail image={photography} setSelected={setSelected} />
-//                 <Thumbnail image={art} setSelected={setSelected} />
-//                 <Thumbnail image={model} setSelected={setSelected} />
-//                 <Thumbnail image={photography} setSelected={setSelected} />
-//                 <Thumbnail image={art} setSelected={setSelected} />
-//                 <Thumbnail image={model} setSelected={setSelected} />
-//                 <Thumbnail image={photography} setSelected={setSelected} />
-//                 <Thumbnail image={art} setSelected={setSelected} />
-//                 <Thumbnail image={model} setSelected={setSelected} />
-//                 <Thumbnail image={photography} setSelected={setSelected} />
-//                 <Thumbnail image={art} setSelected={setSelected} />
-//                 <Thumbnail image={model} setSelected={setSelected} />
-//                 <Thumbnail image={photography} setSelected={setSelected} />
-//                 <Thumbnail image={art} setSelected={setSelected} />
-//             </div>
-//         </section>
-
-// </div>

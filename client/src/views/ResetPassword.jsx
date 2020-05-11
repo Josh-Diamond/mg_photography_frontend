@@ -10,6 +10,7 @@ import ResetSuccess from '../components/ResetSuccess'
 import MatchFields from '../components/MatchFields'
 import ResetFailure from '../components/ResetFailure'
 import PassRequiredFields from '../components/PassRequiredFields'
+import { TiArrowBack } from 'react-icons/ti'
 
 export default function ResetPassword({ history }) {
     const [match, setMatch] = useState(false)
@@ -52,8 +53,30 @@ export default function ResetPassword({ history }) {
             setMatch(true)
         }
     }
-    console.log('formData', formData)
+    
+    const goBack = () => {
+        history.goBack()
+    }
     return (
+        <>
+        <div onClick={goBack} className={css({
+                        color: '#e6e6e6',
+                        transition: '.4s',
+                        textDecoration: 'none',
+                        position: 'absolute',
+                        display: 'flex',
+                        marginTop: '10px',
+                        cursor: 'pointer',
+                        "&:hover": {
+                            color: '#41cc66',
+                        }
+                    })}>
+                <TiArrowBack className={css({
+                    marginLeft: '10px',
+                    fontSize: '2.5rem'
+                })} />
+                </div>
+
         <div className={css({
             height: '100vh',
             width: '100vw',
@@ -385,5 +408,6 @@ export default function ResetPassword({ history }) {
                 </section>
                 {/* end test */}
         </div>
+        </>
     )
 }
