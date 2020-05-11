@@ -429,7 +429,7 @@ export default function Pictures({ history, photos, setModelingGallery, setPhoto
                         letterSpacing: '1.5px'
                     }
                 })} />
-                {filtered.length !== 0 && searchInput !== 0 ? 
+                {filtered.length !== 0 && searchInput.length !== 0 ? 
                     <p className={css({
                         // border: '1px solid red',
                         width: '80%',
@@ -590,7 +590,7 @@ export default function Pictures({ history, photos, setModelingGallery, setPhoto
                     }
                 })} />
                 
-                {filtered.length !== 0 && searchInput !== 0 ? 
+                {filtered.length !== 0 && searchInput.length !== 0 ? 
                     <p className={css({
                         // border: '1px solid red',
                         width: '80%',
