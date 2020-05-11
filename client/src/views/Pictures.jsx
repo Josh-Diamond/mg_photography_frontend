@@ -469,7 +469,8 @@ export default function Pictures({ history, photos, setModelingGallery, setPhoto
                     <p className={css({
                         color: '#e6e6e6'
                     })}>Your search - <span className={css({
-                        fontWeight: 'bold'
+                        fontWeight: 'bold',
+                        wordBreak: 'break-word'
                     })}>{searchInput}</span> - did not return any results</p>
                 </div>
                 :
@@ -629,7 +630,8 @@ export default function Pictures({ history, photos, setModelingGallery, setPhoto
                 filtered.length === 0 && searchInput.length !== 0 ?
                 <div>
                     <p>Your search - <span className={css({
-                        fontWeight: 'bold'
+                        fontWeight: 'bold',
+                        wordBreak: 'break-word'
                     })}>{searchInput}</span> - did not return any results</p>
                 </div>
                 :
